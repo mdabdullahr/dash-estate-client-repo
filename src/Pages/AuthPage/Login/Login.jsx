@@ -1,0 +1,158 @@
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import useAuth from "../../../Hooks/useAuth";
+
+const LoginPage = () => {
+  const {loginUser, googleLogin} = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log("Form submitted:", data);
+    // 🔐 Implement login logic here (Firebase/Auth)
+    loginUser(data.email, data.password)
+      .then((result) => {
+        Swal.fire({
+          title: "Successfully Login!",
+          icon: "success",
+          draggable: true,
+        });
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        toast.error("Login fail" + error.code);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    console.log("Google login clicked");
+    // 🔐 Handle Google login here
+    googleLogin()
+      .then((res) => {
+        Swal.fire({
+          title: "Google Login Successfully...!",
+          icon: "success",
+          draggable: true,
+        });
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((err) => {
+        toast.error("Google Login fail " + err.message);
+      });
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
+          Login to Your Account
+        </h2>
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+          {/* Email */}
+          <div>
+            <label className="block mb-1 text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              {...register("email", {
+                required: "Email is required",
+                pattern: {
+                  value: /^\S+@\S+\.\S+$/,
+                  message: "Enter a valid email address",
+                },
+              })}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              placeholder="you@example.com"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
+
+          {/* Password */}
+          <div className="relative">
+            <label className="block mb-1 text-sm font-medium text-gray-700">
+              Password
+            </label>
+            <input
+              type={showPassword ? "text" : "password"}
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Must be at least 6 characters",
+                },
+              })}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 text-black"
+              placeholder="••••••••"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-9 text-gray-600 hover:text-gray-800 focus:outline-none"
+            >
+              {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </button>
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer"
+          >
+            Login
+          </button>
+        </form>
+
+        {/* Divider */}
+        <div className="flex items-center my-4">
+          <div className="flex-grow h-px bg-gray-300" />
+          <span className="px-3 text-gray-500 text-sm">or</span>
+          <div className="flex-grow h-px bg-gray-300" />
+        </div>
+
+        {/* Google Login */}
+        <button
+          onClick={handleGoogleLogin}
+          className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition text-black cursor-pointer"
+        >
+          <FaGoogle className="mr-2 text-red-500" />
+          Continue with Google
+        </button>
+
+        {/* Redirect to Register */}
+        <p className="text-center text-sm text-gray-700 mt-4">
+          Don't have an account?{" "}
+          <Link
+            to="/authLayout/register"
+            className="text-blue-600 font-medium hover:underline"
+          >
+            Register
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default LoginPage;
