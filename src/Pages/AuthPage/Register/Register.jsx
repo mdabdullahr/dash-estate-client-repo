@@ -5,11 +5,15 @@ import { Link, useNavigate } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import useAxiosUser from "../../../Hooks/useAxiosUser";
+
+
 
 const Register = () => {
-  const  {createUser, updateUser, setUser, googleLogin} = useAuth();
+  const { createUser, updateUser, setUser, googleLogin } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const axiosUser = useAxiosUser();
 
   const {
     register,
@@ -18,21 +22,43 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  // ✅ Handle email/password registration
   const onSubmit = (data) => {
-    console.log("Registration Data:", data);
-    // 🟡 Add your Firebase registration logic here later
-    createUser(data.email, data.password)
+    createUser(data?.email, data?.password)
       .then((result) => {
         const user = result.user;
-        updateUser({ displayName: data.name, photoURL: data.photo })
+
+        updateUser({ displayName: data?.name, photoURL: data?.photoURL })
           .then(() => {
-            setUser({ ...user, displayName: data.name, photoURL: data.photoURL });
-            Swal.fire({
-              title: "Register Successfully...!",
-              icon: "success",
-              draggable: true,
-            });
-            navigate("/");
+            const userInfo = {
+              name: data?.name,
+              email: data?.email,
+              image: data?.photoURL,
+              address: data?.address,
+              role: "user", // default role
+              createdAt: new Date()
+            };
+
+            axiosUser
+              .post("/users", userInfo)
+              .then((res) => {
+                if (res.data.insertedId || res.data.acknowledged) {
+                  Swal.fire({
+                    title: "Register Successfully!",
+                    icon: "success",
+                  });
+                  setUser({
+                    ...user,
+                    displayName: data.name,
+                    photoURL: data.photoURL,
+                  });
+                  navigate("/");
+                }
+              })
+              .catch((err) => {
+                console.error("User DB save error:", err);
+                toast.error("Failed to save user data.");
+              });
           })
           .catch((error) => {
             console.log(error);
@@ -41,25 +67,43 @@ const Register = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
-        toast.error("Register fail" + errorMessage);
+        toast.error("Register failed: " + errorMessage);
       });
+
     reset();
   };
 
+  // ✅ Handle Google login + DB save
   const handleGoogleSignup = () => {
-    console.log("Google signup clicked");
-    // 🟡 Add your Google signup logic here later
     googleLogin()
       .then((res) => {
-        Swal.fire({
-          title: "Google Register Successfully...!",
-          icon: "success",
-          draggable: true,
-        });
-        navigate("/");
+        const user = res.user;
+        console.log(user);
+        const userInfo = {
+          name: user?.displayName,
+          email: user?.email,
+          image: user?.photoURL,
+          address: "Google Account",
+          role: "user",
+          createdAt: new Date()
+        };
+
+        axiosUser
+          .post("/users", userInfo)
+          .then(() => {
+            Swal.fire({
+              title: "Google Register Successfully!",
+              icon: "success",
+            });
+            navigate("/");
+          })
+          .catch((err) => {
+            console.error("Google user save error:", err);
+            toast.error("Google user save failed.");
+          });
       })
       .catch((err) => {
-        toast.error("Google Register fail " + err.message);
+        toast.error("Google Sign-in failed: " + err.message);
       });
   };
 
@@ -80,7 +124,7 @@ const Register = () => {
               type="text"
               {...register("name", { required: "Name is required" })}
               placeholder="Enter your full name"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black"
             />
             {errors.name && (
               <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
@@ -96,7 +140,7 @@ const Register = () => {
               type="text"
               {...register("address", { required: "Address is required" })}
               placeholder="Enter your address"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black"
             />
             {errors.address && (
               <p className="text-red-500 text-sm mt-1">
@@ -116,7 +160,7 @@ const Register = () => {
                 required: "Profile picture URL is required",
               })}
               placeholder="Enter image URL"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black"
             />
             {errors.photoURL && (
               <p className="text-red-500 text-sm mt-1">
@@ -140,7 +184,7 @@ const Register = () => {
                 },
               })}
               placeholder="Enter your email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black"
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1">
@@ -158,36 +202,28 @@ const Register = () => {
               type={showPassword ? "text" : "password"}
               {...register("password", {
                 required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Password must be at least 6 characters",
-                },
+                minLength: { value: 6, message: "At least 6 characters" },
                 validate: {
                   hasCapital: (value) =>
-                    /[A-Z]/.test(value) ||
-                    "Must contain at least one capital letter",
+                    /[A-Z]/.test(value) || "Must have one capital letter",
                   hasSpecial: (value) =>
                     /[!@#$%^&*(),.?":{}|<>]/.test(value) ||
                     "Must include a special character",
                 },
               })}
               placeholder="Enter your password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg pr-10 placeholder-black text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg pr-10 placeholder-black text-black"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-9 text-gray-600 hover:text-gray-800 cursor-pointer"
+              className="absolute right-3 top-9 text-gray-600 hover:text-gray-800"
             >
               {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
             </button>
-
-            {/* Show all validation errors if any */}
             {errors.password && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.password.message ||
-                  errors.password.hasCapital ||
-                  errors.password.hasSpecial}
+                {errors.password.message}
               </p>
             )}
           </div>
@@ -195,7 +231,7 @@ const Register = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer"
+            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
           >
             Register
           </button>
@@ -212,7 +248,7 @@ const Register = () => {
         <button
           type="button"
           onClick={handleGoogleSignup}
-          className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition cursor-pointer"
+          className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-lg hover:bg-gray-100"
         >
           <FaGoogle className="mr-2 text-red-500" />
           <span className="text-black">Continue with Google</span>
