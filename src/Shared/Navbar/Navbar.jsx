@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import { Link, NavLink } from "react-router";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import navLogo from "../../assets/navlogo.png"
 
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
@@ -15,11 +16,11 @@ const Navbar = () => {
       <li>
         <NavLink to="/allProperties">All properties</NavLink>
       </li>
-      {
-        user && <li>
-        <NavLink to="/dashboard">Dashboard</NavLink>
-      </li>
-      }
+      {user && (
+        <li>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+      )}
     </>
   );
 
@@ -62,30 +63,29 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              {
-                links
-              }
+              {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <div className="flex items-center">
+            <img className="w-10 h-10 mr-2" src={navLogo} alt="Logo" />
+            <p className="-mb-2 font-bold text-2xl lg:text-3xl text-black specific-text">
+              HobbyHub
+            </p>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-           {
-            links
-           }
-          </ul>
+          <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          {
-            user ? <button
-            onClick={handleLogOut}
-            className="btn btn-primary">Logout</button> : <Link to="/authLayout/login">
-            <button className="btn btn-primary">
-                Login
+          {user ? (
+            <button onClick={handleLogOut} className="btn btn-primary">
+              Logout
             </button>
+          ) : (
+            <Link to="/authLayout/login">
+              <button className="btn btn-primary">Login</button>
             </Link>
-          }
+          )}
         </div>
       </div>
     </div>
