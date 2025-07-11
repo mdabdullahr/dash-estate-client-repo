@@ -1,11 +1,44 @@
 import React from "react";
-import { FaHeart, FaShoppingBag, FaStar, FaUserCircle } from "react-icons/fa";
+import {
+  FaBuilding,
+  FaBullhorn,
+  FaCheckCircle,
+  FaClipboardList,
+  FaComments,
+  FaEnvelopeOpenText,
+  FaHeart,
+  FaPlusCircle,
+  FaShoppingBag,
+  FaStar,
+  FaUserCircle,
+  FaUserCog,
+  FaUsersCog,
+  FaUserShield,
+} from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { MdMovieEdit } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
-import navLogo from "../assets/navlogo.png"
+import navLogo from "../assets/navlogo.png";
+import useAuth from "../Hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import Loading from "../Shared/Loading/Loading";
 
 const Dashboard = () => {
+  const { user, loader } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
+  const { data: dbUser = {}, isLoading } = useQuery({
+    queryKey: ["userRole", user?.email],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/users/${user?.email}`);
+      return res.data;
+    },
+    enabled: !!user?.email,
+  });
+
+  if (loader || isLoading) return <Loading></Loading>;
+
   return (
     <div className="min-h-screen bg-gray-100 text-black">
       <div className="bg-gray-100">
@@ -61,76 +94,242 @@ const Dashboard = () => {
                 <div className="space-y-6">
                   <Link to="/">
                     <div className="flex items-center px-6 border-b-2 border-gray-300 pb-4 mt-4">
-                      <img className="w-10 h-10 mr-2"src={navLogo} alt="Logo" />
+                      <img
+                        className="w-10 h-10 mr-2"
+                        src={navLogo}
+                        alt="Logo"
+                      />
                       <p className="-mb-2 font-bold text-2xl lg:text-3xl text-black specific-text">
-                        HobbyHub
+                        Real Estate
                       </p>
                     </div>
                   </Link>
 
                   {/* Nav Links */}
                   {/* User Related Route */}
-                  <div className="p-4 space-y-2 text-black">
-                    {/* Profile */}
-                    <NavLink
-                      to="/dashboard/profile"
-                      className={({ isActive }) =>
-                        `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
-                          isActive
-                            ? "bg-blue-600 text-white"
-                            : "hover:bg-gray-100"
-                        }`
-                      }
-                    >
-                      <FaUserCircle className="text-lg" />
-                      <span>My Profile</span>
-                    </NavLink>
+                  {dbUser?.role === "user" && (
+                    <div className="p-4 space-y-2 text-black">
+                      {/* Profile */}
+                      <NavLink
+                        to="/dashboard/profile"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaUserCircle className="text-lg" />
+                        <span>My Profile</span>
+                      </NavLink>
 
-                    {/* Wishlist */}
-                    <NavLink
-                      to="/dashboard/wishlist"
-                      className={({ isActive }) =>
-                        `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
-                          isActive
-                            ? "bg-blue-600 text-white"
-                            : "hover:bg-gray-100"
-                        }`
-                      }
-                    >
-                      <FaHeart className="text-lg" />
-                      <span>Wishlist</span>
-                    </NavLink>
+                      {/* Wishlist */}
+                      <NavLink
+                        to="/dashboard/wishlist"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaHeart className="text-lg" />
+                        <span>Wishlist</span>
+                      </NavLink>
 
-                    {/* Bought Properties */}
-                    <NavLink
-                      to="/dashboard/bought"
-                      className={({ isActive }) =>
-                        `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
-                          isActive
-                            ? "bg-blue-600 text-white"
-                            : "hover:bg-gray-100"
-                        }`
-                      }
-                    >
-                      <FaShoppingBag className="text-lg" />
-                      <span>Property Bought</span>
-                    </NavLink>
+                      {/* Bought Properties */}
+                      <NavLink
+                        to="/dashboard/bought"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaShoppingBag className="text-lg" />
+                        <span>Property Bought</span>
+                      </NavLink>
 
-                    {/* My Reviews */}
-                    <NavLink
-                      to="/dashboard/reviews"
-                      className={({ isActive }) =>
-                        `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
-                          isActive
-                            ? "bg-blue-600 text-white"
-                            : "hover:bg-gray-100"
-                        }`
-                      }
-                    >
-                      <FaStar className="text-lg" />
-                      <span>My Reviews</span>
-                    </NavLink>
-                  </div>
+                      {/* My Reviews */}
+                      <NavLink
+                        to="/dashboard/reviews"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaStar className="text-lg" />
+                        <span>My Reviews</span>
+                      </NavLink>
+                    </div>
+                  )}
+
+                  {/* Agent Related Route */}
+                  {dbUser?.role === "agent" && (
+                    <div className="p-4 space-y-2 text-black">
+                      {/* Profile */}
+                      <NavLink
+                        to="/dashboard/agentProfile"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaUserShield className="text-lg" />
+                        <span>Profile</span>
+                      </NavLink>
+
+                      {/* Add Property */}
+                      <NavLink
+                        to="/dashboard/addProperty"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaPlusCircle className="text-lg" />
+                        <span>Add Property</span>
+                      </NavLink>
+
+                      {/* My Added Properties */}
+                      <NavLink
+                        to="/dashboard/myAdded"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaClipboardList className="text-lg" />
+                        <span>My Added</span>
+                      </NavLink>
+
+                      {/* My Sold Properties */}
+                      <NavLink
+                        to="/dashboard/mySold"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaCheckCircle className="text-lg" />
+                        <span>My Sold</span>
+                      </NavLink>
+
+                      {/* Requests */}
+                      <NavLink
+                        to="/dashboard/requests"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaEnvelopeOpenText className="text-lg" />
+                        <span>Requests</span>
+                      </NavLink>
+                    </div>
+                  )}
+
+                  {/* Admin Related Route */}
+                  {dbUser?.role === "admin" && (
+                    <div className="p-4 space-y-2 text-black">
+                      {/* Admin Profile */}
+                      <NavLink
+                        to="/dashboard/adminProfile"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaUserCog className="text-lg" />
+                        <span>Admin Profile</span>
+                      </NavLink>
+
+                      {/* Manage Properties */}
+                      <NavLink
+                        to="/dashboard/manageProperties"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaBuilding className="text-lg" />
+                        <span>Manage Properties</span>
+                      </NavLink>
+
+                      {/* Manage Users */}
+                      <NavLink
+                        to="/dashboard/manageUsers"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaUsersCog className="text-lg" />
+                        <span>Manage Users</span>
+                      </NavLink>
+
+                      {/* Manage Reviews */}
+                      <NavLink
+                        to="/dashboard/manageReviews"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaComments className="text-lg" />
+                        <span>Manage Reviews</span>
+                      </NavLink>
+
+                      {/* Advertise Property */}
+                      <NavLink
+                        to="/dashboard/advertise"
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-blue-600 text-white"
+                              : "hover:bg-gray-100"
+                          }`
+                        }
+                      >
+                        <FaBullhorn className="text-lg" />
+                        <span>Advertise</span>
+                      </NavLink>
+                    </div>
+                  )}
                 </div>
 
                 {/* Bottom: Logout */}

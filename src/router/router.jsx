@@ -12,11 +12,23 @@ import UserProfile from "../Pages/Dashboard/UserLik/UserProfile/UserProfile";
 import Wishlist from "../Pages/Dashboard/UserLik/Wishlist/Wishlist";
 import BoughtProperties from "../Pages/Dashboard/UserLik/BoughtProperties/BoughtProperties";
 import MyReviews from "../Pages/Dashboard/UserLik/MyReviews/MyReviews";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
+import AgentProfile from "../Pages/Dashboard/AgentLink/AgentProfile/AgentProfile";
+import AddProperty from "../Pages/Dashboard/AgentLink/AddProperty/AddProperty";
+import MyAdded from "../Pages/Dashboard/AgentLink/MyAdded/MyAdded";
+import MySold from "../Pages/Dashboard/AgentLink/MySold/MySold";
+import Requests from "../Pages/Dashboard/AgentLink/Requests/Requests";
+import AdminProfile from "../Pages/Dashboard/AdminLink/AdminProfile/AdminProfile";
+import ManageProperties from "../Pages/Dashboard/AdminLink/ManageProperties/ManageProperties";
+import ManageUsers from "../Pages/Dashboard/AdminLink/ManageUsers/ManageUsers";
+import ManageReviews from "../Pages/Dashboard/AdminLink/ManageReviews/ManageReviews";
+import Advertise from "../Pages/Dashboard/AdminLink/Advertise/Advertise";
 
 export const router = createBrowserRouter([
   // RootLayout Related Routes
   {
     path: "/",
+    errorElement: <ErrorPage></ErrorPage>,
     Component: RootLayout,
     children: [
       {
@@ -43,22 +55,68 @@ export const router = createBrowserRouter([
   path: "/dashboard",
   element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
   children: [
+
+    // USER RELATED CHILDREN
     {
-      path: "profile", // this means "/dashboard"
+      path: "profile",
       element: <UserProfile></UserProfile>
     },
     {
-      path: "wishlist", // this becomes "/dashboard/wishlist"
+      path: "wishlist",
       element: <Wishlist></Wishlist>,
     },
     {
-      path: "bought", // "/dashboard/bought"
+      path: "bought",
       element: <BoughtProperties />,
     },
     {
-      path: "reviews", // "/dashboard/reviews"
+      path: "reviews",
       element: <MyReviews />,
     },
+
+    // AGENT RELATED CHILDREN
+    {
+      path: "agentProfile",
+      element: <AgentProfile></AgentProfile>
+    },
+    {
+      path: "addProperty",
+      element: <AddProperty></AddProperty>
+    },
+    {
+      path: "myAdded",
+      element: <MyAdded></MyAdded>
+    },
+    {
+      path: "mySold",
+      element: <MySold></MySold>
+    },
+    {
+      path: "requests",
+      element: <Requests></Requests>
+    },
+
+    // ADMIN RELATED CHILDREN
+    {
+      path: "adminProfile",
+      element: <AdminProfile></AdminProfile>
+    },
+    {
+      path: "manageProperties",
+      element: <ManageProperties></ManageProperties>
+    },
+    {
+      path: "manageUsers",
+      element: <ManageUsers></ManageUsers>
+    },
+  {
+    path: "manageReviews",
+    element: <ManageReviews></ManageReviews>
+  },
+  {
+    path:"advertise",
+    element: <Advertise></Advertise>
+  }
   ],
 },
 
