@@ -23,6 +23,10 @@ import ManageProperties from "../Pages/Dashboard/AdminLink/ManageProperties/Mana
 import ManageUsers from "../Pages/Dashboard/AdminLink/ManageUsers/ManageUsers";
 import ManageReviews from "../Pages/Dashboard/AdminLink/ManageReviews/ManageReviews";
 import Advertise from "../Pages/Dashboard/AdminLink/Advertise/Advertise";
+import Forbidden from "../Pages/Forbidden/Forbidden";
+import AdminRoute from "../Routes/AdminRoute/AdminRoute";
+import AgentRoute from "../Routes/AgentRoute/AgentRoute";
+import UserRoute from "../Routes/UserRoute/UserRoute";
 
 export const router = createBrowserRouter([
   // RootLayout Related Routes
@@ -47,78 +51,141 @@ export const router = createBrowserRouter([
         path: "/propertyDetails",
         Component: PropertyDetails,
       },
+      {
+        path: "/forbidden",
+        Component: Forbidden,
+      },
     ],
   },
 
   // Dashboard Related Routes
   {
-  path: "/dashboard",
-  element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-  children: [
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      // USER RELATED CHILDREN
+      {
+        path: "profile",
+        element: (
+          <UserRoute>
+            <UserProfile></UserProfile>
+          </UserRoute>
+        ),
+      },
+      {
+        path: "wishlist",
+        element: (
+          <UserRoute>
+            <Wishlist></Wishlist>
+          </UserRoute>
+        ),
+      },
+      {
+        path: "bought",
+        element: (
+          <UserRoute>
+            <BoughtProperties />
+          </UserRoute>
+        ),
+      },
+      {
+        path: "reviews",
+        element: (
+          <UserRoute>
+            <MyReviews />
+          </UserRoute>
+        ),
+      },
 
-    // USER RELATED CHILDREN
-    {
-      path: "profile",
-      element: <UserProfile></UserProfile>
-    },
-    {
-      path: "wishlist",
-      element: <Wishlist></Wishlist>,
-    },
-    {
-      path: "bought",
-      element: <BoughtProperties />,
-    },
-    {
-      path: "reviews",
-      element: <MyReviews />,
-    },
+      // AGENT RELATED CHILDREN
+      {
+        path: "agentProfile",
+        element: (
+          <AgentRoute>
+            <AgentProfile></AgentProfile>
+          </AgentRoute>
+        ),
+      },
+      {
+        path: "addProperty",
+        element: (
+          <AgentRoute>
+            <AddProperty></AddProperty>
+          </AgentRoute>
+        ),
+      },
+      {
+        path: "myAdded",
+        element: (
+          <AgentRoute>
+            <MyAdded></MyAdded>
+          </AgentRoute>
+        ),
+      },
+      {
+        path: "mySold",
+        element: (
+          <AgentRoute>
+            <MySold></MySold>
+          </AgentRoute>
+        ),
+      },
+      {
+        path: "requests",
+        element: (
+          <AgentRoute>
+            <Requests></Requests>
+          </AgentRoute>
+        ),
+      },
 
-    // AGENT RELATED CHILDREN
-    {
-      path: "agentProfile",
-      element: <AgentProfile></AgentProfile>
-    },
-    {
-      path: "addProperty",
-      element: <AddProperty></AddProperty>
-    },
-    {
-      path: "myAdded",
-      element: <MyAdded></MyAdded>
-    },
-    {
-      path: "mySold",
-      element: <MySold></MySold>
-    },
-    {
-      path: "requests",
-      element: <Requests></Requests>
-    },
-
-    // ADMIN RELATED CHILDREN
-    {
-      path: "adminProfile",
-      element: <AdminProfile></AdminProfile>
-    },
-    {
-      path: "manageProperties",
-      element: <ManageProperties></ManageProperties>
-    },
-    {
-      path: "manageUsers",
-      element: <ManageUsers></ManageUsers>
-    },
-  {
-    path: "manageReviews",
-    element: <ManageReviews></ManageReviews>
+      // ADMIN RELATED CHILDREN
+      {
+        path: "adminProfile",
+        element: (
+          <AdminRoute>
+            <AdminProfile></AdminProfile>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageProperties",
+        element: (
+          <AdminRoute>
+            <ManageProperties></ManageProperties>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageUsers",
+        element: (
+          <AdminRoute>
+            <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageReviews",
+        element: (
+          <AdminRoute>
+            <ManageReviews></ManageReviews>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "advertise",
+        element: (
+          <AdminRoute>
+            <Advertise></Advertise>
+          </AdminRoute>
+        ),
+      },
+    ],
   },
-  {
-    path:"advertise",
-    element: <Advertise></Advertise>
-  }
-  ],
-},
 
   // Authentication Related Routes
   {

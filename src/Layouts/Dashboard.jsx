@@ -19,25 +19,14 @@ import { FiLogOut } from "react-icons/fi";
 import { MdMovieEdit } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
 import navLogo from "../assets/navlogo.png";
-import useAuth from "../Hooks/useAuth";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Loading from "../Shared/Loading/Loading";
+import useUserRole from "../Hooks/useUserRole";
 
 const Dashboard = () => {
-  const { user, loader } = useAuth();
-  const axiosSecure = useAxiosSecure();
+  const {role, roleLoader} = useUserRole();
+  console.log(role);
 
-  const { data: dbUser = {}, isLoading } = useQuery({
-    queryKey: ["userRole", user?.email],
-    queryFn: async () => {
-      const res = await axiosSecure.get(`/users/${user?.email}`);
-      return res.data;
-    },
-    enabled: !!user?.email,
-  });
-
-  if (loader || isLoading) return <Loading></Loading>;
+  if (roleLoader) return <Loading></Loading>;
 
   return (
     <div className="min-h-screen bg-gray-100 text-black">
@@ -107,7 +96,7 @@ const Dashboard = () => {
 
                   {/* Nav Links */}
                   {/* User Related Route */}
-                  {dbUser?.role === "user" && (
+                  {!roleLoader && role === "user" && (
                     <div className="p-4 space-y-2 text-black">
                       {/* Profile */}
                       <NavLink
@@ -172,7 +161,7 @@ const Dashboard = () => {
                   )}
 
                   {/* Agent Related Route */}
-                  {dbUser?.role === "agent" && (
+                  {!roleLoader && role === "agent" && (
                     <div className="p-4 space-y-2 text-black">
                       {/* Profile */}
                       <NavLink
@@ -252,7 +241,7 @@ const Dashboard = () => {
                   )}
 
                   {/* Admin Related Route */}
-                  {dbUser?.role === "admin" && (
+                  {!roleLoader && role === "admin" && (
                     <div className="p-4 space-y-2 text-black">
                       {/* Admin Profile */}
                       <NavLink
