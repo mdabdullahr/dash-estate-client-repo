@@ -195,7 +195,7 @@ const Dashboard = () => {
 
                       {/* My Added Properties */}
                       <NavLink
-                        to="/dashboard/myAdded"
+                        to="/dashboard/myAddedProperties"
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
@@ -205,7 +205,7 @@ const Dashboard = () => {
                         }
                       >
                         <FaClipboardList className="text-lg" />
-                        <span>My Added</span>
+                        <span>My Added Properties</span>
                       </NavLink>
 
                       {/* My Sold Properties */}

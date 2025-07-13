@@ -15,7 +15,7 @@ import MyReviews from "../Pages/Dashboard/UserLik/MyReviews/MyReviews";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import AgentProfile from "../Pages/Dashboard/AgentLink/AgentProfile/AgentProfile";
 import AddProperty from "../Pages/Dashboard/AgentLink/AddProperty/AddProperty";
-import MyAdded from "../Pages/Dashboard/AgentLink/MyAdded/MyAdded";
+// import MyAdded from "../Pages/Dashboard/AgentLink/MyAdded/MyAdded";
 import MySold from "../Pages/Dashboard/AgentLink/MySold/MySold";
 import Requests from "../Pages/Dashboard/AgentLink/Requests/Requests";
 import AdminProfile from "../Pages/Dashboard/AdminLink/AdminProfile/AdminProfile";
@@ -27,6 +27,7 @@ import Forbidden from "../Pages/Forbidden/Forbidden";
 import AdminRoute from "../Routes/AdminRoute/AdminRoute";
 import AgentRoute from "../Routes/AgentRoute/AgentRoute";
 import UserRoute from "../Routes/UserRoute/UserRoute";
+import MyAddedProperties from "../Pages/Dashboard/AgentLink/MyAddedProperties/MyAddedProperties";
 
 export const router = createBrowserRouter([
   // RootLayout Related Routes
@@ -119,10 +120,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "myAdded",
+        path: "myAddedProperties",
         element: (
           <AgentRoute>
-            <MyAdded></MyAdded>
+            <MyAddedProperties></MyAddedProperties>
           </AgentRoute>
         ),
       },

@@ -315,7 +315,7 @@ const AddProperty = () => {
               disabled={imageUploading}
               className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-8 rounded-md transition duration-300 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {imageUploading ? "Uploading..." : "Submit"}
+              {imageUploading ? "Adding..." : "Add Property"}
             </button>
           </div>
         </form>
