@@ -44,6 +44,7 @@ const MyAddedProperties = () => {
         location: selectedProperty.location,
         minPrice: selectedProperty.minPrice,
         maxPrice: selectedProperty.maxPrice,
+        propertyDetails:selectedProperty.description,
       });
       setImagePreview(selectedProperty.image);
     }
@@ -282,17 +283,23 @@ const MyAddedProperties = () => {
               {/* Title & Location */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block mb-1 font-medium">Property Title</label>
+                  <label className="block mb-1 font-medium">
+                    Property Title
+                  </label>
                   <input
                     {...register("title", { required: "Title is required" })}
                     className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-green-500"
                   />
                   {errors.title && (
-                    <p className="text-red-500 text-sm">{errors.title.message}</p>
+                    <p className="text-red-500 text-sm">
+                      {errors.title.message}
+                    </p>
                   )}
                 </div>
                 <div>
-                  <label className="block mb-1 font-medium">Property Location</label>
+                  <label className="block mb-1 font-medium">
+                    Property Location
+                  </label>
                   <input
                     {...register("location", {
                       required: "Location is required",
@@ -300,7 +307,9 @@ const MyAddedProperties = () => {
                     className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-green-500"
                   />
                   {errors.location && (
-                    <p className="text-red-500 text-sm">{errors.location.message}</p>
+                    <p className="text-red-500 text-sm">
+                      {errors.location.message}
+                    </p>
                   )}
                 </div>
               </div>
@@ -347,7 +356,9 @@ const MyAddedProperties = () => {
                     placeholder="Min Price"
                   />
                   {errors.minPrice && (
-                    <p className="text-red-500 text-sm">{errors.minPrice.message}</p>
+                    <p className="text-red-500 text-sm">
+                      {errors.minPrice.message}
+                    </p>
                   )}
                 </div>
                 <div>
@@ -361,8 +372,7 @@ const MyAddedProperties = () => {
                       min: { value: 0, message: "Price cannot be negative" }, // === ADDED ===
                       validate: (value) => {
                         if (
-                          parseFloat(value) <
-                          parseFloat(watch("minPrice") || 0)
+                          parseFloat(value) < parseFloat(watch("minPrice") || 0)
                         ) {
                           return "Max price cannot be less than min price"; // === ADDED ===
                         }
@@ -373,9 +383,31 @@ const MyAddedProperties = () => {
                     placeholder="Max Price"
                   />
                   {errors.maxPrice && (
-                    <p className="text-red-500 text-sm">{errors.maxPrice.message}</p>
+                    <p className="text-red-500 text-sm">
+                      {errors.maxPrice.message}
+                    </p>
                   )}
                 </div>
+              </div>
+
+              {/* Property description */}
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Property Details
+                </label>
+                <textarea
+                  {...register("propertyDetails", {
+                    required: "Property Details is required",
+                  })}
+                  rows="4"
+                  placeholder="Write your thoughts..."
+                  className="w-full border border-gray-300 rounded px-4 py-2 outline-0 focus:border-green-500"
+                ></textarea>
+                {errors.propertyDetails && (
+                  <p className="text-sm text-red-500 mt-1">
+                    {errors.propertyDetails.message}
+                  </p>
+                )}
               </div>
 
               {/* Image Upload */}

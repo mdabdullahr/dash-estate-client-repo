@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
@@ -9,12 +9,13 @@ import useAuth from "../../Hooks/useAuth";
 import { useParams } from "react-router";
 
 const PropertyDetails = () => {
-    const {id} = useParams();
-    console.log(id);
+  const { id } = useParams();
+  console.log(id);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const queryClient = useQueryClient();
   const [reviewModal, setReviewModal] = useState(false);
+  const [isWishlisted, setIsWishlisted] = useState(false);
 
   // ⏳ Fetch Property Details
   const { data: property = {}, isLoading } = useQuery({
@@ -37,7 +38,28 @@ const PropertyDetails = () => {
     },
   });
 
-  // ✅ Add to Wishlist Mutation
+  // ✅ Check if already wishlisted
+  const checkWishlistMutation = useMutation({
+    mutationFn: async () => {
+      const res = await axiosSecure.get(`/wishlists/check`, {
+        params: { userEmail: user?.email, propertyId: id },
+      });
+      return res.data;
+    },
+    onSuccess: (data) => {
+      if (data?.alreadyWishlisted) {
+        setIsWishlisted(true);
+      }
+    },
+  });
+
+  useEffect(() => {
+    if (user?.email && id) {
+      checkWishlistMutation.mutate();
+    }
+  }, [user?.email, id, checkWishlistMutation]);
+
+  // ✅ Add to Wishlist
   const wishlistMutation = useMutation({
     mutationFn: async () => {
       const wishlistItem = {
@@ -58,6 +80,7 @@ const PropertyDetails = () => {
     },
     onSuccess: () => {
       toast.success("Added to wishlist!");
+      setIsWishlisted(true);
     },
     onError: () => {
       toast.error("Failed to add to wishlist.");
@@ -120,7 +143,9 @@ const PropertyDetails = () => {
           {/* Right: Property Info */}
           <div>
             <h2 className="text-3xl font-bold mb-2">{property.title}</h2>
-            <p className="text-gray-700 text-lg mb-4 h-fit lg:h-[130px] overflow-auto">{property.description}</p>
+            <p className="text-gray-700 text-lg mb-4 h-fit lg:h-[130px] overflow-auto">
+              {property.description}
+            </p>
 
             <p className="text-lg">
               <span className="font-semibold text-gray-800">Location :</span>{" "}
@@ -128,16 +153,21 @@ const PropertyDetails = () => {
             </p>
 
             <div className="my-2 ">
-                <span className="font-semibold text-gray-800 text-lg">Agent :</span>
-            <p className="text-lg border border-gray-200 py-2 px-5 flex items-center gap-5 mt-1 rounded">
-                <img className="w-14 h-14 rounded-full border border-green-500 object-cover" src={property.agentImage} alt="" />
-              <span className="">{property.agentName}</span>{" "}
-            </p>
+              <span className="font-semibold text-gray-800 text-lg">
+                Agent :
+              </span>
+              <p className="text-lg border border-gray-200 py-2 px-5 flex items-center gap-5 mt-1 rounded">
+                <img
+                  className="w-14 h-14 rounded-full border border-green-500 object-cover"
+                  src={property.agentImage}
+                  alt=""
+                />
+                <span className="">{property.agentName}</span>{" "}
+              </p>
             </div>
-            
 
             <p className="text-lg mt-1">
-              <span className="font-semibold">💰 Price Range :{" "}</span>
+              <span className="font-semibold">💰 Price Range : </span>
               <span className="font-bold text-green-600">
                 ${property.minPrice} - ${property.maxPrice}
               </span>
@@ -145,10 +175,14 @@ const PropertyDetails = () => {
 
             <button
               onClick={handleAddToWishlist}
-              disabled={wishlistMutation.isPending}
-              className="mt-6 cursor-pointer bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded shadow"
+              disabled={isWishlisted}
+              className={`mt-6 px-6 py-2 rounded shadow text-white transition ${
+                isWishlisted
+                  ? "bg-green-300 cursor-not-allowed"
+                  : "bg-green-500 hover:bg-green-600 cursor-pointer"
+              }`}
             >
-              {wishlistMutation.isPending ? "Adding..." : "Add to Wishlist"}
+              {isWishlisted ? "Wishlisted" : "Add to Wishlist"}
             </button>
           </div>
         </div>

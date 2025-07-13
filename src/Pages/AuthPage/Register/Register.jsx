@@ -110,7 +110,7 @@ const Register = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-8">
       <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
+        <h2 className="text-2xl font-bold mb-6 text-center text-green-600">
           Create a New Account
         </h2>
 
@@ -124,7 +124,7 @@ const Register = () => {
               type="text"
               {...register("name", { required: "Name is required" })}
               placeholder="Enter your full name"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black outline-0 focus:border-green-500"
             />
             {errors.name && (
               <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
@@ -140,7 +140,7 @@ const Register = () => {
               type="text"
               {...register("address", { required: "Address is required" })}
               placeholder="Enter your address"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black outline-0 focus:border-green-500"
             />
             {errors.address && (
               <p className="text-red-500 text-sm mt-1">
@@ -160,7 +160,7 @@ const Register = () => {
                 required: "Profile picture URL is required",
               })}
               placeholder="Enter image URL"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black outline-0 focus:border-green-500"
             />
             {errors.photoURL && (
               <p className="text-red-500 text-sm mt-1">
@@ -184,7 +184,7 @@ const Register = () => {
                 },
               })}
               placeholder="Enter your email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg placeholder-black text-black outline-0 focus:border-green-500"
             />
             {errors.email && (
               <p className="text-red-500 text-sm mt-1">
@@ -212,7 +212,7 @@ const Register = () => {
                 },
               })}
               placeholder="Enter your password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg pr-10 placeholder-black text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg pr-10 placeholder-black text-black outline-0 focus:border-green-500"
             />
             <button
               type="button"
@@ -231,7 +231,7 @@ const Register = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+            className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 clear-both cursor-pointer"
           >
             Register
           </button>
@@ -248,9 +248,9 @@ const Register = () => {
         <button
           type="button"
           onClick={handleGoogleSignup}
-          className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-lg hover:bg-gray-100"
+          className="w-full flex items-center justify-center border border-green-300 py-2 rounded-lg hover:bg-green-100 cursor-pointer"
         >
-          <FaGoogle className="mr-2 text-red-500" />
+          <FaGoogle className="mr-2 text-green-500" />
           <span className="text-black">Continue with Google</span>
         </button>
 
@@ -259,7 +259,7 @@ const Register = () => {
           Already have an account?{" "}
           <Link
             to="/authLayout/login"
-            className="text-blue-600 font-medium hover:underline"
+            className="text-green-600 font-medium hover:underline"
           >
             Login
           </Link>

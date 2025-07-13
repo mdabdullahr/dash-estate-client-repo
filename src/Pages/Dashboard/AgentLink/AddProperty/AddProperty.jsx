@@ -64,6 +64,7 @@ const AddProperty = () => {
       const propertyInfo = {
         title: newProperty.title,
         location: newProperty.location,
+        description: newProperty.propertyDetails,
         image: imageUrl,
         agentName: user?.displayName,
         agentEmail: user?.email,
@@ -249,6 +250,24 @@ const AddProperty = () => {
                 </p>
               )}
             </div>
+          </div>
+
+          {/* Property description */}
+          <div>
+            <label className="block text-gray-700 font-medium mb-1">
+              Property Details
+            </label>
+            <textarea
+              {...register("propertyDetails", { required: "Property Details is required" })}
+              rows="4"
+              placeholder="Write your thoughts..."
+              className="w-full border border-gray-300 rounded px-4 py-2 outline-0 focus:border-green-500"
+            ></textarea>
+            {errors.propertyDetails && (
+                <p className="text-sm text-red-500 mt-1">
+                  {errors.propertyDetails.message}
+                </p>
+              )}
           </div>
 
           {/* Image Upload Section */}

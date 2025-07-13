@@ -33,8 +33,8 @@ const AdminProfile = () => {
           </h2>
           <p className="text-sm sm:text-base text-gray-200">{user?.email}</p>
 
-          <span className="inline-block mt-3 bg-blue-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md">
-            Role: Agent
+          <span className="inline-block mt-3 bg-green-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md">
+            Role: Admin
           </span>
 
           {/* Optional Agent Note or Description */}

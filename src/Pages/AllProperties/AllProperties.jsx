@@ -67,7 +67,7 @@ const AllProperties = () => {
               </p>
 
               <Link to={`/propertyDetails/${property._id}`}>
-                <button className="mt-3 w-full py-2 text-center text-sm font-medium border border-green-500 text-green-500 rounded hover:bg-green-500 hover:text-white transition">
+                <button className="mt-3 w-full py-2 text-center text-sm font-medium border border-green-500 text-green-500 rounded hover:bg-green-500 hover:text-white transition cursor-pointer">
                   Details
                 </button>
               </Link>

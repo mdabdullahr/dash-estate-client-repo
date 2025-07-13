@@ -55,7 +55,7 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
       <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
+        <h2 className="text-2xl font-bold mb-6 text-center text-green-600">
           Login to Your Account
         </h2>
 
@@ -74,7 +74,7 @@ const LoginPage = () => {
                   message: "Enter a valid email address",
                 },
               })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black outline-0 focus:border-green-500"
               placeholder="you@example.com"
             />
             {errors.email && (
@@ -98,7 +98,7 @@ const LoginPage = () => {
                   message: "Must be at least 6 characters",
                 },
               })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-0 focus:border-green-500 pr-10 text-black"
               placeholder="••••••••"
             />
             <button
@@ -118,7 +118,7 @@ const LoginPage = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer"
+            className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition cursor-pointer"
           >
             Login
           </button>
@@ -134,9 +134,9 @@ const LoginPage = () => {
         {/* Google Login */}
         <button
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center border border-gray-300 py-2 rounded-lg hover:bg-gray-100 transition text-black cursor-pointer"
+          className="w-full flex items-center justify-center border border-green-300 py-2 rounded-lg hover:bg-green-100 transition text-black cursor-pointer"
         >
-          <FaGoogle className="mr-2 text-red-500" />
+          <FaGoogle className="mr-2 text-green-500" />
           Continue with Google
         </button>
 
@@ -145,7 +145,7 @@ const LoginPage = () => {
           Don't have an account?{" "}
           <Link
             to="/authLayout/register"
-            className="text-blue-600 font-medium hover:underline"
+            className="text-green-600 font-medium hover:underline"
           >
             Register
           </Link>
