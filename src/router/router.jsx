@@ -28,6 +28,7 @@ import AdminRoute from "../Routes/AdminRoute/AdminRoute";
 import AgentRoute from "../Routes/AgentRoute/AgentRoute";
 import UserRoute from "../Routes/UserRoute/UserRoute";
 import MyAddedProperties from "../Pages/Dashboard/AgentLink/MyAddedProperties/MyAddedProperties";
+// import UpdateProfile from "../Pages/Dashboard/UpdateProfile/updateProfile";
 
 export const router = createBrowserRouter([
   // RootLayout Related Routes
@@ -49,8 +50,8 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/propertyDetails",
-        Component: PropertyDetails,
+        path: "/propertyDetails/:id",
+        element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
       },
       {
         path: "/forbidden",

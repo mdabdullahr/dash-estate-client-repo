@@ -3,21 +3,36 @@ import useAuth from "../../Hooks/useAuth";
 import { Link, NavLink } from "react-router";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
-import navLogo from "../../assets/navlogo.png"
+import navLogo from "../../assets/navlogo.png";
 
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
 
   const links = (
     <>
-      <li>
-        <NavLink to="/">Home</NavLink>
+      <li className="text-gray-800 hover:text-green-500 hover:bg-white transition-all duration-600 px-5 py-2 rounded-md cursor-pointer text-lg font-semibold">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+              isActive ? "text-green-500 bg-white px-5 py-2 rounded-md cursor-pointer text-lg font-semibold" : ""
+            }`
+          }
+        >
+          Home
+        </NavLink>
       </li>
-      <li>
-        <NavLink to="/allProperties">All properties</NavLink>
+      <li className="text-gray-800 hover:text-green-500 hover:bg-white transition-all duration-600 px-5 py-2 rounded-md cursor-pointer text-lg font-semibold">
+        <NavLink to="/allProperties"
+        className={({ isActive }) =>
+            `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+              isActive ? "text-green-500 bg-white px-5 py-2 rounded-md cursor-pointer text-lg font-semibold" : ""
+            }`
+          }
+        >All properties</NavLink>
       </li>
       {user && (
-        <li>
+        <li className="text-gray-800 hover:text-green-500 hover:bg-white transition-all duration-600 px-5 py-2 rounded-md cursor-pointer text-lg font-semibold">
           <NavLink to="/dashboard">Dashboard</NavLink>
         </li>
       )}
@@ -38,8 +53,8 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="fixed top-0 left-0 w-full z-50">
-      <div className="navbar max-w-[1320px] mx-auto px-4  py-2">
+    <div className="fixed top-0 left-0 w-full z-50 bg-green-50">
+      <div className="navbar max-w-[1320px] mx-auto px-4 py-2 items-center">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -67,9 +82,9 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex items-center">
-            <img className="w-10 h-10 mr-2" src={navLogo} alt="Logo" />
-            <p className="-mb-2 font-bold text-2xl lg:text-3xl text-black specific-text">
-              HobbyHub
+            <img className="w-20 h-10 mr-2 object-contain" src={navLogo} alt="Logo" />
+            <p className="font-bold text-xl md:text-2xl lg:text-3xl text-green-500 specific-text">
+              DeshEstate
             </p>
           </div>
         </div>
@@ -78,12 +93,15 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <button onClick={handleLogOut} className="btn btn-primary">
+            <button
+              onClick={handleLogOut}
+              className="bg-green-500 text-white text-lg font-semibold px-5 py-2 rounded-sm cursor-pointer"
+            >
               Logout
             </button>
           ) : (
             <Link to="/authLayout/login">
-              <button className="btn btn-primary">Login</button>
+              <button className="bg-green-500 text-white text-lg font-semibold px-5 py-2 rounded-sm cursor-pointer">Login</button>
             </Link>
           )}
         </div>

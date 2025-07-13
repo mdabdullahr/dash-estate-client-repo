@@ -67,6 +67,7 @@ const AddProperty = () => {
         image: imageUrl,
         agentName: user?.displayName,
         agentEmail: user?.email,
+        agentImage: user?.photoURL,
         minPrice: parseFloat(newProperty.minPrice),
         maxPrice: parseFloat(newProperty.maxPrice),
         verificationStatus: "pending",

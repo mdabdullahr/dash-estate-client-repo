@@ -84,12 +84,12 @@ const Dashboard = () => {
                   <Link to="/">
                     <div className="flex items-center px-6 border-b-2 border-gray-300 pb-4 mt-4">
                       <img
-                        className="w-10 h-10 mr-2"
+                        className="w-20 h-10 mr-2 object-contain"
                         src={navLogo}
                         alt="Logo"
                       />
-                      <p className="-mb-2 font-bold text-2xl lg:text-3xl text-black specific-text">
-                        Real Estate
+                      <p className="-mb-2 font-bold text-3xl text-green-500 specific-text">
+                        DeshEstate
                       </p>
                     </div>
                   </Link>
