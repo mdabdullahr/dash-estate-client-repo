@@ -169,7 +169,7 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-blue-600 text-white"
+                              ? "bg-green-500 text-white"
                               : "hover:bg-gray-100"
                           }`
                         }
@@ -184,7 +184,7 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-blue-600 text-white"
+                              ? "bg-green-500 text-white"
                               : "hover:bg-gray-100"
                           }`
                         }
@@ -199,7 +199,7 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-blue-600 text-white"
+                              ? "bg-green-500 text-white"
                               : "hover:bg-gray-100"
                           }`
                         }
@@ -214,7 +214,7 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-blue-600 text-white"
+                              ? "bg-green-500 text-white"
                               : "hover:bg-gray-100"
                           }`
                         }
@@ -229,7 +229,7 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-blue-600 text-white"
+                              ? "bg-green-500 text-white"
                               : "hover:bg-gray-100"
                           }`
                         }
@@ -249,7 +249,7 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-blue-600 text-white"
+                              ? "bg-green-500 text-white"
                               : "hover:bg-gray-100"
                           }`
                         }
@@ -264,7 +264,7 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-blue-600 text-white"
+                              ? "bg-green-500 text-white"
                               : "hover:bg-gray-100"
                           }`
                         }
@@ -279,7 +279,7 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-blue-600 text-white"
+                              ? "bg-green-500 text-white"
                               : "hover:bg-gray-100"
                           }`
                         }
@@ -294,7 +294,7 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-blue-600 text-white"
+                              ? "bg-green-500 text-white"
                               : "hover:bg-gray-100"
                           }`
                         }
@@ -309,7 +309,7 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-blue-600 text-white"
+                              ? "bg-green-500 text-white"
                               : "hover:bg-gray-100"
                           }`
                         }
@@ -326,13 +326,13 @@ const Dashboard = () => {
                   <li>
                     <NavLink
                       to="/dashboard/updateProfile"
-                      className="text-white hover:text-[#526484] hover:bg-gray-200 text-[15px] font-medium px-4 py-3 flex items-center rounded-md mb-5 bg-blue-600"
+                      className="text-white hover:text-[#526484] hover:bg-gray-200 text-[15px] font-medium px-4 py-3 flex items-center rounded-md mb-5 bg-green-500"
                     >
                       <MdMovieEdit size={20} className="mr-2" />
                       Update Profile
                     </NavLink>
                   </li>
-                  <button className="border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2 transition cursor-pointer w-full">
+                  <button className="border border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2 transition cursor-pointer w-full">
                     <FiLogOut /> Logout
                   </button>
                 </div>

@@ -127,7 +127,7 @@ const AddProperty = () => {
     <div className="min-h-screen flex justify-center items-center bg-gray-50 py-10 px-4">
       <div className="w-full max-w-3xl bg-white p-8 rounded-xl shadow-md">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-1">
-          Submit Your Property
+          Add Your Property
         </h2>
         <p className="text-center text-gray-500 mb-8">
           Enter your details for Add Property
