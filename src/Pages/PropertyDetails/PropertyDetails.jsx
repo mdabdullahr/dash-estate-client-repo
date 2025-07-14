@@ -10,7 +10,6 @@ import { useParams } from "react-router";
 
 const PropertyDetails = () => {
   const { id } = useParams();
-  console.log(id);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const queryClient = useQueryClient();
@@ -26,8 +25,6 @@ const PropertyDetails = () => {
     },
     enabled: !!id,
   });
-
-  console.log(property);
 
   // ⏳ Fetch Reviews for this Property
   const { data: reviews = [] } = useQuery({

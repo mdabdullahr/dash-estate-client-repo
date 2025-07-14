@@ -67,6 +67,7 @@ const MakeOffer = () => {
       status: "pending",
       propertyTitle: wishlist.propertyTitle,
       propertyLocation: wishlist.propertyLocation,
+      propertyImage: wishlist.propertyImage,
       agentName: wishlist.agentName,
     };
 
