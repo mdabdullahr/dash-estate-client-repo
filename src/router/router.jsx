@@ -28,6 +28,7 @@ import AdminRoute from "../Routes/AdminRoute/AdminRoute";
 import AgentRoute from "../Routes/AgentRoute/AgentRoute";
 import UserRoute from "../Routes/UserRoute/UserRoute";
 import MyAddedProperties from "../Pages/Dashboard/AgentLink/MyAddedProperties/MyAddedProperties";
+import MakeOffer from "../Pages/Dashboard/UserLik/Wishlist/MakeOffer";
 // import UpdateProfile from "../Pages/Dashboard/UpdateProfile/updateProfile";
 
 export const router = createBrowserRouter([
@@ -51,7 +52,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/propertyDetails/:id",
-        element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <PropertyDetails></PropertyDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/forbidden",
@@ -99,6 +104,14 @@ export const router = createBrowserRouter([
         element: (
           <UserRoute>
             <MyReviews />
+          </UserRoute>
+        ),
+      },
+      {
+        path: "make-offer/:wishlistId",
+        element: (
+          <UserRoute>
+            <MakeOffer></MakeOffer>
           </UserRoute>
         ),
       },
