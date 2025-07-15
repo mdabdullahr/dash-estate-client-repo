@@ -1,5 +1,5 @@
 // MakeOffer.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams, useNavigate } from "react-router";
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -9,11 +9,12 @@ import useAuth from "../../../../Hooks/useAuth";
 import Loading from "../../../../Shared/Loading/Loading";
 
 const MakeOffer = () => {
+  const [isBoughtStatus, setIsBoughtStatus] = useState({});
   const { wishlistId } = useParams();
-  console.log(wishlistId);
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const navigate = useNavigate();
+  console.log(isBoughtStatus);
 
   // Fetch single wishlist item
   const { data: wishlist = {}, isLoading } = useQuery({
@@ -24,7 +25,19 @@ const MakeOffer = () => {
     },
     enabled: !!wishlistId,
   });
-  console.log(wishlist);
+
+  useEffect(() => {
+    const fetchBoughtStatuses = async () => {
+      if (wishlist.length === 0) return;
+
+      const propertyId = wishlist.propertyId;
+      const res = await axiosSecure.get(`/offers/${propertyId}/bought-status`);
+      setIsBoughtStatus(res.data.boughtStatus);
+    };
+
+    fetchBoughtStatuses();
+  }, [wishlist, axiosSecure]);
+  console.log(wishlist.propertyId);
 
   const {
     register,
@@ -81,129 +94,138 @@ const MakeOffer = () => {
         <Loading></Loading>
       ) : (
         <div className="w-full max-w-3xl bg-white p-8 rounded-xl shadow-md">
-            <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-              Make an Offer
-            </h2>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-              {/* --- other readonly fields here --- */}
-              <div>
-                <label className="block mb-1 text-gray-700 font-medium">
-                  Property Title
-                </label>
-                <input
-                  readOnly
-                  value={wishlist.propertyTitle}
-                  className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
-                />
-              </div>
+          <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+            Make an Offer
+          </h2>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+            {/* --- other readonly fields here --- */}
+            <div>
+              <label className="block mb-1 text-gray-700 font-medium">
+                Property Title
+              </label>
+              <input
+                readOnly
+                value={wishlist.propertyTitle}
+                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
+              />
+            </div>
 
-              {/* Location */}
-              <div>
-                <label className="block mb-1 text-gray-700 font-medium">
-                  Location
-                </label>
-                <input
-                  readOnly
-                  value={wishlist.propertyLocation}
-                  className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
-                />
-              </div>
+            {/* Location */}
+            <div>
+              <label className="block mb-1 text-gray-700 font-medium">
+                Location
+              </label>
+              <input
+                readOnly
+                value={wishlist.propertyLocation}
+                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
+              />
+            </div>
 
-              {/* Agent Name */}
-              <div>
-                <label className="block mb-1 text-gray-700 font-medium">
-                  Agent Name
-                </label>
-                <input
-                  readOnly
-                  value={wishlist.agentName}
-                  className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
-                />
-              </div>
+            {/* Agent Name */}
+            <div>
+              <label className="block mb-1 text-gray-700 font-medium">
+                Agent Name
+              </label>
+              <input
+                readOnly
+                value={wishlist.agentName}
+                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
+              />
+            </div>
 
-              {/* Buyer Name */}
-              <div>
-                <label className="block mb-1 text-gray-700 font-medium">
-                  Your Name
-                </label>
-                <input
-                  readOnly
-                  value={user.displayName}
-                  className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
-                />
-              </div>
+            {/* Buyer Name */}
+            <div>
+              <label className="block mb-1 text-gray-700 font-medium">
+                Your Name
+              </label>
+              <input
+                readOnly
+                value={user.displayName}
+                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
+              />
+            </div>
 
-              {/* Buyer Email */}
-              <div>
-                <label className="block mb-1 text-gray-700 font-medium">
-                  Your Email
-                </label>
-                <input
-                  readOnly
-                  value={user.email}
-                  className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
-                />
-              </div>
+            {/* Buyer Email */}
+            <div>
+              <label className="block mb-1 text-gray-700 font-medium">
+                Your Email
+              </label>
+              <input
+                readOnly
+                value={user.email}
+                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
+              />
+            </div>
 
-              {/* Offer Amount */}
-              <div>
-                <label className="block mb-1 text-gray-700 font-medium">
-                  Offer Amount ($)
-                </label>
-                <input
-                  type="number"
-                  {...register("offerAmount", {
-                    required: "Offer amount is required",
-                    min: {
-                      value: wishlist.minPrice,
-                      message: `Minimum offer must be $${wishlist.minPrice}`,
-                    },
-                    max: {
-                      value: wishlist.maxPrice,
-                      message: `Maximum offer can be $${wishlist.maxPrice}`,
-                    },
-                  })}
-                  placeholder={`Enter between $${wishlist.minPrice} - $${wishlist.maxPrice}`}
-                  className={`w-full border px-4 py-2 rounded-md ${
-                    errors.offerAmount ? "border-red-500" : "border-gray-300"
-                  } focus:outline-none focus:ring-2 focus:ring-green-400`}
-                />
-                {errors.offerAmount && (
-                  <p className="text-sm text-red-500 mt-1">
-                    {errors.offerAmount.message}
-                  </p>
-                )}
-              </div>
+            {/* Offer Amount */}
+            <div>
+              <label className="block mb-1 text-gray-700 font-medium">
+                Offer Amount ($)
+              </label>
+              <input
+                type="number"
+                {...register("offerAmount", {
+                  required: "Offer amount is required",
+                  min: {
+                    value: wishlist.minPrice,
+                    message: `Minimum offer must be $${wishlist.minPrice}`,
+                  },
+                  max: {
+                    value: wishlist.maxPrice,
+                    message: `Maximum offer can be $${wishlist.maxPrice}`,
+                  },
+                })}
+                placeholder={`Enter between $${wishlist.minPrice} - $${wishlist.maxPrice}`}
+                className={`w-full border px-4 py-2 rounded-md ${
+                  errors.offerAmount ? "border-red-500" : "border-gray-300"
+                } focus:outline-none focus:ring-2 focus:ring-green-400`}
+              />
+              {errors.offerAmount && (
+                <p className="text-sm text-red-500 mt-1">
+                  {errors.offerAmount.message}
+                </p>
+              )}
+            </div>
 
-              {/* Buying Date */}
-              <div>
-                <label className="block mb-1 text-gray-700 font-medium">
-                  Buying Date
-                </label>
-                <input
-                  type="date"
-                  {...register("buyingDate", {
-                    required: "Buying date is required",
-                  })}
-                  className={`w-full border px-4 py-2 rounded-md ${
-                    errors.buyingDate ? "border-red-500" : "border-gray-300"
-                  } focus:outline-none focus:ring-2 focus:ring-green-400`}
-                />
-                {errors.buyingDate && (
-                  <p className="text-sm text-red-500 mt-1">
-                    {errors.buyingDate.message}
-                  </p>
-                )}
-              </div>
+            {/* Buying Date */}
+            <div>
+              <label className="block mb-1 text-gray-700 font-medium">
+                Buying Date
+              </label>
+              <input
+                type="date"
+                {...register("buyingDate", {
+                  required: "Buying date is required",
+                })}
+                className={`w-full border px-4 py-2 rounded-md ${
+                  errors.buyingDate ? "border-red-500" : "border-gray-300"
+                } focus:outline-none focus:ring-2 focus:ring-green-400`}
+              />
+              {errors.buyingDate && (
+                <p className="text-sm text-red-500 mt-1">
+                  {errors.buyingDate.message}
+                </p>
+              )}
+            </div>
 
+            {isBoughtStatus === "bought" ? (
+              <button
+                className="w-full bg-green-300 text-white font-semibold py-2 rounded-md shadow-md cursor-not-allowed"
+                disabled
+              >
+                Already Sell
+              </button>
+            ) : (
               <button
                 type="submit"
                 className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-md shadow-md transition duration-200 cursor-pointer"
               >
                 Submit Offer
               </button>
-            </form>
-          </div>
+            )}
+          </form>
+        </div>
       )}
     </div>
   );

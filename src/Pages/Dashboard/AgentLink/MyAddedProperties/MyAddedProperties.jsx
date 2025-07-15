@@ -22,11 +22,11 @@ const MyAddedProperties = () => {
     register,
     handleSubmit,
     reset,
-    watch, // === ADDED: to watch image file ===
+    watch,
     formState: { errors },
   } = useForm();
 
-  const imageFile = watch("image"); // === ADDED: watch for image file selection ===
+  const imageFile = watch("image"); 
 
   const { data: properties = [], isLoading } = useQuery({
     queryKey: ["myProperties", user?.email],

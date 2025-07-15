@@ -35,7 +35,8 @@ const Register = () => {
               email: data?.email,
               image: data?.photoURL,
               address: data?.address,
-              role: "user", // default role
+              role: "user",
+              status: "active",
               createdAt: new Date()
             };
 
@@ -85,6 +86,7 @@ const Register = () => {
           image: user?.photoURL,
           address: "Google Account",
           role: "user",
+          status: "active",
           createdAt: new Date()
         };
 

@@ -44,7 +44,7 @@ const ManageProperties = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="p-6 bg-white min-h-screen">
+    <div className="p-4 2xl:p-8 bg-white min-h-screen">
       <div className="overflow-x-auto">
         <div className="overflow-x-auto rounded-t-sm">
           <table className="table w-full">

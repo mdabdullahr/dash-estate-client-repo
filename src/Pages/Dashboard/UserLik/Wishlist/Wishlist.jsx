@@ -8,7 +8,6 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Loading from "../../../../Shared/Loading/Loading";
 
 const Wishlist = () => {
-  // const [isBoughtStatus, setIsBoughtStatus] = useState({});
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const queryClient = useQueryClient();
@@ -25,21 +24,7 @@ const Wishlist = () => {
     enabled: !!user?.email,
   });
 
-  // useEffect(() => {
-  //   const fetchBoughtStatuses = async () => {
-  //     if (wishlists.length === 0) return;
-
-  //     const propertyIds = wishlists.map((item) => item.propertyId);
-  //     const singlePropertyId = propertyIds.map((propertyId) => propertyId.id)
-  //     console.log(singlePropertyId);
-  //     const res = await axiosSecure.get(
-  //       `/offers/${propertyIds}/bought-status`
-  //     );
-  //     setIsBoughtStatus(res.data.boughtStatus);
-  //   };
-
-  //   fetchBoughtStatuses();
-  // }, [wishlists, axiosSecure]);
+  
 
   // Remove wishlist item
   const removeMutation = useMutation({
@@ -114,21 +99,14 @@ const Wishlist = () => {
               </p>
 
               <div className="flex justify-between mt-4">
-                {/* {isBoughtStatus === "bought" ? (
-                  <button
-                    className="bg-gray-400 text-white px-4 py-1 rounded cursor-not-allowed"
-                    disabled
-                  >
-                    Already Sell
-                  </button>
-                ) : ( */}
+               
                   <Link
                     to={`/dashboard/make-offer/${item._id}`}
                     className="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded"
                   >
                     Make Offer
                   </Link>
-                {/* )} */}
+                
 
                 <button
                   onClick={() => handleRemove(item._id)}

@@ -62,7 +62,9 @@ const BoughtProperties = () => {
                     ? "text-yellow-500"
                     : item.status === "accepted"
                     ? "text-blue-600"
-                    : "text-green-600"
+                    :item.status === "rejected"
+                    ? "text-red-600"
+                    :"text-green-500"
                 }`}
               >
                 {item.status}
