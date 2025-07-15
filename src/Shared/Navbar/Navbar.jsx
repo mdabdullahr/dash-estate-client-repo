@@ -4,13 +4,18 @@ import { Link, NavLink } from "react-router";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import navLogo from "../../assets/navlogo.png";
+import { FaHome } from "react-icons/fa";
+import { MdRealEstateAgent } from "react-icons/md";
+import { MdDashboardCustomize } from "react-icons/md";
+import { TbLogout } from "react-icons/tb";
+import { HiLogin } from "react-icons/hi";
 
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
 
   const links = (
     <>
-      <li className="text-gray-800 hover:text-green-500 hover:bg-white transition-all duration-600 px-5 py-2 rounded-md cursor-pointer text-lg font-semibold">
+      <li className="text-gray-800 hover:text-green-600 cursor-pointer text-lg font-semibold">
         <NavLink
           to="/"
           className={({ isActive }) =>
@@ -19,21 +24,22 @@ const Navbar = () => {
             }`
           }
         >
+          <FaHome />
           Home
         </NavLink>
       </li>
-      <li className="text-gray-800 hover:text-green-500 hover:bg-white transition-all duration-600 px-5 py-2 rounded-md cursor-pointer text-lg font-semibold">
+      <li className="text-gray-800 hover:text-green-600 cursor-pointer text-lg font-semibold">
         <NavLink to="/allProperties"
         className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
               isActive ? "text-green-500 bg-white px-5 py-2 rounded-md cursor-pointer text-lg font-semibold" : ""
             }`
           }
-        >All properties</NavLink>
+        ><MdRealEstateAgent></MdRealEstateAgent> All properties</NavLink>
       </li>
       {user && (
-        <li className="text-gray-800 hover:text-green-500 hover:bg-white transition-all duration-600 px-5 py-2 rounded-md cursor-pointer text-lg font-semibold">
-          <NavLink to="/dashboard">Dashboard</NavLink>
+        <li className="text-gray-800 hover:text-green-600 cursor-pointer text-lg font-semibold">
+          <NavLink to="/dashboard"><MdDashboardCustomize></MdDashboardCustomize> Dashboard</NavLink>
         </li>
       )}
     </>
@@ -53,7 +59,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-green-50">
+    <div className="fixed top-0 left-0 w-full z-50 bg-green-100">
       <div className="navbar max-w-[1320px] mx-auto px-4 py-2 items-center">
         <div className="navbar-start">
           <div className="dropdown">
@@ -76,7 +82,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-green-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
@@ -89,19 +95,22 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className="menu menu-horizontal px-1 space-x-5">{links}</ul>
         </div>
         <div className="navbar-end">
           {user ? (
             <button
               onClick={handleLogOut}
-              className="bg-green-500 text-white text-lg font-semibold px-5 py-2 rounded-sm cursor-pointer"
+              className="bg-green-500 text-white text-lg font-semibold px-5 py-2 rounded-sm cursor-pointer flex items-center"
             >
+              <TbLogout className="mr-1"></TbLogout>
               Logout
             </button>
           ) : (
             <Link to="/authLayout/login">
-              <button className="bg-green-500 text-white text-lg font-semibold px-5 py-2 rounded-sm cursor-pointer">Login</button>
+              <button className="bg-green-500 text-white text-lg font-semibold px-5 py-2 rounded-sm cursor-pointer flex items-center">
+                <HiLogin className="mr-1"></HiLogin> 
+                Login</button>
             </Link>
           )}
         </div>

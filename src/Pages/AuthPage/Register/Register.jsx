@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
+import { FaBackspace, FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 import { toast } from "react-toastify";
@@ -110,8 +110,9 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-8">
-      <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-md">
+    <div className="min-h-screen bg-green-100 flex items-center justify-center px-4 py-8">
+      <div className="bg-green-50 shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-md">
+        <Link to="/"><FaBackspace className="text-red-600 text-3xl cursor-pointer text-right"></FaBackspace></Link>
         <h2 className="text-2xl font-bold mb-6 text-center text-green-600">
           Create a New Account
         </h2>

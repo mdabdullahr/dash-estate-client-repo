@@ -97,15 +97,15 @@ const Dashboard = () => {
                   {/* Nav Links */}
                   {/* User Related Route */}
                   {!roleLoader && role === "user" && (
-                    <div className="p-4 space-y-2 text-black">
+                    <div className="p-4 space-y-4 text-gray-800 text-lg font-semibold">
                       {/* Profile */}
                       <NavLink
                         to="/dashboard/profile"
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -119,8 +119,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -134,8 +134,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -149,8 +149,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -162,15 +162,15 @@ const Dashboard = () => {
 
                   {/* Agent Related Route */}
                   {!roleLoader && role === "agent" && (
-                    <div className="p-4 space-y-2 text-black">
+                    <div className="p-4 space-y-4 text-gray-800 text-lg font-semibold">
                       {/* Profile */}
                       <NavLink
                         to="/dashboard/agentProfile"
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -184,8 +184,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -199,8 +199,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -211,11 +211,11 @@ const Dashboard = () => {
                       {/* My Sold Properties */}
                       <NavLink
                         to="/dashboard/mySold"
-                        className={({ isActive }) =>
+                       className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -229,8 +229,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -242,15 +242,15 @@ const Dashboard = () => {
 
                   {/* Admin Related Route */}
                   {!roleLoader && role === "admin" && (
-                    <div className="p-4 space-y-2 text-black">
+                    <div className="p-4 space-y-4 text-gray-800 text-lg font-semibold">
                       {/* Admin Profile */}
                       <NavLink
                         to="/dashboard/adminProfile"
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -264,8 +264,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -279,8 +279,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -294,8 +294,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
@@ -309,8 +309,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-500 text-white"
-                              : "hover:bg-gray-100"
+                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
+                              : "hover:bg-green-50"
                           }`
                         }
                       >
