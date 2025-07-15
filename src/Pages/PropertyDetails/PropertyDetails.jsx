@@ -7,6 +7,8 @@ import Loading from "../../Shared/Loading/Loading";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import { useParams } from "react-router";
+import { FaLocationDot } from "react-icons/fa6";
+import { LiaHandHoldingUsdSolid } from "react-icons/lia";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -149,8 +151,8 @@ const PropertyDetails = () => {
               {property.description}
             </p>
 
-            <p className="text-lg">
-              <span className="font-semibold text-gray-800">Location :</span>{" "}
+            <p className="text-lg flex items-center gap-2">
+              <span className="font-semibold text-gray-800 flex items-center"><FaLocationDot className="mr-1 text-green-500"></FaLocationDot>Location : </span>{" "}
               {property.location}
             </p>
 
@@ -168,8 +170,9 @@ const PropertyDetails = () => {
               </p>
             </div>
 
-            <p className="text-lg mt-1">
-              <span className="font-semibold">💰 Price Range : </span>
+            <p className="text-lg mt-1 flex gap-2">
+              <LiaHandHoldingUsdSolid className="text-green-500 mr-1" size={20}></LiaHandHoldingUsdSolid>
+              <span className="font-semibold"> Price Range : </span>
               <span className="font-bold text-green-600">
                 ${property.minPrice} - ${property.maxPrice}
               </span>
@@ -192,31 +195,31 @@ const PropertyDetails = () => {
 
       {/* Reviews */}
       <div className="mt-12">
-        <h3 className="text-2xl font-bold mb-4">All Reviews</h3>
+        <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8 mt-20">All Reviews</div>
 
         {reviews.length === 0 ? (
-          <p className="text-gray-500">No reviews yet.</p>
+          <p className="text-gray-800">No reviews yet.</p>
         ) : (
-          <div className="space-y-4">
+          <div className="space-y-6">
             {reviews.map((review) => (
               <div
                 key={review._id}
-                className="border border-gray-200 p-4 rounded-md"
+                className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden p-4 md:p-6 xl:p-8"
               >
                 <div className="flex items-center gap-3 mb-1">
                   <img
                     src={review.userImage}
                     alt={review.userName}
-                    className="w-10 h-10 rounded-full border"
+                    className="w-10 md:w-14 h-10 md:h-14 rounded-full border border-green-500 object-center"
                   />
                   <div>
-                    <p className="font-medium">{review.userName}</p>
-                    <p className="text-xs text-gray-400">
+                    <p className="font-medium text-lg md:text-xl">{review.userName}</p>
+                    <p className="text-lg text-gray-800 font-medium">
                       {new Date(review.postedAt).toLocaleString()}
                     </p>
                   </div>
                 </div>
-                <p className="text-gray-700 mt-2">{review.comment}</p>
+                <p className="text-gray-700 mt-2 text-sm md:text-lg">{review.comment}</p>
               </div>
             ))}
           </div>

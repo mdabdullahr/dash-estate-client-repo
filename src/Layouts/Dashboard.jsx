@@ -38,7 +38,7 @@ const Dashboard = () => {
             {/* Drawer Content */}
             <div className="drawer-content flex flex-col">
               {/* Mobile Navbar */}
-              <div className="navbar bg-orange-500 w-full lg:hidden">
+              <div className="navbar bg-green-500 w-full lg:hidden fixed">
                 <div className="flex-none">
                   <label
                     htmlFor="my-drawer-2"
