@@ -127,7 +127,7 @@ const Requests = () => {
                     <span className="text-red-500">Rejected</span>
                   )}
                   {
-                    item.transactionId && <span className="text-green-600">Selling</span>
+                    item.transactionId && item.status === "bought" && <span className="text-green-600">Bought</span>
 
                   }
                 </td>

@@ -69,6 +69,7 @@ const MakeOffer = () => {
       propertyLocation: wishlist.propertyLocation,
       propertyImage: wishlist.propertyImage,
       agentName: wishlist.agentName,
+      agentEmail: wishlist.agentEmail,
     };
 
     offerMutation.mutate(offerData);

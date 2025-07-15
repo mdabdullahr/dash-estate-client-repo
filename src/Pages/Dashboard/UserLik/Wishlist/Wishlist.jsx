@@ -8,9 +8,12 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Loading from "../../../../Shared/Loading/Loading";
 
 const Wishlist = () => {
+  // const [isBoughtStatus, setIsBoughtStatus] = useState({});
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const queryClient = useQueryClient();
+
+  // console.log(isBoughtStatus);
 
   // Fetch wishlisted properties
   const { data: wishlists = [], isLoading } = useQuery({
@@ -21,6 +24,22 @@ const Wishlist = () => {
     },
     enabled: !!user?.email,
   });
+
+  // useEffect(() => {
+  //   const fetchBoughtStatuses = async () => {
+  //     if (wishlists.length === 0) return;
+
+  //     const propertyIds = wishlists.map((item) => item.propertyId);
+  //     const singlePropertyId = propertyIds.map((propertyId) => propertyId.id)
+  //     console.log(singlePropertyId);
+  //     const res = await axiosSecure.get(
+  //       `/offers/${propertyIds}/bought-status`
+  //     );
+  //     setIsBoughtStatus(res.data.boughtStatus);
+  //   };
+
+  //   fetchBoughtStatuses();
+  // }, [wishlists, axiosSecure]);
 
   // Remove wishlist item
   const removeMutation = useMutation({
@@ -41,6 +60,10 @@ const Wishlist = () => {
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Yes, remove it!",
+      confirmButtonColor: "#22c55e", // Tailwind's green-500
+      customClass: {
+        confirmButton: "cursor-pointer",
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         removeMutation.mutate(id);
@@ -53,7 +76,9 @@ const Wishlist = () => {
       {isLoading ? (
         <Loading></Loading>
       ) : wishlists.length === 0 ? (
-        <p>No properties in wishlist.</p>
+        <p className="text-2xl flex justify-center items-center">
+          No properties in wishlist.
+        </p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           {wishlists.map((item) => (
@@ -89,15 +114,25 @@ const Wishlist = () => {
               </p>
 
               <div className="flex justify-between mt-4">
-                <Link
-                  to={`/dashboard/make-offer/${item._id}`}
-                  className="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded"
-                >
-                  Make Offer
-                </Link>
+                {/* {isBoughtStatus === "bought" ? (
+                  <button
+                    className="bg-gray-400 text-white px-4 py-1 rounded cursor-not-allowed"
+                    disabled
+                  >
+                    Already Sell
+                  </button>
+                ) : ( */}
+                  <Link
+                    to={`/dashboard/make-offer/${item._id}`}
+                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded"
+                  >
+                    Make Offer
+                  </Link>
+                {/* )} */}
+
                 <button
                   onClick={() => handleRemove(item._id)}
-                  className="text-red-500 hover:underline"
+                  className="text-white bg-red-500 px-2 rounded cursor-pointer"
                 >
                   Remove
                 </button>

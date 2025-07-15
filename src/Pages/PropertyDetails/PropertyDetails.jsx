@@ -26,6 +26,8 @@ const PropertyDetails = () => {
     enabled: !!id,
   });
 
+
+
   // ⏳ Fetch Reviews for this Property
   const { data: reviews = [] } = useQuery({
     queryKey: ["reviews", id],
@@ -65,6 +67,7 @@ const PropertyDetails = () => {
         propertyTitle: property.title,
         propertyLocation: property.location,
         agentName: property.agentName,
+        agentEmail: property.agentEmail,
         agentImage: property.agentImage,
         verificationStatus: property.verificationStatus,
         minPrice: property.minPrice,
@@ -100,6 +103,8 @@ const PropertyDetails = () => {
       const reviewData = {
         ...data,
         propertyId: id,
+        propertyTitle: property.title,
+        agentName: property.agentName,
         userEmail: user.email,
         userName: user.displayName,
         userImage: user.photoURL,

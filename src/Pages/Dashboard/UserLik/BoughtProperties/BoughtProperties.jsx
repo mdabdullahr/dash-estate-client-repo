@@ -23,7 +23,7 @@ const BoughtProperties = () => {
 
   if (properties.length === 0) {
     return (
-      <p className="text-center mt-12 text-gray-600">
+      <p className="text-center mt-12 text-gray-600 text-2xl">
         You haven't made any offers yet.
       </p>
     );
