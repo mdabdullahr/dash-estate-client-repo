@@ -5,7 +5,7 @@ const AgentProfile = () => {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden">
+    <div className="min-h-screen w-full relative overflow-hidden rounded-2xl">
       {/* 🔵 Background Cover Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0"

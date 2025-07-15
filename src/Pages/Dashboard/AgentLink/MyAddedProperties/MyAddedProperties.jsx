@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { FiUploadCloud } from "react-icons/fi";
 import { FaCheckCircle } from "react-icons/fa";
+import { FaLocationDot } from "react-icons/fa6";
+import { LiaHandHoldingUsdSolid } from "react-icons/lia";
 import Loading from "../../../../Shared/Loading/Loading";
 
 const MyAddedProperties = () => {
@@ -26,7 +28,7 @@ const MyAddedProperties = () => {
     formState: { errors },
   } = useForm();
 
-  const imageFile = watch("image"); 
+  const imageFile = watch("image");
 
   const { data: properties = [], isLoading } = useQuery({
     queryKey: ["myProperties", user?.email],
@@ -44,7 +46,7 @@ const MyAddedProperties = () => {
         location: selectedProperty.location,
         minPrice: selectedProperty.minPrice,
         maxPrice: selectedProperty.maxPrice,
-        propertyDetails:selectedProperty.description,
+        propertyDetails: selectedProperty.description,
       });
       setImagePreview(selectedProperty.image);
     }
@@ -172,7 +174,10 @@ const MyAddedProperties = () => {
   };
 
   return (
-    <div className="p-6 min-h-screen bg-gray-50">
+    <div className="p-4 2xl:p-8 bg-white min-h-screen rounded-2xl">
+      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">
+        All Added Properties
+      </div>
       {isLoading ? (
         <Loading />
       ) : properties.length === 0 ? (
@@ -180,36 +185,39 @@ const MyAddedProperties = () => {
           You haven’t added any properties yet.
         </p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
           {properties.map((property) => (
             <div
               key={property._id}
-              className="overflow-hidden transform transition duration-600 hover:shadow-xl hover:border border-gray-200 group rounded-lg"
+              className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden"
             >
               <img
                 src={property.image}
                 alt={property.title}
-                className="w-full h-40 object-cover group-hover:scale-105 transition duration-300"
+                className="w-full h-40 object-cover hover:scale-105 transition duration-300"
               />
               <div className="p-4 space-y-2">
-                <h3 className="text-lg font-semibold text-gray-800">
+                <h3 className="text-lg md:text-xl xl:text-2xl font-semibold text-black">
                   {property.title}
                 </h3>
-                <p className="text-sm text-gray-600">📍 {property.location}</p>
+                <p className="text-sm md:text-lg text-gray-800 flex items-center">
+                  <FaLocationDot className="mr-1 text-green-500" />{" "}
+                  {property.location}
+                </p>
 
                 <div className="flex items-center gap-3 mt-1">
                   <img
                     src={property.agentImage || user?.photoURL}
                     alt="agent"
-                    className="w-8 h-8 rounded-full border"
+                    className="w-8 h-8 xl:w-12 xl:h-12 object-cover rounded-full border border-green-500"
                   />
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm md:text-lg font-normal xl:font-medium text-gray-800">
                     {property.agentName}
                   </span>
                 </div>
 
-                <p className="text-sm">
-                  Status:{" "}
+                <p className="text-sm md:text-lg">
+                  Status :{" "}
                   <span
                     className={`font-medium capitalize ${
                       property.verificationStatus === "verified"
@@ -223,8 +231,9 @@ const MyAddedProperties = () => {
                   </span>
                 </p>
 
-                <p className="text-sm text-gray-700">
-                  💰 ${property.minPrice} - ${property.maxPrice}
+                <p className="text-sm lg:text-lg text-gray-800 flex items-center font-medium">
+                  <LiaHandHoldingUsdSolid className="mr-1 text-green-500" /> $
+                  {property.minPrice} - ${property.maxPrice}
                 </p>
 
                 <div className="flex justify-between mt-4">
@@ -236,7 +245,7 @@ const MyAddedProperties = () => {
     ${
       property.verificationStatus === "rejected"
         ? "border-gray-300 text-gray-400 cursor-not-allowed opacity-50"
-        : "border-green-500 text-green-500 hover:bg-green-500 hover:text-white cursor-pointer"
+        : "border-green-500  bg-green-500 text-white cursor-pointer font-semibold"
     }
   `}
                   >
@@ -245,7 +254,7 @@ const MyAddedProperties = () => {
 
                   <button
                     onClick={() => handleDelete(property._id)}
-                    className="px-3 py-1 text-sm border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition"
+                    className="px-3 py-1 text-sm border border-red-500 rounded bg-red-500 text-white transition cursor-pointer font-semibold"
                   >
                     Delete
                   </button>

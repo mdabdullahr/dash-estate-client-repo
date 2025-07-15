@@ -83,8 +83,8 @@ const ManageUsers = () => {
   };
 
   return (
-    <div className="p-4 2xl:p-8 bg-gray-50 min-h-screen rounded-2xl">
-
+    <div className="p-4 2xl:p-8 bg-white min-h-screen rounded-2xl">
+      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">All Users</div>
       {isLoading ? (
         <Loading></Loading>
       ) : (
@@ -108,7 +108,7 @@ const ManageUsers = () => {
                 return (
                   <tr key={user._id} 
                   className={`${
-                    idx % 2 === 0 ? "bg-gray-100" : "bg-white"
+                    idx % 2 === 0 ? "bg-green-50" : "bg-white"
                   }`}>
                     <td className="text-sm xl:text-lg font-semibold">{idx + 1}</td>
                     <td><img src={user.image} className="w-10 2xl:w-14 h-10 2xl:h-14 rounded-xl object-cover" alt="user-Image" /></td>

@@ -20,14 +20,17 @@ const MySold = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="p-4 md:p-8 min-h-screen bg-gray-50 rounded-2xl">
-      <h2 className="text-2xl font-bold mb-4">My Sold Properties</h2>
-      <div className="overflow-x-auto">
+    <div className="p-4 md:p-8 min-h-screen bg-white rounded-2xl">
+      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">
+        All Sold Properties
+      </div>
+      <div className="overflow-x-auto rounded-sm">
         <table className="table w-full">
-          <thead className="text-white text-[14px] md:text-lg bg-green-500">
+          <thead className="text-white text-lg xl:text-xl md:text-lg bg-green-500">
             <tr>
-              
-              <th>Property Title</th>
+              <th>#</th>
+              <th>Image</th>
+              <th>Property Name</th>
               <th>Location</th>
               <th>Buyer Name</th>
               <th>Buyer Email</th>
@@ -38,16 +41,23 @@ const MySold = () => {
           </thead>
           <tbody>
             {soldProperties.map((item, index) => (
-              <tr key={item._id} 
-              className={`${index % 2 === 0 ? "bg-gray-100" : "bg-white"}`}>
-              
-                <td className="text-sm font-semibold">{item.propertyTitle}</td>
-                <td className="text-sm">{item.propertyLocation}</td>
-                <td className="text-sm">{item.buyerName}</td>
-                <td className="text-sm">{item.buyerEmail}</td>
-                <td className="text-sm">${item.offerAmount}</td>
-                <td className="text-sm">{new Date(item.paidAt).toLocaleDateString()}</td>
-                <td className="text-blue-600 font-medium text-sm">
+              <tr
+                key={item._id}
+                className={`${index % 2 === 0 ? "bg-green-50" : "bg-white"}`}
+              >
+                <td className="text-sm xl:text-lg font-semibold">{index + 1}</td>
+                <td>
+                  <img src={item.propertyImage} alt="Property Image" className="w-10 md:w-14 h-10 md:h-14 object-cover rounded" />
+                </td>
+                <td className="text-sm xl:text-lg font-semibold">{item.propertyTitle}</td>
+                <td className="text-sm xl:text-lg">{item.propertyLocation}</td>
+                <td className="text-sm xl:text-lg">{item.buyerName}</td>
+                <td className="text-sm xl:text-lg">{item.buyerEmail}</td>
+                <td className="text-sm xl:text-lg font-medium">${item.offerAmount}</td>
+                <td className="text-sm xl:text-lg">
+                  {new Date(item.paidAt).toLocaleDateString()}
+                </td>
+                <td className="text-blue-600 font-medium text-sm xl:text-lg">
                   {item.transactionId}
                 </td>
               </tr>

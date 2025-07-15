@@ -19,6 +19,7 @@ const Requests = () => {
     enabled: !!user?.email,
   });
 
+
   const acceptMutation = useMutation({
     mutationFn: async (id) => {
       const res = await axiosSecure.patch(`/offers/accept/${id}`);
@@ -87,16 +88,16 @@ const Requests = () => {
     return <p className="text-center mt-12 text-gray-600">No offers yet.</p>;
 
   return (
-    <div className="p-6 min-h-screen bg-gray-50">
-      <h2 className="text-2xl font-semibold text-center mb-6">
-        Requested Properties
-      </h2>
+    <div className="p-4 2xl:p-8 bg-white min-h-screen rounded-2xl">
+      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">All Request Properties</div>
 
       <div className="overflow-x-auto rounded-t-sm">
         <table className="table w-full">
-          <thead className="text-white text-[14px] md:text-lg bg-green-500">
+          <thead className="text-white text-lg xl:text-xl md:text-lg bg-green-500">
             <tr>
-              <th>Title</th>
+              <th>#</th>
+              <th>Image</th>
+              <th>Property Name</th>
               <th>Location</th>
               <th>Buyer Name</th>
               <th>Buyer Email</th>
@@ -109,14 +110,16 @@ const Requests = () => {
             {offers.map((item, index) => (
               <tr
                 key={item._id}
-                className={`${index % 2 === 0 ? "bg-gray-100" : "bg-white"}`}
+                className={`${index % 2 === 0 ? "bg-green-50" : "bg-white"}`}
               >
-                <td className="text-sm font-semibold">{item.propertyTitle}</td>
-                <td className="text-sm">{item.propertyLocation}</td>
-                <td className="text-sm">{item.buyerName}</td>
-                <td className="text-sm">{item.buyerEmail}</td>
-                <td className="text-sm">${item.offerAmount}</td>
-                <td className="capitalize font-medium">
+                <td className="text-sm xl:text-lg font-semibold">{index+1}</td>
+                <td><img src={item.propertyImage} alt="property image" className="w-10 md:w-14 h-10 md:h-14 rounded object-cover" /></td>
+                <td className="text-sm xl:text-lg font-semibold">{item.propertyTitle}</td>
+                <td className="text-sm xl:text-lg">{item.propertyLocation}</td>
+                <td className="text-sm xl:text-lg">{item.buyerName}</td>
+                <td className="text-sm xl:text-lg">{item.buyerEmail}</td>
+                <td className="text-sm xl:text-lg font-medium">${item.offerAmount}</td>
+                <td className="capitalize font-medium text-sm xl:text-lg">
                   {item.status === "pending" && (
                     <span className="text-yellow-500">Pending</span>
                   )}
