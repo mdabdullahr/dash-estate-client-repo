@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Loading from "../../../Shared/Loading/Loading";
 import ReviewCard from "./ReviewCard";
+import { IoMdHome } from "react-icons/io";
 
 const LatestReviews = () => {
   const axiosPublic = useAxiosPublic();
@@ -21,9 +22,10 @@ const LatestReviews = () => {
     );
 
   return (
-    <div className="bg-green-50">
-        <div className="py-12 px-6 max-w-[1320px] mx-auto">
-      <div className="divider before:bg-green-700 after:bg-green-700 text-green-700 text-xl md:text-2xl xl:text-3xl font-bold mb-12">
+    <div className="bg-orange-50/80">
+        <div className="pt-20 lg:pt-20 pb-20 lg:pb-30 px-6 max-w-[1620px] mx-auto">
+          <h4 className="font-medium text-xl lg:text-2xl text-orange-500 flex  justify-center items-center mb-2 md:mb-4 lg:mb-6"><IoMdHome className="mr-4"></IoMdHome>REVIEWS HIGHLIGHTS <IoMdHome className="ml-4 "></IoMdHome></h4>
+      <div className="divider before:bg-[#1b2a4f] after:bg-[#1b2a4f] text-[#1b2a4f] text-2xl md:text-3xl xl:text-4xl font-bold mb-16">
           Latest Reviews
         </div>
 
