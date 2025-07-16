@@ -5,7 +5,8 @@ import { Link, useNavigate } from "react-router";
 import useAuth from "../../../Hooks/useAuth";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import useAxiosUser from "../../../Hooks/useAxiosUser";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+
 
 
 
@@ -13,7 +14,7 @@ const Register = () => {
   const { createUser, updateUser, setUser, googleLogin } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const axiosUser = useAxiosUser();
+  const axiosUser = useAxiosPublic();
 
   const {
     register,

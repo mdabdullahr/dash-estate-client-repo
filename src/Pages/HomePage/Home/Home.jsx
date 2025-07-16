@@ -1,9 +1,10 @@
 import React from 'react';
+import AdvertisementSection from '../AdvertisementSection/AdvertisementSection';
 
 const Home = () => {
     return (
-        <div className='pt-32 min-h-screen flex justify-center items-center'>
-            <h1 className="text-5xl">This is home page</h1>
+        <div>
+            <AdvertisementSection></AdvertisementSection>
         </div>
     );
 };

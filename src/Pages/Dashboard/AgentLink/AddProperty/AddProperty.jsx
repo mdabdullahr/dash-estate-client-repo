@@ -72,6 +72,7 @@ const AddProperty = () => {
         minPrice: parseFloat(newProperty.minPrice),
         maxPrice: parseFloat(newProperty.maxPrice),
         verificationStatus: "pending",
+        advertised: false,
         timestamp: new Date(),
       };
 
