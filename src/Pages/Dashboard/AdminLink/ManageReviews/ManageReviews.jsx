@@ -14,7 +14,7 @@ const ManageReviews = () => {
   const { data: reviews = [], isLoading } = useQuery({
     queryKey: ["all-reviews"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/reviews");
+      const res = await axiosSecure.get("/allReviews");
       return res.data;
     },
   });
