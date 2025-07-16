@@ -1,10 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import Loading from "../../../../Shared/Loading/Loading";
+import Rating from "react-rating";
+import { FaQuoteLeft, FaQuoteRight, FaRegStar, FaStar } from "react-icons/fa";
+import moment from "moment-timezone";
 
 const MyReviews = () => {
   const { user } = useAuth();
@@ -37,7 +40,7 @@ const MyReviews = () => {
     if (!result.isConfirmed) return;
 
     try {
-      const res = await axiosSecure.delete(`/reviews/${id}`);
+      const res = await axiosSecure.delete(`/user-reviews/${id}`);
       if (res.data.deletedCount > 0) {
         toast.success("Review deleted successfully");
         refetch();
@@ -47,39 +50,59 @@ const MyReviews = () => {
     }
   };
 
-  if (isLoading)
-    return <Loading></Loading>;
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className="p-4 md:p-8 bg-gray-50 rounded-2xl min-h-screen">
-
+      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">My Reviews</div>
       {reviews.length === 0 ? (
-        <p className="text-gray-600 text-2xl flex justify-center items-center">You haven’t added any reviews yet.</p>
+        <p className="text-gray-600 text-2xl flex justify-center items-center">
+          You haven’t added any reviews yet.
+        </p>
       ) : (
-        <div className="grid gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
           {reviews.map((review) => (
-            <div
-              key={review._id}
-              className="border border-gray-200 rounded-xl shadow-sm p-4 bg-white hover:shadow-md transition"
-            >
-              <div className="flex items-center gap-4 mb-2">
-                <img
-                  src={review.userImage}
-                  alt={review.userName}
-                  className="w-14 h-14 rounded-full border"
-                />
-                <div>
-                  <h3 className="text-lg md:text-xl font-semibold text-green-600">
-                    {review.propertyTitle}
-                  </h3>
-                  <p className="text-sm md:text-lg text-gray-800">
-                    <span className="font-semibold">Agent :</span> {review.agentName}
-                  </p>
-                </div>
+            <div className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300  hover:border border-green-200 p-5 xl:p-8 w-full relative group">
+              {/* Background Quote Text */}
+              <div className="absolute top-2 left-3 text-gray-100 text-6xl font-bold opacity-10 select-none pointer-events-none">
+                FEEDBACK
               </div>
-              <p className="text-gray-800 mt-2 text-sm md:text-lg">{review.comment}</p>
-              <p className="text-sm md:text-lg text-gray-800 mt-1">
-                <span className="font-semibold">Reviewed : </span>{format(new Date(review.postedAt), "PPPpp")}
+
+              {/* User Image */}
+              <div className="flex justify-center">
+              </div>
+
+              {/* Review Box */}
+              <div className="bg-gray-200 mt-3 rounded-lg p-6 text-center relative">
+                <FaQuoteLeft className="text-orange-400 text-xl absolute top-3 left-3" />
+                <p className="text-gray-700 text-md px-2">
+                  {review.comment.length > 150
+                    ? review.comment.slice(0, 250) + "..."
+                    : review.comment}
+                </p>
+                <FaQuoteRight className="text-orange-400 text-xl absolute bottom-3 right-3" />
+              </div>
+
+              {/* Reviewer Name */}
+              <div className="mt-4 text-center space-y-1">
+                <h3 className="text-md font-bold text-gray-900">
+                  {review.agentName}
+                </h3>
+                <p className="text-lg 2xl:text-xl  text-gray-500 font-medium">
+                  {review.propertyTitle}
+                </p>
+
+                {/* Rating */}
+                <Rating
+                  readonly
+                  initialRating={review.rating}
+                  emptySymbol={<FaStar className="text-gray-300" />}
+                  fullSymbol={<FaStar className="text-yellow-500" />}
+                />
+              </div>
+              <div className="flex items-center justify-between">
+                <p className="text-lg text-gray-700 font-medium">
+                {new Date(review.postedAt).toLocaleString()}
               </p>
               <button
                 onClick={() => handleDelete(review._id)}
@@ -87,6 +110,7 @@ const MyReviews = () => {
               >
                 Delete
               </button>
+              </div>
             </div>
           ))}
         </div>

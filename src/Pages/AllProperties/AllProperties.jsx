@@ -23,7 +23,8 @@ const AllProperties = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen pt-30 max-w-[1320px] mx-auto">
+    <div className="bg-gray-50">
+      <div className="p-6 min-h-screen pt-30 max-w-[1320px] mx-auto">
       {/* 🔍 Search & 🔃 Sort Controls */}
       <div className="mb-6 flex flex-col md:flex-row justify-center items-center gap-4 px-4 max-w-4xl mx-auto">
         {/* Search Input */}
@@ -93,7 +94,7 @@ const AllProperties = () => {
                 </span>
               </div>
 
-              <p className="text-sm">
+              <p className="text-sm text-gray-700">
                 Status:{" "}
                 <span
                   className={`font-medium capitalize ${
@@ -121,6 +122,7 @@ const AllProperties = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

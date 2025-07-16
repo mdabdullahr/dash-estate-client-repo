@@ -5,6 +5,8 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import moment from "moment";
 import Loading from "../../../../Shared/Loading/Loading";
+import Rating from "react-rating";
+import { FaRegStar, FaStar } from "react-icons/fa";
 
 const ManageReviews = () => {
   const axiosSecure = useAxiosSecure();
@@ -51,7 +53,9 @@ const ManageReviews = () => {
 
   return (
     <div className="p-4 2xl:p-8 bg-white min-h-screen rounded-2xl">
-          <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">All User Reviews</div>
+      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">
+        All User Reviews
+      </div>
       {reviews.length === 0 ? (
         <p className="text-center text-2xl">No reviews found.</p>
       ) : (
@@ -62,16 +66,30 @@ const ManageReviews = () => {
               className="border border-green-50 rounded-lg shadow-sm p-4 bg-white hover:bg-green-50 h-full flex flex-col justify-between transition duration-600"
             >
               {/* Reviewer Info */}
-              <div className="flex items-center gap-3 mb-2">
-                <img
-                  src={review.userImage}
-                  alt="Reviewer"
-                  className="w-10 xl:w-14 h-10 xl:h-14 rounded-full border border-green-500"
-                />
-                <div>
-                  <p className="font-medium text-[15px] xl:text-lg">{review.userName}</p>
-                  <p className="text-xs xl:text-sm text-gray-800 ">{review.userEmail}</p>
+              <div className="flex items-start justify-between">
+                <div className="flex items-center gap-3 mb-2">
+                  <img
+                    src={review.userImage}
+                    alt="Reviewer"
+                    className="w-10 xl:w-14 h-10 xl:h-14 rounded-full border border-green-500"
+                  />
+                  <div>
+                    <p className="font-medium text-[15px] xl:text-lg">
+                      {review.userName}
+                    </p>
+                    <p className="text-xs xl:text-sm text-gray-800 ">
+                      {review.userEmail}
+                    </p>
+                  </div>
                 </div>
+                <Rating
+                  readonly
+                  initialRating={review.rating}
+                  emptySymbol={
+                    <FaRegStar className="text-yellow-400 text-sm" />
+                  }
+                  fullSymbol={<FaStar className="text-yellow-500 text-sm" />}
+                />
               </div>
 
               {/* Comment */}
