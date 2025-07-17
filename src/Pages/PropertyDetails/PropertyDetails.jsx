@@ -135,7 +135,7 @@ const PropertyDetails = () => {
   // 💡 UI
   return (
     <div className="bg-gray-50">
-      <div className="max-w-[1320px] mx-auto p-6 min-h-screen pt-32">
+      <div className="max-w-[1620px] mx-auto p-6 min-h-screen pt-36">
         {isLoading ? (
           <Loading></Loading>
         ) : (
@@ -144,7 +144,7 @@ const PropertyDetails = () => {
             <img
               src={property.image}
               alt={property.title}
-              className="w-full h-96 lg:h-[400px] object-cover rounded-lg shadow"
+              className="w-full h-96 lg:h-[400px] 2xl:h-[500px] object-cover rounded-lg shadow"
             />
 
             {/* Right: Property Info */}
@@ -152,7 +152,7 @@ const PropertyDetails = () => {
               <h2 className="text-3xl font-bold mb-2 text-gray-800">
                 {property.title}
               </h2>
-              <p className="text-gray-700 text-lg mb-4 h-fit lg:h-[130px] overflow-auto">
+              <p className="text-gray-700 text-lg mb-4 h-fit lg:h-[130px] 2xl:h-[200px] overflow-auto">
                 {property.description}
               </p>
 

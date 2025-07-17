@@ -30,7 +30,7 @@ const YourLouxery = () => {
               and premium properties that match your lifestyle.
             </p>
             <Link to="/allProperties">
-              <button className="mt-2 px-6 py-3 text-gray-200 font-semibold rounded-full border border-gray-200 hover:text-[#1b2a4f] hover:bg-gray-200 transition duration-500 cursor-pointer text-lg xl:text-xl flex items-center">
+              <button className="mt-2 px-6 py-3 text-gray-200 font-semibold rounded-full border hover:border-0 border-gray-200 hover:bg-orange-500 transition duration-500 cursor-pointer text-lg xl:text-xl flex items-center">
                 View Properties <FaHome className="ml-2" />
               </button>
             </Link>

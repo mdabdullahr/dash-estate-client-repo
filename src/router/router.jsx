@@ -31,6 +31,7 @@ import MyAddedProperties from "../Pages/Dashboard/AgentLink/MyAddedProperties/My
 import MakeOffer from "../Pages/Dashboard/UserLik/Wishlist/MakeOffer";
 // import Payment from "../Pages/Dashboard/UserLik/BoughtProperties/Payment";
 import PaymentPage from "../Pages/Dashboard/UserLik/BoughtProperties/PaymentPage";
+import AboutUs from "../components/AboutUs/AboutUs";
 // import UpdateProfile from "../Pages/Dashboard/UpdateProfile/updateProfile";
 
 export const router = createBrowserRouter([
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
         path: "/forbidden",
         Component: Forbidden,
       },
+      {
+        path: "/aboutUs",
+        Component: AboutUs
+      }
     ],
   },
 

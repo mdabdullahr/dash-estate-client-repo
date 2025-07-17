@@ -101,14 +101,14 @@ const Navbar = () => {
           {user ? (
             <button
               onClick={handleLogOut}
-              className="text-gray-200 border border-gray-200 rounded-full text-lg font-semibold px-5 py-2 cursor-pointer flex items-center hover:text-[#1b2a4f] hover:bg-gray-200 transition duration-500"
+              className="text-gray-200 border hover:border-0 border-gray-200 rounded-full text-lg font-semibold px-5 lg:px-8 py-2 lg:py-4 cursor-pointer flex items-center hover:bg-orange-500 transition duration-500"
             >
               <TbLogout className="mr-1"></TbLogout>
               Logout
             </button>
           ) : (
             <Link to="/authLayout/login">
-              <button className="text-gray-200 border border-gray-200 rounded-full text-lg font-semibold px-5 py-2 cursor-pointer flex items-center hover:text-[#1b2a4f] hover:bg-gray-200 transition duration-500">
+              <button className="text-gray-200 border hover:border-0 border-gray-200 rounded-full text-lg font-semibold px-5 lg:px-8 py-2 lg:py-4 cursor-pointer flex items-center hover:bg-orange-500 transition duration-500">
                 <HiLogin className="mr-1"></HiLogin> 
                 Login</button>
             </Link>
