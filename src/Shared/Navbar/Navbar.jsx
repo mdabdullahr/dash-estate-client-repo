@@ -5,7 +5,7 @@ import { TbLogout } from "react-icons/tb";
 import { Link, NavLink } from "react-router";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import navLogo from "../../assets/navlogo.png";
+import navLogo from "../../assets/navlogo (2).png";
 import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
@@ -44,7 +44,16 @@ const Navbar = () => {
       </li>
       {user && (
         <li className="text-gray-200 hover:text-orange-500 cursor-pointer text-lg font-semibold">
-          <NavLink to="/dashboard">
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                isActive
+                  ? "text-orange-500 bg-[#1b2a4f] px-5 py-2 rounded-md cursor-pointer text-lg font-semibold"
+                  : ""
+              }`
+            }
+          >
             <MdDashboardCustomize></MdDashboardCustomize> Dashboard
           </NavLink>
         </li>
@@ -66,11 +75,19 @@ const Navbar = () => {
       });
   };
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-[#14203e] border-b border-gray-500">
-      <div className="navbar max-w-[1620px] mx-auto px-4 py-2 md:py-5 items-center">
+    <div
+      data-aos="fade-down"
+      data-aos-duration="1500"
+      className="fixed top-0 left-0 w-full z-50 bg-[#14203e] border-b border-gray-500"
+    >
+      <div className="navbar max-w-[1620px] mx-auto px-10 py-4 items-center">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-white lg:hidden mr-3"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -89,19 +106,19 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-green-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-[#1d2c54] rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
           </div>
           <div className="flex items-center">
             <img
-              className="w-20 h-10 mr-2 object-contain"
+              className="w-24 md:w-40 mr-2 object-contain"
               src={navLogo}
               alt="Logo"
             />
             <p className="font-bold text-xl md:text-2xl lg:text-3xl text-gray-200 specific-text">
-              DeshEstate
+              {/* DeshEstate */}
             </p>
           </div>
         </div>

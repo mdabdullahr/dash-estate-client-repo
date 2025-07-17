@@ -15,13 +15,13 @@ import {
   FaUsersCog,
   FaUserShield,
 } from "react-icons/fa";
-import { FiLogOut } from "react-icons/fi";
+import { FiLogOut, FiSearch } from "react-icons/fi";
 import { MdMovieEdit } from "react-icons/md";
 import { Link, NavLink, Outlet } from "react-router";
-import navLogo from "../assets/navlogo.png";
 import Loading from "../Shared/Loading/Loading";
 import useUserRole from "../Hooks/useUserRole";
-import Navbar from "../Shared/Navbar/Navbar";
+import DashboardNav from "../Pages/Dashboard/DashboardNav/DashboardNav.jsx";
+import logo from "../assets/navlogo (2).png"
 
 const Dashboard = () => {
   const { role, roleLoader } = useUserRole();
@@ -39,7 +39,11 @@ const Dashboard = () => {
             {/* Drawer Content */}
             <div className="drawer-content flex flex-col">
               {/* Mobile Navbar */}
-              <div className="navbar bg-[#1b2a4f] w-full lg:hidden fixed">
+              <div
+                data-aos="fade-down"
+                data-aos-duration="1500"
+                className="navbar bg-[#14203e] px-6 py-5 w-full lg:hidden fixed"
+              >
                 <div className="flex-none">
                   <label
                     htmlFor="my-drawer-2"
@@ -61,12 +65,25 @@ const Dashboard = () => {
                     </svg>
                   </label>
                 </div>
-                <div className="mx-2 flex-1 px-2 text-white text-lg font-semibold">
+                <div className="mx-2 flex-1 px-4 text-white text-lg font-semibold">
                   Dashboard
+                </div>
+                <div className="relative w-full">
+                  <FiSearch
+                    className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-500 pointer-events-none"
+                    size={20}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Search by location..."
+                    className="border border-orange-500 pl-10 pr-4 py-2 rounded-full w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition bg-gray-600 placeholder:text-white text-gray-200"
+                  />
                 </div>
               </div>
               {/* Main Content */}
-              <Navbar></Navbar>
+              <div className="hidden lg:flex">
+                <DashboardNav></DashboardNav>
+              </div>
               <div className="px-5 2xl:px-10 my-10 overflow-auto">
                 <Outlet />
                 {/* <h1 className="text-5xl text-red-600">this is dashboard</h1> */}
@@ -80,23 +97,19 @@ const Dashboard = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              <div className="bg-[#14203e] text-[#14203e] min-h-full w-[70vw] sm:w-72 md:w-80 xl:w-96 p-6 flex flex-col justify-between">
+              <div
+                data-aos="fade-right"
+                data-aos-duration="1500"
+                className="bg-[#14203e] text-[#14203e] min-h-full w-[70vw] sm:w-72 md:w-80 xl:w-96 p-6 flex flex-col justify-between"
+              >
                 {/* Top: Logo + Links */}
-                <div className="space-y-6">
-                  <Link to="/">
-                    <div className="flex items-center px-6 border-b-2 border-gray-300 pb-4 mt-4">
-                      <img
-                        className="w-20 h-10 mr-2 object-contain"
-                        src={navLogo}
-                        alt="Logo"
-                      />
-                      <p className="-mb-2 font-bold text-3xl text-gray-200 specific-text">
-                        DeshEstate
-                      </p>
-                    </div>
-                  </Link>
-
+                <div className="space-y-6 pt-0 lg:pt-20">
                   {/* Nav Links */}
+                  <Link className="flex lg:hidden" to="/">
+                  <div className="flex items-center px-6 border-b-2 border-gray-300 pb-2">
+                    <img className="w-32" src={logo} alt="Logo" />
+                  </div>
+                </Link>
                   {/* User Related Route */}
                   {!roleLoader && role === "user" && (
                     <div className="p-4 space-y-6 text-gray-200 text-lg font-semibold">

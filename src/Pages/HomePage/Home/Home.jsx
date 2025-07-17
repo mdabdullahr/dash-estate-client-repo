@@ -7,7 +7,7 @@ import WhoWeAre from '../WhoWeAre/WhoWeAre';
 
 const Home = () => {
     return (
-        <div>
+        <div className='overflow-auto'>
             <HomeBanner></HomeBanner>
             <AdvertisementSection></AdvertisementSection>
             <LatestReviews></LatestReviews>

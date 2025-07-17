@@ -28,7 +28,11 @@ const AllProperties = () => {
     <div className="bg-orange-50/80">
       <div className="p-6 min-h-screen pt-36 max-w-[1620px] mx-auto">
         {/* 🔍 Search & 🔃 Sort Controls */}
-        <div className="mb-6 flex flex-col md:flex-row justify-center items-center gap-4 px-4 max-w-4xl mx-auto">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          className="mb-6 flex flex-col md:flex-row justify-center items-center gap-4 px-4 max-w-4xl mx-auto"
+        >
           {/* Search Input */}
           <div className="relative w-full md:w-1/2">
             <FiSearch
@@ -43,7 +47,6 @@ const AllProperties = () => {
               className="border border-orange-500 pl-10 pr-4 py-2 rounded-full w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition bg-white"
             />
           </div>
-
           {/* Sort Select */}
           <div className="relative w-full md:w-48">
             <select
@@ -63,13 +66,18 @@ const AllProperties = () => {
             />
           </div>
         </div>
-        <div className="divider before:bg-[#1b2a4f] after:bg-[#1b2a4f] text-[#1b2a4f] text-2xl md:text-3xl xl:text-4xl font-bold my-10">
+        <div data-aos="fade-up"
+              data-aos-duration="1500"
+              data-aos-delay="100" className="divider before:bg-[#1b2a4f] after:bg-[#1b2a4f] text-[#1b2a4f] text-2xl md:text-3xl xl:text-4xl font-bold my-10">
           All Properties
         </div>
         {/* 🏡 Properties Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6">
-          {properties.map((property) => (
+          {properties.map((property, index) => (
             <div
+            data-aos="fade-up"
+              data-aos-duration="1500"
+              data-aos-delay={index * 200}
               key={property._id}
               className="relative bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group"
             >
@@ -100,7 +108,10 @@ const AllProperties = () => {
                   {property.title}
                 </h3>
 
-                <p className="text-sm text-gray-600 flex items-center"><FaLocationDot className="text-orange-500 mr-2"></FaLocationDot> {property.location}</p>
+                <p className="text-sm text-gray-600 flex items-center">
+                  <FaLocationDot className="text-orange-500 mr-2"></FaLocationDot>{" "}
+                  {property.location}
+                </p>
 
                 <div className="flex items-center gap-3 mt-1">
                   <img
@@ -129,7 +140,11 @@ const AllProperties = () => {
                 </p>
 
                 <p className="text-sm text-gray-700 flex items-center">
-                  <LiaHandHoldingUsdSolid className="text-orange-500 mr-2" size={20}></LiaHandHoldingUsdSolid> ${property.minPrice} - ${property.maxPrice}
+                  <LiaHandHoldingUsdSolid
+                    className="text-orange-500 mr-2"
+                    size={20}
+                  ></LiaHandHoldingUsdSolid>{" "}
+                  ${property.minPrice} - ${property.maxPrice}
                 </p>
               </div>
             </div>

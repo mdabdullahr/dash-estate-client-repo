@@ -8,18 +8,18 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import { Link } from "react-router";
-import logo from "../../assets/navlogo.png";
+import logo from "../../assets/navlogo (2).png";
 
 const Footer = () => {
   return (
-    <div className="relative bg-[#14203e] text-gray-300 py-16">
+    <div className="relative bg-[#14203e] text-gray-300 py-16 lg:py-22 xl:py-26 2xl:py-32">
       {/* 🎨 Background Image (bottom-left corner) */}
 
       {/* 📦 Main Content */}
-      <div className="max-w-[1620px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative z-10">
+      <div className="max-w-[1620px] mx-auto px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative z-10">
         {/* 🔰 Logo & About */}
-        <div>
-          <img src={logo} alt="Logo" className="w-36 mb-4" />
+        <div data-aos="fade-up" data-aos-duration="1500">
+          <img src={logo} alt="Logo" className="w-56 mb-4" />
           <p className="text-white text-sm md:text-lg xl:text-xl font-medium">
             DashState is your trusted partner for luxury and lifestyle
             properties. Find the perfect home with expert support.
@@ -27,7 +27,7 @@ const Footer = () => {
         </div>
 
         {/* 📞 Contact Info */}
-        <div>
+        <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100">
           <h3 className="text-xl xl:text-2xl 2xl:text-3xl font-semibold text-white mb-4">
             Contact Us
           </h3>
@@ -46,7 +46,7 @@ const Footer = () => {
         </div>
 
         {/* 🔗 Useful Links */}
-        <div>
+        <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
           <h3 className="text-xl xl:text-2xl 2xl:text-3xl font-semibold text-white mb-4">
             Quick Links
           </h3>
@@ -69,7 +69,7 @@ const Footer = () => {
         </div>
 
         {/* 🌐 Social + Newsletter */}
-        <div>
+        <div data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
           <h3 className="text-xl xl:text-2xl 2xl:text-3xl font-semibold text-white mb-4">
             Follow Us
           </h3>
@@ -99,25 +99,23 @@ const Footer = () => {
               <FaInstagram />
             </a>
           </div>
-          <p className="text-lg xl:text-xl mb-2 mt-6">
-            Subscribe to our newsletter
-          </p>
-          <div className="w-full max-w-xl relative">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full py-3 px-5 pr-32 rounded-full bg-white text-gray-700 border border-gray-300 shadow focus:outline-none"
-            />
-            <button className="absolute top-1 right-1 h-[calc(100%-0.5rem)] px-6 rounded-full bg-orange-500 text-white font-semibold hover:bg-[#14203e] transition">
-              Subscribe
-            </button>
+          <div >
+            <p className="text-lg xl:text-xl mb-2 mt-6">
+              Subscribe to our newsletter
+            </p>
+            <div className="w-full max-w-xl relative">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full py-3 px-5 pr-32 rounded-full bg-white text-gray-700 border border-gray-300 shadow focus:outline-none"
+              />
+              <button className="absolute top-1 right-1 h-[calc(100%-0.5rem)] px-6 rounded-full bg-orange-500 text-white font-semibold hover:bg-[#14203e] transition">
+                Subscribe
+              </button>
+            </div>
           </div>
-        </div>
-      </div>
 
-      {/* 🔻 Bottom Bar */}
-      <div className="mt-12 text-center text-gray-400 border-t border-gray-700 pt-6 text-sm md:text-lg xl:text-xl">
-        © {new Date().getFullYear()} DashState. All rights reserved.
+        </div>
       </div>
     </div>
   );

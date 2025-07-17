@@ -1,9 +1,11 @@
 import { FaQuoteLeft, FaQuoteRight, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 
-const ReviewCard = ({ review }) => {
+const ReviewCard = ({ review, index }) => {
   return (
-   <div className="bg-white rounded-xl  shadow-sm hover:shadow-xl transition duration-300 p-5 xl:p-8 w-full relative group">
+   <div data-aos="fade-up"
+    data-aos-duration="1500"
+    data-aos-delay={index * 200} className="bg-white rounded-xl  shadow-sm hover:shadow-xl transition duration-300 p-5 xl:p-8 w-full relative group">
 
   {/* 🔳 Overlay - comes from top-left */}
   <div className="absolute inset-0 bg-[#1b2a4f]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none rounded-xl"></div>
