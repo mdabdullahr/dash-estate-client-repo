@@ -5,7 +5,7 @@ const AgentProfile = () => {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden rounded-2xl">
+    <div className="w-full relative overflow-hidden rounded-2xl mt-18 lg:mt-22 2xl:mt-26">
       {/* 🔵 Background Cover Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
@@ -19,7 +19,7 @@ const AgentProfile = () => {
       </div>
 
       {/* 🧑 Profile Card (Floating Centered) */}
-      <div className="relative flex items-center justify-center min-h-screen px-4">
+      <div className="relative flex items-center justify-center px-4 h-[83vh]">
         <div className="max-w-2xl w-full bg-white/10 backdrop-blur-lg rounded-xl shadow-xl p-8 text-white text-center border border-white/20">
           {/* Profile Image */}
           <img

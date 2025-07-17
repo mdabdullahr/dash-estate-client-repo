@@ -4,7 +4,7 @@ import useAuth from "../../../../Hooks/useAuth";
 const AdminProfile = () => {
     const {user} = useAuth();
   return (
-    <div className="min-h-screen w-full relative overflow-hidden rounded-2xl">
+    <div className="w-full relative overflow-hidden rounded-2xl mt-18 lg:mt-22 2xl:mt-26">
       {/* 🔵 Background Cover Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
@@ -18,12 +18,12 @@ const AdminProfile = () => {
       </div>
 
       {/* 🧑 Profile Card (Floating Centered) */}
-      <div className="relative flex items-center justify-center min-h-screen px-4">
+      <div className="relative flex items-center justify-center h-[83vh] px-4">
         <div className="max-w-2xl w-full bg-white/10 backdrop-blur-lg rounded-xl shadow-xl p-8 text-white text-center border border-white/20">
           {/* Profile Image */}
           <img
             src={user?.photoURL}
-            alt="Agent"
+            alt="Admin"
             className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-white mx-auto shadow-md"
           />
 
@@ -33,7 +33,7 @@ const AdminProfile = () => {
           </h2>
           <p className="text-sm sm:text-base text-gray-200">{user?.email}</p>
 
-          <span className="inline-block mt-3 bg-green-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md">
+          <span className="inline-block mt-3 bg-orange-500 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md">
             Role: Admin
           </span>
 

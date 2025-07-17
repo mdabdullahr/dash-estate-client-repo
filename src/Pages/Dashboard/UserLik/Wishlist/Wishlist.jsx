@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Loading from "../../../../Shared/Loading/Loading";
+import { LiaHandHoldingUsdSolid } from "react-icons/lia";
+import { FaLocationDot } from "react-icons/fa6";
 
 const Wishlist = () => {
   const axiosSecure = useAxiosSecure();
@@ -45,7 +47,7 @@ const Wishlist = () => {
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Yes, remove it!",
-      confirmButtonColor: "#22c55e", // Tailwind's green-500
+      confirmButtonColor: "#14203e", // Tailwind's green-500
       customClass: {
         confirmButton: "cursor-pointer",
       },
@@ -57,19 +59,23 @@ const Wishlist = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-4 2xl:p-8 mt-18 lg:mt-22 2xl:mt-26 bg-orange-50/80 rounded-2xl">
       {isLoading ? (
         <Loading></Loading>
       ) : wishlists.length === 0 ? (
-        <p className="text-2xl flex justify-center items-center">
-          No properties in wishlist.
-        </p>
+        <div className="text-center text-xl font-medium text-gray-600 border border-dashed border-orange-500 py-10 rounded-lg shadow-inner bg-orange-50">
+            🚫 No advertised properties available at the moment.
+          </div>
       ) : (
+        <>
+        <div className="divider before:bg-[#1b2a4f] after:bg-[#1b2a4f] text-[#1b2a4f] text-2xl md:text-3xl font-bold mb-8">
+          All Wishlists
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           {wishlists.map((item) => (
             <div
               key={item._id}
-              className="border border-gray-300 rounded-lg p-4 shadow hover:shadow-md transition"
+              className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden p-6"
             >
               <img
                 src={item.propertyImage}
@@ -79,7 +85,7 @@ const Wishlist = () => {
               <h3 className="text-xl font-semibold mt-3">
                 {item.propertyTitle}
               </h3>
-              <p className="text-gray-500">📍 {item.propertyLocation}</p>
+              <p className="text-gray-700 flex items-center"><FaLocationDot className="mr-2 text-orange-500"></FaLocationDot> {item.propertyLocation}</p>
               <div className="flex items-center gap-3 mt-2">
                 <img
                   src={item.agentImage}
@@ -94,15 +100,15 @@ const Wishlist = () => {
                   {item.verificationStatus}
                 </span>
               </p>
-              <p className="text-sm text-green-600 font-semibold">
-                💰 ${item.minPrice} - ${item.maxPrice}
+              <p className="text-sm text-orange-500 font-semibold flex items-center">
+                <LiaHandHoldingUsdSolid className="mr-2 text-orange-500"></LiaHandHoldingUsdSolid> ${item.minPrice} - ${item.maxPrice}
               </p>
 
               <div className="flex justify-between mt-4">
                
                   <Link
                     to={`/dashboard/make-offer/${item._id}`}
-                    className="bg-green-500 hover:bg-green-600 text-white px-4 py-1 rounded"
+                    className="bg-orange-500 hover:bg-[#14203e] text-white px-4 py-1 rounded"
                   >
                     Make Offer
                   </Link>
@@ -118,6 +124,7 @@ const Wishlist = () => {
             </div>
           ))}
         </div>
+        </>
       )}
     </div>
   );

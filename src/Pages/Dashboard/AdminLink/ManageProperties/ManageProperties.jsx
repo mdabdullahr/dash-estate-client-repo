@@ -44,14 +44,14 @@ const ManageProperties = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="p-4 2xl:p-8 bg-white min-h-screen rounded-2xl">
-      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">
+    <div className="p-4 2xl:p-8 bg-orange-50/80 rounded-2xl mt-18 lg:mt-22 2xl:mt-26">
+      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">
         Manage All Properties
       </div>
       <div className="overflow-x-auto">
         <div className="overflow-x-auto rounded-t-sm">
           <table className="table w-full">
-            <thead className="text-white text-[14px] md:text-lg bg-green-500">
+            <thead className="text-white text-lg bg-[#14203e]/70">
               <tr>
                 <th>#</th>
                 <th>Image</th>
@@ -68,7 +68,7 @@ const ManageProperties = () => {
               {properties.map((property, index) => (
                 <tr
                   key={property._id}
-                  className={`${index % 2 === 0 ? "bg-green-50" : "bg-white"}`}
+                  className={`${index % 2 === 0 ? "bg-orange-50/80" : "bg-white"}`}
                 >
                   <td className="text-sm xl:text-lg font-semibold">{index+1}</td>
                   <td>
@@ -110,12 +110,12 @@ const ManageProperties = () => {
                       </>
                     )}
                     {property.verificationStatus === "verified" && (
-                      <span className="text-green-600 font-medium">
+                      <span className="text-[#14203e] font-medium">
                         Verified
                       </span>
                     )}
                     {property.verificationStatus === "rejected" && (
-                      <span className="text-red-600 font-medium">Rejected</span>
+                      <span className="text-red-500 font-medium">Rejected</span>
                     )}
                   </td>
                 </tr>

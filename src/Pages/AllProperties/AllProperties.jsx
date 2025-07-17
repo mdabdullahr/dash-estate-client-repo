@@ -4,6 +4,8 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { Link } from "react-router";
 import Loading from "../../Shared/Loading/Loading";
 import { FiSearch, FiChevronDown } from "react-icons/fi";
+import { LiaHandHoldingUsdSolid } from "react-icons/lia";
+import { FaLocationDot } from "react-icons/fa6";
 
 const AllProperties = () => {
   const axiosSecure = useAxiosSecure();
@@ -23,14 +25,14 @@ const AllProperties = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="bg-gray-50">
-      <div className="p-6 min-h-screen pt-30 max-w-[1620px] mx-auto">
+    <div className="bg-orange-50/80">
+      <div className="p-6 min-h-screen pt-36 max-w-[1620px] mx-auto">
         {/* 🔍 Search & 🔃 Sort Controls */}
         <div className="mb-6 flex flex-col md:flex-row justify-center items-center gap-4 px-4 max-w-4xl mx-auto">
           {/* Search Input */}
           <div className="relative w-full md:w-1/2">
             <FiSearch
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-green-500 pointer-events-none"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-orange-500 pointer-events-none"
               size={20}
             />
             <input
@@ -38,7 +40,7 @@ const AllProperties = () => {
               placeholder="Search by location..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="border border-green-500 pl-10 pr-4 py-2 rounded-full w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+              className="border border-orange-500 pl-10 pr-4 py-2 rounded-full w-full shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition bg-white"
             />
           </div>
 
@@ -47,7 +49,7 @@ const AllProperties = () => {
             <select
               value={sortOrder}
               onChange={(e) => setSortOrder(e.target.value)}
-              className="appearance-none border border-green-500 px-4 py-2 rounded-full w-full shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+              className="appearance-none border border-orange-500 px-4 py-2 rounded-full w-full shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500 transition bg-white"
             >
               <option value="" disabled>
                 Sort by Price
@@ -56,12 +58,12 @@ const AllProperties = () => {
               <option value="desc">High to Low</option>
             </select>
             <FiChevronDown
-              className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-green-500"
+              className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-orange-500"
               size={20}
             />
           </div>
         </div>
-        <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">
+        <div className="divider before:bg-[#1b2a4f] after:bg-[#1b2a4f] text-[#1b2a4f] text-2xl md:text-3xl xl:text-4xl font-bold my-10">
           All Properties
         </div>
         {/* 🏡 Properties Grid */}
@@ -69,7 +71,7 @@ const AllProperties = () => {
           {properties.map((property) => (
             <div
               key={property._id}
-              className="relative bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden border border-transparent hover:border-green-200 group"
+              className="relative bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group"
             >
               {/* 🖼️ Property Image */}
               <img
@@ -86,7 +88,7 @@ const AllProperties = () => {
                 <div className="opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 translate-x-[-100%] translate-y-[-100%] group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500 ease-in-out">
                   <Link to={`/propertyDetails/${property._id}`}>
                     <button className="bg-orange-500 hover:bg-[#1b2a4f] cursor-pointer text-white font-semibold py-2 px-5 rounded-full">
-                      View Details
+                      View Details →
                     </button>
                   </Link>
                 </div>
@@ -98,7 +100,7 @@ const AllProperties = () => {
                   {property.title}
                 </h3>
 
-                <p className="text-sm text-gray-600">📍 {property.location}</p>
+                <p className="text-sm text-gray-600 flex items-center"><FaLocationDot className="text-orange-500 mr-2"></FaLocationDot> {property.location}</p>
 
                 <div className="flex items-center gap-3 mt-1">
                   <img
@@ -116,7 +118,7 @@ const AllProperties = () => {
                   <span
                     className={`font-medium capitalize ${
                       property.verificationStatus === "verified"
-                        ? "text-green-600"
+                        ? "text-orange-500"
                         : property.verificationStatus === "rejected"
                         ? "text-red-600"
                         : "text-yellow-500"
@@ -126,8 +128,8 @@ const AllProperties = () => {
                   </span>
                 </p>
 
-                <p className="text-sm text-gray-700">
-                  💰 ${property.minPrice} - ${property.maxPrice}
+                <p className="text-sm text-gray-700 flex items-center">
+                  <LiaHandHoldingUsdSolid className="text-orange-500 mr-2" size={20}></LiaHandHoldingUsdSolid> ${property.minPrice} - ${property.maxPrice}
                 </p>
               </div>
             </div>

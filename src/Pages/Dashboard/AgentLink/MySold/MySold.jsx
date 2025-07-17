@@ -31,24 +31,24 @@ const MySold = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="p-4 md:p-8 min-h-screen bg-white rounded-2xl">
-      <div className="bg-green-50 border border-green-200 rounded-lg p-5 mb-6 shadow-sm flex items-center justify-between">
+    <div className="p-4 md:p-8 mt-18 lg:mt-22 2xl:mt-26 bg-orange-50/80 rounded-2xl">
+      <div className="bg-orange-50 border border-orange-200 rounded-lg p-5 mb-6 shadow-sm flex items-center justify-between">
         <div>
-          <h2 className="text-lg sm:text-xl font-semibold text-green-700 mb-1">
+          <h2 className="text-lg sm:text-xl font-semibold text-orange-700 mb-1">
             Total Sold Amount
           </h2>
-          <p className="text-2xl sm:text-3xl font-bold text-green-600">
+          <p className="text-2xl sm:text-3xl font-bold text-orange-600">
             ${totalData.totalAmount?.toLocaleString()}
           </p>
         </div>
-        <div className="text-green-500 text-4xl">💰</div>
+        <div className="text-orange-500 text-4xl">💰</div>
       </div>
-      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">
+      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mt-10 mb-8">
         All Sold Properties
       </div>
       <div className="overflow-x-auto rounded-sm">
         <table className="table w-full">
-          <thead className="text-white text-lg xl:text-xl md:text-lg bg-green-500">
+          <thead className="text-white text-lg  bg-[#14203e]/70">
             <tr>
               <th>#</th>
               <th>Image</th>
@@ -65,7 +65,7 @@ const MySold = () => {
             {soldProperties.map((item, index) => (
               <tr
                 key={item._id}
-                className={`${index % 2 === 0 ? "bg-green-50" : "bg-white"}`}
+                className={`${index % 2 === 0 ? "bg-orange-50/80" : "bg-white"}`}
               >
                 <td className="text-sm xl:text-lg font-semibold">
                   {index + 1}
@@ -89,7 +89,7 @@ const MySold = () => {
                 <td className="text-sm xl:text-lg">
                   {new Date(item.paidAt).toLocaleDateString()}
                 </td>
-                <td className="text-blue-600 font-medium text-sm xl:text-lg">
+                <td className="text-orange-500 font-medium text-sm xl:text-lg">
                   {item.transactionId}
                 </td>
               </tr>

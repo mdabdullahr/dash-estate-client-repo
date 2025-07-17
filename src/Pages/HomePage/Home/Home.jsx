@@ -3,6 +3,7 @@ import AdvertisementSection from '../AdvertisementSection/AdvertisementSection';
 import LatestReviews from '../LatestReviews/LatestReviews';
 import HomeBanner from '../HomeBanner/HomeBanner';
 import YourLouxery from '../YourLouxery/YourLouxery';
+import WhoWeAre from '../WhoWeAre/WhoWeAre';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <AdvertisementSection></AdvertisementSection>
             <LatestReviews></LatestReviews>
             <YourLouxery></YourLouxery>
+            <WhoWeAre></WhoWeAre>
         </div>
     );
 };

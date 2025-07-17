@@ -53,12 +53,12 @@ const MyReviews = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="p-4 md:p-8 bg-gray-50 rounded-2xl min-h-screen">
-      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">My Reviews</div>
+    <div className="p-4 md:p-8 bg-orange-50/80 rounded-2xl mt-18 lg:mt-22 2xl:mt-26">
+      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">My Reviews</div>
       {reviews.length === 0 ? (
-        <p className="text-gray-600 text-2xl flex justify-center items-center">
-          You haven’t added any reviews yet.
-        </p>
+        <div className="text-center text-xl font-medium text-gray-600 border border-dashed border-orange-500 py-10 rounded-lg shadow-inner bg-orange-50">
+            🚫 You haven't any added reviews yit.
+          </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
           {reviews.map((review) => (

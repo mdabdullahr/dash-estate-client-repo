@@ -1,20 +1,19 @@
 import {
-  FaPhoneAlt,
   FaEnvelope,
-  FaMapMarkerAlt,
   FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
   FaInstagram,
+  FaLinkedinIn,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaTwitter,
 } from "react-icons/fa";
-import logo from "../../assets/navlogo.png";
 import { Link } from "react-router";
+import logo from "../../assets/navlogo.png";
 
 const Footer = () => {
   return (
     <div className="relative bg-[#14203e] text-gray-300 py-16">
       {/* 🎨 Background Image (bottom-left corner) */}
-      
 
       {/* 📦 Main Content */}
       <div className="max-w-[1620px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative z-10">
@@ -100,7 +99,9 @@ const Footer = () => {
               <FaInstagram />
             </a>
           </div>
-          <p className="text-lg xl:text-xl mb-2 mt-6">Subscribe to our newsletter</p>
+          <p className="text-lg xl:text-xl mb-2 mt-6">
+            Subscribe to our newsletter
+          </p>
           <div className="w-full max-w-xl relative">
             <input
               type="email"

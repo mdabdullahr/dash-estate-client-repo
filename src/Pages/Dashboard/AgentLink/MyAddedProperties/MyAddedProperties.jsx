@@ -174,8 +174,8 @@ const MyAddedProperties = () => {
   };
 
   return (
-    <div className="p-4 2xl:p-8 bg-white min-h-screen rounded-2xl">
-      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">
+    <div className="p-4 2xl:p-8 bg-orange-50/80 mt-18 lg:mt-22 2xl:mt-26 rounded-2xl">
+      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">
         All Added Properties
       </div>
       {isLoading ? (
@@ -201,7 +201,7 @@ const MyAddedProperties = () => {
                   {property.title}
                 </h3>
                 <p className="text-sm md:text-lg text-gray-800 flex items-center">
-                  <FaLocationDot className="mr-1 text-green-500" />{" "}
+                  <FaLocationDot className="mr-1 text-orange-500" />{" "}
                   {property.location}
                 </p>
 
@@ -209,7 +209,7 @@ const MyAddedProperties = () => {
                   <img
                     src={property.agentImage || user?.photoURL}
                     alt="agent"
-                    className="w-8 h-8 xl:w-12 xl:h-12 object-cover rounded-full border border-green-500"
+                    className="w-8 h-8 xl:w-12 xl:h-12 object-cover rounded-full border border-orange-500"
                   />
                   <span className="text-sm md:text-lg font-normal xl:font-medium text-gray-800">
                     {property.agentName}
@@ -221,10 +221,10 @@ const MyAddedProperties = () => {
                   <span
                     className={`font-medium capitalize ${
                       property.verificationStatus === "verified"
-                        ? "text-green-600"
+                        ? "text-[#14203e]"
                         : property.verificationStatus === "rejected"
                         ? "text-red-600"
-                        : "text-yellow-500"
+                        : "text-orange-300"
                     }`}
                   >
                     {property.verificationStatus}
@@ -232,7 +232,7 @@ const MyAddedProperties = () => {
                 </p>
 
                 <p className="text-sm lg:text-lg text-gray-800 flex items-center font-medium">
-                  <LiaHandHoldingUsdSolid className="mr-1 text-green-500" /> $
+                  <LiaHandHoldingUsdSolid className="mr-1 text-orange-500" /> $
                   {property.minPrice} - ${property.maxPrice}
                 </p>
 
@@ -245,7 +245,7 @@ const MyAddedProperties = () => {
     ${
       property.verificationStatus === "rejected"
         ? "border-gray-300 text-gray-400 cursor-not-allowed opacity-50"
-        : "border-green-500  bg-green-500 text-white cursor-pointer font-semibold"
+        : " bg-[#14203e] text-white cursor-pointer font-semibold"
     }
   `}
                   >
@@ -297,7 +297,7 @@ const MyAddedProperties = () => {
                   </label>
                   <input
                     {...register("title", { required: "Title is required" })}
-                    className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-green-500"
+                    className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-orange-500"
                   />
                   {errors.title && (
                     <p className="text-red-500 text-sm">
@@ -313,7 +313,7 @@ const MyAddedProperties = () => {
                     {...register("location", {
                       required: "Location is required",
                     })}
-                    className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-green-500"
+                    className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-orange-500"
                   />
                   {errors.location && (
                     <p className="text-red-500 text-sm">
@@ -333,7 +333,7 @@ const MyAddedProperties = () => {
                     type="text"
                     value={user?.displayName}
                     readOnly
-                    className="w-full border border-gray-200 bg-gray-100 rounded-md px-4 py-2 text-gray-600"
+                    className="w-full border border-gray-200 bg-gray-100 rounded-md px-4 py-2 text-gray-600 focus:outline-orange-500"
                   />
                 </div>
                 <div>
@@ -344,7 +344,7 @@ const MyAddedProperties = () => {
                     type="email"
                     value={user?.email}
                     readOnly
-                    className="w-full border border-gray-200 bg-gray-100 rounded-md px-4 py-2 text-gray-600"
+                    className="w-full border border-gray-200 bg-gray-100 rounded-md px-4 py-2 text-gray-600 focus:outline-orange-500"
                   />
                 </div>
               </div>
@@ -361,7 +361,7 @@ const MyAddedProperties = () => {
                       required: "Min price is required",
                       min: { value: 0, message: "Price cannot be negative" }, // === ADDED ===
                     })}
-                    className="w-full border border-gray-300 px-4 py-2 rounded-md"
+                    className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-orange-500"
                     placeholder="Min Price"
                   />
                   {errors.minPrice && (
@@ -388,7 +388,7 @@ const MyAddedProperties = () => {
                         return true;
                       },
                     })}
-                    className="w-full border border-gray-300 px-4 py-2 rounded-md"
+                    className="w-full border border-gray-300 px-4 py-2 rounded-md focus:outline-orange-500"
                     placeholder="Max Price"
                   />
                   {errors.maxPrice && (
@@ -410,7 +410,7 @@ const MyAddedProperties = () => {
                   })}
                   rows="4"
                   placeholder="Write your thoughts..."
-                  className="w-full border border-gray-300 rounded px-4 py-2 outline-0 focus:border-green-500"
+                  className="w-full border border-gray-300 rounded px-4 py-2 outline-0 focus:border-orange-500"
                 ></textarea>
                 {errors.propertyDetails && (
                   <p className="text-sm text-red-500 mt-1">
@@ -426,8 +426,8 @@ const MyAddedProperties = () => {
                   htmlFor="imageUpload"
                   className={`cursor-pointer flex flex-col items-center justify-center border-2 border-dashed rounded-lg px-4 py-8 transition duration-200 ${
                     imagePreview
-                      ? "border-green-400 bg-green-50"
-                      : "border-gray-300 hover:border-green-500"
+                      ? "border-orange-500 bg-orange-50"
+                      : "border-gray-300 hover:border-orange-500"
                   }`}
                 >
                   {imagePreview ? (
@@ -462,7 +462,7 @@ const MyAddedProperties = () => {
               <button
                 type="submit"
                 disabled={imageUploading}
-                className="w-full cursor-pointer bg-green-500 text-white font-semibold py-2 px-6 rounded-md hover:bg-green-600 transition disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full cursor-pointer bg-orange-500 text-white font-semibold py-2 px-6 rounded-md hover:bg-[#14203e] transition disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {imageUploading ? "Updating..." : "Update Property"}
               </button>

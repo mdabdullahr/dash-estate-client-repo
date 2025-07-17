@@ -21,16 +21,17 @@ import { Link, NavLink, Outlet } from "react-router";
 import navLogo from "../assets/navlogo.png";
 import Loading from "../Shared/Loading/Loading";
 import useUserRole from "../Hooks/useUserRole";
+import Navbar from "../Shared/Navbar/Navbar";
 
 const Dashboard = () => {
-  const {role, roleLoader} = useUserRole();
+  const { role, roleLoader } = useUserRole();
   console.log(role);
 
   if (roleLoader) return <Loading></Loading>;
 
   return (
-    <div className="min-h-screen bg-gray-100 text-black">
-      <div className="bg-gray-100">
+    <div className="min-h-screen bg-white text-black">
+      <div className="bg-white">
         <div className="w-full mx-auto">
           <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -38,12 +39,12 @@ const Dashboard = () => {
             {/* Drawer Content */}
             <div className="drawer-content flex flex-col">
               {/* Mobile Navbar */}
-              <div className="navbar bg-green-500 w-full lg:hidden fixed">
+              <div className="navbar bg-[#1b2a4f] w-full lg:hidden fixed">
                 <div className="flex-none">
                   <label
                     htmlFor="my-drawer-2"
                     aria-label="open sidebar"
-                    className="btn btn-square btn-ghost"
+                    className="btn btn-square"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -65,6 +66,7 @@ const Dashboard = () => {
                 </div>
               </div>
               {/* Main Content */}
+              <Navbar></Navbar>
               <div className="px-5 2xl:px-10 my-10 overflow-auto">
                 <Outlet />
                 {/* <h1 className="text-5xl text-red-600">this is dashboard</h1> */}
@@ -78,7 +80,7 @@ const Dashboard = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              <div className="bg-white text-black min-h-full w-[70vw] sm:w-72 md:w-80 xl:w-96 p-6 flex flex-col justify-between">
+              <div className="bg-[#14203e] text-[#14203e] min-h-full w-[70vw] sm:w-72 md:w-80 xl:w-96 p-6 flex flex-col justify-between">
                 {/* Top: Logo + Links */}
                 <div className="space-y-6">
                   <Link to="/">
@@ -88,7 +90,7 @@ const Dashboard = () => {
                         src={navLogo}
                         alt="Logo"
                       />
-                      <p className="-mb-2 font-bold text-3xl text-green-500 specific-text">
+                      <p className="-mb-2 font-bold text-3xl text-gray-200 specific-text">
                         DeshEstate
                       </p>
                     </div>
@@ -97,15 +99,15 @@ const Dashboard = () => {
                   {/* Nav Links */}
                   {/* User Related Route */}
                   {!roleLoader && role === "user" && (
-                    <div className="p-4 space-y-4 text-gray-800 text-lg font-semibold">
+                    <div className="p-4 space-y-6 text-gray-200 text-lg font-semibold">
                       {/* Profile */}
                       <NavLink
                         to="/dashboard/profile"
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -119,8 +121,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -134,8 +136,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -149,8 +151,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -162,15 +164,15 @@ const Dashboard = () => {
 
                   {/* Agent Related Route */}
                   {!roleLoader && role === "agent" && (
-                    <div className="p-4 space-y-4 text-gray-800 text-lg font-semibold">
+                    <div className="p-4 space-y-6 text-gray-200 text-lg font-semibold">
                       {/* Profile */}
                       <NavLink
                         to="/dashboard/agentProfile"
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -184,8 +186,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -199,8 +201,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -211,11 +213,11 @@ const Dashboard = () => {
                       {/* My Sold Properties */}
                       <NavLink
                         to="/dashboard/mySold"
-                       className={({ isActive }) =>
+                        className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -229,8 +231,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -242,15 +244,15 @@ const Dashboard = () => {
 
                   {/* Admin Related Route */}
                   {!roleLoader && role === "admin" && (
-                    <div className="p-4 space-y-4 text-gray-800 text-lg font-semibold">
+                    <div className="p-4 space-y-6 text-gray-200 text-lg font-semibold">
                       {/* Admin Profile */}
                       <NavLink
                         to="/dashboard/adminProfile"
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -264,8 +266,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -279,8 +281,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -294,8 +296,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -309,8 +311,8 @@ const Dashboard = () => {
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
                             isActive
-                              ? "bg-green-100 text-green-500 border-l-4 border-green-700"
-                              : "hover:bg-green-50"
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f]"
                           }`
                         }
                       >
@@ -322,17 +324,17 @@ const Dashboard = () => {
                 </div>
 
                 {/* Bottom: Logout */}
-                <div className="mt-6 p-8 border-t-2 border-gray-300">
+                <div className="mt-6 p-4 border-t-2 border-gray-300">
                   <li>
                     <NavLink
                       to="/dashboard/updateProfile"
-                      className="text-white hover:text-[#526484] hover:bg-gray-200 text-[15px] font-medium px-4 py-3 flex items-center rounded-md mb-5 bg-green-500"
+                      className="border hover:border-0 border-white text-white px-8 py-4 text-lg xl:text-xl font-medium rounded-full hover:bg-orange-500 transition duration-500 cursor-pointer flex items-center mb-4"
                     >
                       <MdMovieEdit size={20} className="mr-2" />
                       Update Profile
                     </NavLink>
                   </li>
-                  <button className="border border-green-500 text-green-500 hover:bg-green-500 hover:text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2 transition cursor-pointer w-full">
+                  <button className="border hover:border-0 border-white text-white px-8 py-4 text-lg xl:text-xl font-medium rounded-full hover:bg-orange-500 transition duration-500 cursor-pointer flex items-center gap-2 w-full">
                     <FiLogOut /> Logout
                   </button>
                 </div>

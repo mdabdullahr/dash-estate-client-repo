@@ -54,10 +54,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-green-100 flex items-center justify-center px-4">
-      <div className="bg-green-50 shadow-xl rounded-2xl p-8 w-full max-w-md">
-        <Link to="/"><FaBackspace className="text-red-600 text-3xl cursor-pointer"></FaBackspace></Link>
-        <h2 className="text-2xl font-bold mb-6 text-center text-green-600">
+    <div className="min-h-screen bg-orange-50/80 flex items-center justify-center px-4">
+      <div className="bg-orange-50 shadow-xl rounded-2xl p-8 w-full max-w-md">
+        <Link to="/"><FaBackspace className="text-orange-500 text-3xl cursor-pointer"></FaBackspace></Link>
+        <h2 className="text-2xl font-bold mb-6 text-center text-[#1b2a4f]">
          Login to Your Account
         </h2>
 
@@ -76,7 +76,7 @@ const LoginPage = () => {
                   message: "Enter a valid email address",
                 },
               })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black outline-0 focus:border-green-500"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 outline-0 focus:border-orange-500"
               placeholder="you@example.com"
             />
             {errors.email && (
@@ -100,7 +100,7 @@ const LoginPage = () => {
                   message: "Must be at least 6 characters",
                 },
               })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-0 focus:border-green-500 pr-10 text-black"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg outline-0 focus:border-orange-500 pr-10 text-black"
               placeholder="••••••••"
             />
             <button
@@ -120,7 +120,7 @@ const LoginPage = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition cursor-pointer"
+            className="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-[#1b2a4f] transition cursor-pointer"
           >
             Login
           </button>
@@ -136,9 +136,9 @@ const LoginPage = () => {
         {/* Google Login */}
         <button
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center border border-green-300 py-2 rounded-lg hover:bg-green-100 transition text-black cursor-pointer"
+          className="w-full flex items-center justify-center border hover:border-0 border-orange-500 py-2 rounded-lg hover:bg-[#1b2a4f47] transition text-black cursor-pointer"
         >
-          <FaGoogle className="mr-2 text-green-500" />
+          <FaGoogle className="mr-2 text-orange-500" />
           Continue with Google
         </button>
 
@@ -147,7 +147,7 @@ const LoginPage = () => {
           Don't have an account?{" "}
           <Link
             to="/authLayout/register"
-            className="text-green-600 font-medium hover:underline"
+            className="text-orange-500 font-medium hover:underline"
           >
             Register
           </Link>

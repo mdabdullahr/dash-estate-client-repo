@@ -127,10 +127,10 @@ const AddProperty = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center ">
+    <div className="flex justify-center items-center mt-18 lg:mt-22 2xl:mt-26">
       
-      <div className="w-full max-w-3xl bg-white p-8 rounded-xl shadow-md">
-        <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">
+      <div className="w-full max-w-3xl bg-orange-50/40 p-8 rounded-xl shadow-md">
+        <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">
         Add Property
       </div>
         <p className="text-center text-gray-500 mb-8">
@@ -147,7 +147,7 @@ const AddProperty = () => {
               <input
                 type="text"
                 {...register("title", { required: "Title is required" })}
-                className="w-full border border-gray-300 outline-0 focus:border-green-500 rounded-md px-4 py-2 text-gray-800"
+                className="w-full border border-gray-300 outline-0 focus:border-orange-500 rounded-md px-4 py-2 text-gray-800"
                 placeholder="Example: Lake View Apartment"
               />
               {errors.title && (
@@ -164,7 +164,7 @@ const AddProperty = () => {
               <input
                 type="text"
                 {...register("location", { required: "Location is required" })}
-                className="w-full border border-gray-300 outline-0 focus:border-green-500 rounded-md px-4 py-2 text-gray-800"
+                className="w-full border border-gray-300 outline-0 focus:border-orange-500 rounded-md px-4 py-2 text-gray-800"
                 placeholder="Example: Gulshan 2"
               />
               {errors.location && (
@@ -218,7 +218,7 @@ const AddProperty = () => {
                     message: "Price cannot be negative",
                   },
                 })}
-                className="w-full border border-gray-300 outline-0 focus:border-green-500 rounded-md px-4 py-2 text-gray-800"
+                className="w-full border border-gray-300 outline-0 focus:border-orange-500 rounded-md px-4 py-2 text-gray-800"
                 placeholder="e.g. 100000"
               />
               {errors.minPrice && (
@@ -243,7 +243,7 @@ const AddProperty = () => {
                     message: "Price cannot be negative",
                   },
                 })}
-                className="w-full border border-gray-300 outline-0 focus:border-green-500 rounded-md px-4 py-2 text-gray-800"
+                className="w-full border border-gray-300 outline-0 focus:border-orange-500 rounded-md px-4 py-2 text-gray-800"
                 placeholder="e.g. 200000"
               />
               {errors.maxPrice && (
@@ -263,7 +263,7 @@ const AddProperty = () => {
               {...register("propertyDetails", { required: "Property Details is required" })}
               rows="4"
               placeholder="Write your thoughts..."
-              className="w-full border border-gray-300 rounded px-4 py-2 outline-0 focus:border-green-500"
+              className="w-full border border-gray-300 rounded px-4 py-2 outline-0 focus:border-orange-500"
             ></textarea>
             {errors.propertyDetails && (
                 <p className="text-sm text-red-500 mt-1">
@@ -282,8 +282,8 @@ const AddProperty = () => {
               htmlFor="imageUpload"
               className={`cursor-pointer flex flex-col items-center justify-center border-2 border-dashed rounded-lg px-4 py-8 transition duration-200 ${
                 imagePreview
-                  ? "border-green-400 bg-green-50"
-                  : "border-gray-300 hover:border-green-500"
+                  ? "border-orange-400 bg-orange-50"
+                  : "border-gray-300 hover:border-orange-500"
               }`}
             >
               {/* Icon */}
@@ -335,7 +335,7 @@ const AddProperty = () => {
             <button
               type="submit"
               disabled={imageUploading}
-              className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-8 rounded-md transition duration-300 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+              className="bg-orange-500 hover:bg-[#14203e] text-white font-semibold py-2 px-8 rounded-md transition duration-300 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {imageUploading ? "Adding..." : "Add Property"}
             </button>

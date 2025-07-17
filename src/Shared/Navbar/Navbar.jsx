@@ -1,14 +1,12 @@
-import React from "react";
-import useAuth from "../../Hooks/useAuth";
-import { Link, NavLink } from "react-router";
-import Swal from "sweetalert2";
-import { toast } from "react-toastify";
-import navLogo from "../../assets/navlogo.png";
 import { FaHome } from "react-icons/fa";
-import { MdRealEstateAgent } from "react-icons/md";
-import { MdDashboardCustomize } from "react-icons/md";
-import { TbLogout } from "react-icons/tb";
 import { HiLogin } from "react-icons/hi";
+import { MdDashboardCustomize, MdRealEstateAgent } from "react-icons/md";
+import { TbLogout } from "react-icons/tb";
+import { Link, NavLink } from "react-router";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
+import navLogo from "../../assets/navlogo.png";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
   const { user, logoutUser } = useAuth();
@@ -20,7 +18,9 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
-              isActive ? "text-orange-500 bg-[#1b2a4f] px-5 py-2 rounded-md cursor-pointer text-lg font-semibold" : ""
+              isActive
+                ? "text-orange-500 bg-[#1b2a4f] px-5 py-2 rounded-md cursor-pointer text-lg font-semibold"
+                : ""
             }`
           }
         >
@@ -29,17 +29,24 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className="text-gray-200 hover:text-orange-500 cursor-pointer text-lg font-semibold">
-        <NavLink to="/allProperties"
-        className={({ isActive }) =>
+        <NavLink
+          to="/allProperties"
+          className={({ isActive }) =>
             `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
-              isActive ? "text-orange-500 bg-[#1b2a4f] px-5 py-2 rounded-md cursor-pointer text-lg font-semibold" : ""
+              isActive
+                ? "text-orange-500 bg-[#1b2a4f] px-5 py-2 rounded-md cursor-pointer text-lg font-semibold"
+                : ""
             }`
           }
-        ><MdRealEstateAgent></MdRealEstateAgent> All properties</NavLink>
+        >
+          <MdRealEstateAgent></MdRealEstateAgent> All properties
+        </NavLink>
       </li>
       {user && (
         <li className="text-gray-200 hover:text-orange-500 cursor-pointer text-lg font-semibold">
-          <NavLink to="/dashboard"><MdDashboardCustomize></MdDashboardCustomize> Dashboard</NavLink>
+          <NavLink to="/dashboard">
+            <MdDashboardCustomize></MdDashboardCustomize> Dashboard
+          </NavLink>
         </li>
       )}
     </>
@@ -88,7 +95,11 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex items-center">
-            <img className="w-20 h-10 mr-2 object-contain" src={navLogo} alt="Logo" />
+            <img
+              className="w-20 h-10 mr-2 object-contain"
+              src={navLogo}
+              alt="Logo"
+            />
             <p className="font-bold text-xl md:text-2xl lg:text-3xl text-gray-200 specific-text">
               DeshEstate
             </p>
@@ -109,8 +120,9 @@ const Navbar = () => {
           ) : (
             <Link to="/authLayout/login">
               <button className="text-gray-200 border hover:border-0 border-gray-200 rounded-full text-lg font-semibold px-5 lg:px-8 py-2 lg:py-4 cursor-pointer flex items-center hover:bg-orange-500 transition duration-500">
-                <HiLogin className="mr-1"></HiLogin> 
-                Login</button>
+                <HiLogin className="mr-1"></HiLogin>
+                Login
+              </button>
             </Link>
           )}
         </div>

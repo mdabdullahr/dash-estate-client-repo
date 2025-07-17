@@ -88,12 +88,12 @@ const Requests = () => {
     return <p className="text-center mt-12 text-gray-600">No offers yet.</p>;
 
   return (
-    <div className="p-4 2xl:p-8 bg-white min-h-screen rounded-2xl">
-      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">All Request Properties</div>
+    <div className="p-4 2xl:p-8 bg-orange-50/80 mt-18 lg:mt-22 2xl:mt-26 rounded-2xl">
+      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">All Request Properties</div>
 
       <div className="overflow-x-auto rounded-t-sm">
         <table className="table w-full">
-          <thead className="text-white text-lg xl:text-xl md:text-lg bg-green-500">
+          <thead className="text-white text-lg bg-[#14203e]/70">
             <tr>
               <th>#</th>
               <th>Image</th>
@@ -110,7 +110,7 @@ const Requests = () => {
             {offers.map((item, index) => (
               <tr
                 key={item._id}
-                className={`${index % 2 === 0 ? "bg-green-50" : "bg-white"}`}
+                className={`${index % 2 === 0 ? "bg-orange-50/80" : "bg-white"}`}
               >
                 <td className="text-sm xl:text-lg font-semibold">{index+1}</td>
                 <td><img src={item.propertyImage} alt="property image" className="w-10 md:w-14 h-10 md:h-14 rounded object-cover" /></td>
@@ -121,16 +121,16 @@ const Requests = () => {
                 <td className="text-sm xl:text-lg font-medium">${item.offerAmount}</td>
                 <td className="capitalize font-medium text-sm xl:text-lg">
                   {item.status === "pending" && (
-                    <span className="text-yellow-500">Pending</span>
+                    <span className="text-orange-300">Pending</span>
                   )}
                   {item.status === "accepted" && (
-                    <span className="text-green-600">Accepted</span>
+                    <span className="text-[#14203e]">Accepted</span>
                   )}
                   {item.status === "rejected" && (
                     <span className="text-red-500">Rejected</span>
                   )}
                   {
-                    item.transactionId && item.status === "bought" && <span className="text-green-600">Bought</span>
+                    item.transactionId && item.status === "bought" && <span className="text-[#14203e]">Bought</span>
 
                   }
                 </td>
@@ -139,7 +139,7 @@ const Requests = () => {
                     <div className="flex gap-2">
                       <button
                         onClick={() => handleAccept(item._id)}
-                        className="px-3 py-1 text-sm bg-green-500 text-white rounded hover:bg-green-600 cursor-pointer font-semibold"
+                        className="px-3 py-1 text-sm bg-[#14203e]/80 text-white rounded hover:bg-[#14203e] cursor-pointer font-semibold"
                       >
                         Accept
                       </button>

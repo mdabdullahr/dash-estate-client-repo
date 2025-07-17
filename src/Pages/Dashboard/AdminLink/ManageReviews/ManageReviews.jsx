@@ -52,8 +52,8 @@ const ManageReviews = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="p-4 2xl:p-8 bg-white min-h-screen rounded-2xl">
-      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">
+    <div className="p-4 2xl:p-8 bg-orange-50/50 mt-18 lg:mt-22 2xl:mt-26 rounded-2xl">
+      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">
         All User Reviews
       </div>
       {reviews.length === 0 ? (
@@ -63,7 +63,7 @@ const ManageReviews = () => {
           {reviews.map((review) => (
             <div
               key={review._id}
-              className="border border-green-50 rounded-lg shadow-sm p-4 bg-white hover:bg-green-50 h-full flex flex-col justify-between transition duration-600"
+              className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group flex flex-col justify-between p-6"
             >
               {/* Reviewer Info */}
               <div className="flex items-start justify-between">
@@ -71,8 +71,9 @@ const ManageReviews = () => {
                   <img
                     src={review.userImage}
                     alt="Reviewer"
-                    className="w-10 xl:w-14 h-10 xl:h-14 rounded-full border border-green-500"
+                    className="w-10 xl:w-14 h-10 xl:h-14 rounded-full border-3 border-gray-300"
                   />
+                  
                   <div>
                     <p className="font-medium text-[15px] xl:text-lg">
                       {review.userName}
@@ -99,7 +100,7 @@ const ManageReviews = () => {
 
               {/* Footer: Date + Button */}
               <div className="flex justify-between items-center mt-auto pt-2 border-t border-gray-300 text-sm">
-                <span className="text-green-600 font-medium">
+                <span className="text-gray-700 font-medium">
                   {moment(review.postedAt).fromNow()}
                 </span>
                 <button

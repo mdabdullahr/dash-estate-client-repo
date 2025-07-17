@@ -93,7 +93,7 @@ const MakeOffer = () => {
       {isLoading ? (
         <Loading></Loading>
       ) : (
-        <div className="w-full max-w-3xl bg-white p-8 rounded-xl shadow-md">
+        <div className="w-full max-w-3xl bg-orange-50/50 p-8 rounded-xl shadow-md mt-18 lg:mt-22 2xl:mt-26">
           <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
             Make an Offer
           </h2>
@@ -106,7 +106,7 @@ const MakeOffer = () => {
               <input
                 readOnly
                 value={wishlist.propertyTitle}
-                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
+                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100 focus:outline-orange-500"
               />
             </div>
 
@@ -118,7 +118,7 @@ const MakeOffer = () => {
               <input
                 readOnly
                 value={wishlist.propertyLocation}
-                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
+                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100 focus:outline-orange-500"
               />
             </div>
 
@@ -130,7 +130,7 @@ const MakeOffer = () => {
               <input
                 readOnly
                 value={wishlist.agentName}
-                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
+                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100 focus:outline-orange-500"
               />
             </div>
 
@@ -142,7 +142,7 @@ const MakeOffer = () => {
               <input
                 readOnly
                 value={user.displayName}
-                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
+                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100 focus:outline-orange-500"
               />
             </div>
 
@@ -154,7 +154,7 @@ const MakeOffer = () => {
               <input
                 readOnly
                 value={user.email}
-                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100"
+                className="w-full border border-gray-300 px-4 py-2 rounded-md bg-gray-100 focus:outline-orange-500"
               />
             </div>
 
@@ -179,7 +179,7 @@ const MakeOffer = () => {
                 placeholder={`Enter between $${wishlist.minPrice} - $${wishlist.maxPrice}`}
                 className={`w-full border px-4 py-2 rounded-md ${
                   errors.offerAmount ? "border-red-500" : "border-gray-300"
-                } focus:outline-none focus:ring-2 focus:ring-green-400`}
+                } focus:outline-none focus:ring-2 focus:ring-orange-500`}
               />
               {errors.offerAmount && (
                 <p className="text-sm text-red-500 mt-1">
@@ -200,7 +200,7 @@ const MakeOffer = () => {
                 })}
                 className={`w-full border px-4 py-2 rounded-md ${
                   errors.buyingDate ? "border-red-500" : "border-gray-300"
-                } focus:outline-none focus:ring-2 focus:ring-green-400`}
+                } focus:outline-none focus:ring-2 focus:ring-orange-500`}
               />
               {errors.buyingDate && (
                 <p className="text-sm text-red-500 mt-1">
@@ -211,7 +211,7 @@ const MakeOffer = () => {
 
             {isBoughtStatus === "bought" ? (
               <button
-                className="w-full bg-green-300 text-white font-semibold py-2 rounded-md shadow-md cursor-not-allowed"
+                className="w-full bg-orange-300 text-white font-semibold py-2 rounded-md shadow-md cursor-not-allowed"
                 disabled
               >
                 Already Sell
@@ -219,7 +219,7 @@ const MakeOffer = () => {
             ) : (
               <button
                 type="submit"
-                className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-md shadow-md transition duration-200 cursor-pointer"
+                className="w-full bg-orange-500 hover:bg-[#14203e] text-white font-semibold py-2 rounded-md shadow-md transition duration-200 cursor-pointer"
               >
                 Submit Offer
               </button>

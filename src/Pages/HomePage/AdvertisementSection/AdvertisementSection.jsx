@@ -4,6 +4,8 @@ import { Link } from "react-router";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import Loading from "../../../Shared/Loading/Loading";
 import { IoMdHome } from "react-icons/io";
+import { FaLocationDot } from "react-icons/fa6";
+import { LiaHandHoldingUsdSolid } from "react-icons/lia";
 
 const AdvertisementSection = () => {
   const axiosPublic = useAxiosPublic();
@@ -27,7 +29,7 @@ const AdvertisementSection = () => {
         </div>
 
         {advertisedProperties.length === 0 ? (
-          <div className="text-center text-xl font-medium text-gray-600 border border-dashed border-green-400 py-10 rounded-lg shadow-inner bg-green-50">
+          <div className="text-center text-xl font-medium text-gray-600 border border-dashed border-orange-500 py-10 rounded-lg shadow-inner bg-orange-50">
             🚫 No advertised properties available at the moment.
           </div>
         ) : (
@@ -35,9 +37,9 @@ const AdvertisementSection = () => {
             {advertisedProperties.map((property) => (
               <div
                 key={property._id}
-                className="relative bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden border border-transparent hover:border-orange-200 group"
+                className="relative bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group"
               >
-                {/* Background Image */}
+                
                 <img
                   src={property.image}
                   alt={property.title}
@@ -51,8 +53,8 @@ const AdvertisementSection = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 translate-x-[-100%] translate-y-[-100%] group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500 ease-in-out z-10">
                     <Link to={`/propertyDetails/${property._id}`}>
-                      <button className="bg-orange-500 hover:bg-[#1b2a4f] cursor-pointer text-white font-semibold py-2 px-5 rounded">
-                        View Details
+                      <button className="bg-orange-500 hover:bg-[#1b2a4f] cursor-pointer text-white font-semibold py-2 px-5 rounded-full">
+                        View Details →
                       </button>
                     </Link>
                   </div>
@@ -60,21 +62,21 @@ const AdvertisementSection = () => {
 
                 {/* Static Text (stays below the overlay) */}
                 <div className="p-4 space-y-2 relative z-0">
-                  <h3 className="text-lg font-semibold text-green-800">
+                  <h3 className="text-lg font-semibold text-gray-800">
                     {property.title}
                   </h3>
-                  <p className="text-sm text-gray-600">
-                    📍 {property.location}
+                  <p className="text-sm text-gray-700 font-medium flex items-center">
+                    <FaLocationDot className="mr-2 text-orange-500"></FaLocationDot> {property.location}
                   </p>
-                  <p className="text-sm text-gray-700 font-medium">
-                    💰 ${property.minPrice} - ${property.maxPrice}
+                  <p className="text-sm text-gray-700 font-medium flex items-center">
+                    <LiaHandHoldingUsdSolid className="mr-2 text-orange-500" size={20}></LiaHandHoldingUsdSolid> ${property.minPrice} - ${property.maxPrice}
                   </p>
                   <p className="text-sm font-medium text-gray-700">
                     Status:{" "}
                     <span
                       className={`capitalize ${
                         property.verificationStatus === "verified"
-                          ? "text-green-600"
+                          ? "text-orange-500"
                           : "text-yellow-500"
                       }`}
                     >

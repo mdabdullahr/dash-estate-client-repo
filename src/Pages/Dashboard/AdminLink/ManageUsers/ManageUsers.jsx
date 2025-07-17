@@ -83,14 +83,14 @@ const ManageUsers = () => {
   };
 
   return (
-    <div className="p-4 2xl:p-8 bg-white min-h-screen rounded-2xl">
-      <div className="divider before:bg-green-500 after:bg-green-500 text-green-500 text-xl md:text-2xl font-bold mb-8">All Users</div>
+    <div className="p-4 2xl:p-8 bg-orange-50/80 mt-18 lg:mt-22 2xl:mt-26 rounded-2xl">
+      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">All Users</div>
       {isLoading ? (
         <Loading></Loading>
       ) : (
         <div className="overflow-x-auto rounded-t-sm">
           <table className="table w-full">
-            <thead className="text-white text-lg xl:text-xl bg-green-500">
+            <thead className="text-white text-lg  bg-[#14203e]/70">
               <tr>
                 <th>#</th>
                 <th>Photo</th>
@@ -108,7 +108,7 @@ const ManageUsers = () => {
                 return (
                   <tr key={user._id} 
                   className={`${
-                    idx % 2 === 0 ? "bg-green-50" : "bg-white"
+                    idx % 2 === 0 ? "bg-orange-50/80" : "bg-white"
                   }`}>
                     <td className="text-sm xl:text-lg font-semibold">{idx + 1}</td>
                     <td><img src={user.image} className="w-10 2xl:w-14 h-10 2xl:h-14 rounded-xl object-cover" alt="user-Image" /></td>
@@ -116,31 +116,31 @@ const ManageUsers = () => {
                     <td className="text-sm xl:text-lg">{user.address}</td>
                     <td className="text-sm xl:text-lg">{user.email}</td>
                     <td className="capitalize text-sm xl:text-lg font-semibold">{user.role}</td>
-                    <td className="space-x-2 xl:space-x-5">
+                    <td className="space-x-2 xl:space-x-5 flex mt-2">
                       {!isFraud ? (
                         <>
                           {user.role !== "admin" && (
                             <button
                               onClick={() => handleMakeAdmin(user._id)}
-                              className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-sm xl:text-lg font-medium cursor-pointer"
+                              className="bg-[#14203e]  text-gray-200 px-4 py-2 rounded text-sm font-medium cursor-pointer"
                             >
-                              <FaUserShield className="inline mr-1" size={15} />
+                              <FaUserShield className="inline mr-1" />
                               Make Admin
                             </button>
                           )}
                           {user.role !== "agent" && (
                             <button
                               onClick={() => handleMakeAgent(user._id)}
-                              className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-sm xl:text-lg font-medium cursor-pointer"
+                              className="bg-[#14203e]/80 text-white px-4 py-2 rounded text-sm  font-medium cursor-pointer"
                             >
-                              <FaUserTie className="inline mr-1" size={15} />
+                              <FaUserTie className="inline mr-1" />
                               Make Agent
                             </button>
                           )}
                           {user.role === "agent" && (
                             <button
                               onClick={() => handleMarkFraud(user._id)}
-                              className="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 rounded text-sm xl:text-lg cursor-pointer"
+                              className="bg-orange-300 text-white px-4 py-2 rounded text-sm cursor-pointer"
                             >
                               <FaBan className="inline mr-1" size={15} />
                               Mark Fraud
@@ -155,9 +155,9 @@ const ManageUsers = () => {
 
                       <button
                         onClick={() => handleDeleteUser(user._id)}
-                        className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-sm xl:text-lg font-medium cursor-pointer"
+                        className="bg-red-500 text-white px-4 py-2 rounded text-sm font-medium cursor-pointer"
                       >
-                        <FaTrash className="inline mr-1" size={12}/>
+                        <FaTrash className="inline mr-1"/>
                         Delete
                       </button>
                     </td>

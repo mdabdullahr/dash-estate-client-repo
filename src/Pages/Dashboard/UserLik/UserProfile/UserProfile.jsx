@@ -4,7 +4,7 @@ import useAuth from "../../../../Hooks/useAuth";
 const UserProfile = () => {
     const {user} = useAuth();
   return (
-    <div className="min-h-screen w-full relative overflow-hidden rounded-2xl">
+    <div className="mt-18 lg:mt-22 2xl:mt-26 w-full relative overflow-hidden rounded-2xl">
       {/* 🔵 Background Cover Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
@@ -18,7 +18,7 @@ const UserProfile = () => {
       </div>
 
       {/* 🧑 Profile Card (Floating Centered) */}
-      <div className="relative flex items-center justify-center min-h-screen px-4">
+      <div className="relative flex items-center justify-center h-[83vh] px-4">
         <div className="max-w-2xl w-full bg-white/10 backdrop-blur-lg rounded-xl shadow-xl p-8 text-white text-center border border-white/20">
           {/* Profile Image */}
           <img
