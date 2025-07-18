@@ -14,7 +14,10 @@ const MakeOffer = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const navigate = useNavigate();
-  console.log(isBoughtStatus);
+
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | wishlist | Make_Offer";
+  }, []);
 
   // Fetch single wishlist item
   const { data: wishlist = {}, isLoading } = useQuery({

@@ -132,7 +132,11 @@ const PropertyDetails = () => {
     reviewMutation.mutate(data);
   };
 
-  // 💡 UI
+  useEffect(() => {
+    document.title = "DashEstate | Property_Details";
+  }, []);
+
+
   return (
     <div>
       <div className="w-full h-[60vh] relative overflow-hidden mt-20">

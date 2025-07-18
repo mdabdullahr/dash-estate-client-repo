@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { Link } from "react-router";
@@ -22,7 +22,12 @@ const AllProperties = () => {
     },
   });
 
+  useEffect(() => {
+    document.title = "DashEstate | All_Properties";
+  }, []);
+
   if (isLoading) return <Loading></Loading>;
+  
 
   return (
     <div className="bg-orange-50/80 min-h-screen">

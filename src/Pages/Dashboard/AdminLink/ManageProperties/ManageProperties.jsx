@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -40,6 +40,11 @@ const ManageProperties = () => {
       queryClient.invalidateQueries(["admin-properties"]);
     },
   });
+
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Manage_Properties";
+  }, []);
+
 
   if (isLoading) return <Loading></Loading>;
 

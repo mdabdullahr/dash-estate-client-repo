@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
@@ -9,6 +9,10 @@ const Requests = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Request";
+  }, []);
 
   const { data: offers = [], isLoading } = useQuery({
     queryKey: ["agentRequests", user?.email],

@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../../Shared/Navbar/Navbar';
 
 const ErrorPage = () => {
+    useEffect(() => {
+    document.title = "DashEstate | Error_Page";
+  }, []);
     return (
         <div>
             <Navbar></Navbar>

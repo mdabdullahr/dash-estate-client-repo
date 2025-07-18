@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaBackspace, FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router";
@@ -13,6 +13,10 @@ const Register = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
+
+  useEffect(() => {
+    document.title = "DashEstate | Register";
+  }, []);
 
   const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
 

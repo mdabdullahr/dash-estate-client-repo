@@ -1,5 +1,5 @@
 // ManageReviews.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
@@ -11,6 +11,10 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 const ManageReviews = () => {
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Manage_Reviews";
+  }, []);
 
   // Fetch all reviews
   const { data: reviews = [], isLoading } = useQuery({

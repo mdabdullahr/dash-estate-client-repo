@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import useAuth from "../../../../Hooks/useAuth";
@@ -11,6 +11,10 @@ const BoughtProperties = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Property_Bought";
+  }, []);
 
   const { data: properties = [], isLoading } = useQuery({
     queryKey: ["boughtProperties", user?.email],

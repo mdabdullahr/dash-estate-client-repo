@@ -3,10 +3,15 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaUserShield, FaUserTie, FaTrash, FaBan } from "react-icons/fa";
 import Loading from "../../../../Shared/Loading/Loading";
+import { useEffect } from "react";
 
 const ManageUsers = () => {
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Manage_Users";
+  }, []);
 
   // ✅ Fetch all users
   const { data: users = [], isLoading } = useQuery({

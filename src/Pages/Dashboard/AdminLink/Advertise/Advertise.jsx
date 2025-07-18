@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
@@ -6,6 +6,10 @@ import Loading from "../../../../Shared/Loading/Loading";
 
 const Advertise = () => {
   const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Advertise";
+  }, []);
 
   // fetch verified properties
   const {

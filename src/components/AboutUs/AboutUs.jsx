@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router";
 
 const AboutUs = () => {
+    useEffect(() => {
+    document.title = "DashEstate | About_Us";
+  }, []);
   return (
     <div className="mb-20 lg:mb-30">
       <div className="">

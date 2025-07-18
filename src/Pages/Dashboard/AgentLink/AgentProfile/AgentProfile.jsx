@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 
 const AgentProfile = () => {
   const { user } = useAuth();
+
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Profile";
+  }, []);
 
   return (
     <div

@@ -13,6 +13,10 @@ const AddProperty = () => {
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
 
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Add_Property";
+  }, []);
+
   const [imagePreview, setImagePreview] = useState(null);
   const [imageUploaded, setImageUploaded] = useState(false);
   const [imageUploading, setImageUploading] = useState(false);

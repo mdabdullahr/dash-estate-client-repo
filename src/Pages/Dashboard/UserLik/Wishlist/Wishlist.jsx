@@ -1,5 +1,5 @@
 // Wishlist.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import Swal from "sweetalert2";
@@ -14,7 +14,9 @@ const Wishlist = () => {
   const { user } = useAuth();
   const queryClient = useQueryClient();
 
-  // console.log(isBoughtStatus);
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Wishlist";
+  }, []);
 
   // Fetch wishlisted properties
   const { data: wishlists = [], isLoading } = useQuery({

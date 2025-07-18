@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router";
 import { FaLock } from "react-icons/fa";
 
 const Forbidden = () => {
+  useEffect(() => {
+    document.title = "DashEstate | Forbidden";
+  }, []);
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="bg-white p-10 rounded-2xl shadow-lg text-center max-w-md w-full">

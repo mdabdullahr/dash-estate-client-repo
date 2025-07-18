@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FaBuilding,
   FaBullhorn,
@@ -29,23 +29,28 @@ import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const { role, roleLoader } = useUserRole();
-  const {logoutUser} = useAuth();
+  const { logoutUser } = useAuth();
+
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Home";
+  }, []);
 
   if (roleLoader) return <Loading></Loading>;
 
   const handleLogOut = () => {
-      logoutUser()
-        .then(() => {
-          Swal.fire({
-            title: "Successfully Logged Out...!",
-            icon: "success",
-            draggable: true,
-          });
-        })
-        .catch((error) => {
-          toast.error("Logout failed...!", error.message);
+    logoutUser()
+      .then(() => {
+        Swal.fire({
+          title: "Successfully Logged Out...!",
+          icon: "success",
+          draggable: true,
         });
-    };
+      })
+      .catch((error) => {
+        toast.error("Logout failed...!", error.message);
+      });
+  };
+  
   return (
     <div className="min-h-screen bg-white text-black">
       <div className="bg-white">
@@ -156,7 +161,7 @@ const Dashboard = () => {
                         }
                       >
                         <FaUserCircle className="text-lg" />
-                        <span>My Profile</span>
+                        <span>Profile</span>
                       </NavLink>
 
                       {/* Wishlist */}
@@ -327,7 +332,7 @@ const Dashboard = () => {
                         }
                       >
                         <FaUserCog className="text-lg" />
-                        <span>Admin Profile</span>
+                        <span>Profile</span>
                       </NavLink>
 
                       {/* Manage Properties */}
@@ -395,7 +400,10 @@ const Dashboard = () => {
 
                 {/* Bottom: Logout */}
                 <div className="p-4 border-t-2 border-gray-300 pt-8">
-                  <button onClick={handleLogOut} className="border hover:border-0 border-white text-white px-8 py-4 text-lg xl:text-xl font-medium rounded-full hover:bg-orange-500 transition duration-500 cursor-pointer flex items-center gap-2 w-full">
+                  <button
+                    onClick={handleLogOut}
+                    className="border hover:border-0 border-white text-white px-8 py-4 text-lg xl:text-xl font-medium rounded-full hover:bg-orange-500 transition duration-500 cursor-pointer flex items-center gap-2 w-full"
+                  >
                     <FiLogOut /> Logout
                   </button>
                 </div>

@@ -2,10 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import useAuth from "../../../../Hooks/useAuth";
 import Loading from "../../../../Shared/Loading/Loading";
+import { useEffect } from "react";
 
 const MySold = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | My_Sold";
+  }, []);
 
   const { data: soldProperties = [], isLoading } = useQuery({
     queryKey: ["sold-properties", user?.email],

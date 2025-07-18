@@ -16,9 +16,9 @@ const Payment = () => {
   const [offer, setOffer] = useState(null);
   const [loader, setLoader] = useState(false);
 
-  console.log(stripe);
-  console.log(clientSecret);
-  console.log(offerId);
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Property_Bought | Payment";
+  }, []);
 
   // Fetch offer details & generate payment intent
   useEffect(() => {
@@ -75,6 +75,8 @@ const Payment = () => {
     }
 
     setLoader(false);
+
+    
   };
 
   return (

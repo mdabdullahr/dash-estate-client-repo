@@ -20,6 +20,10 @@ const MyAddedProperties = () => {
   const [imageUploading, setImageUploading] = useState(false);
   const [imagePreview, setImagePreview] = useState("");
 
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | My_Added_Properties";
+  }, []);
+
   const {
     register,
     handleSubmit,

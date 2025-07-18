@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 
 const UserProfile = () => {
   const { user } = useAuth();
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | Profile";
+  }, []);
   return (
     <div
       data-aos="zoom-in"

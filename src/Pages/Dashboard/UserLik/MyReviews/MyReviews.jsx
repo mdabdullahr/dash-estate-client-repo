@@ -8,10 +8,15 @@ import Loading from "../../../../Shared/Loading/Loading";
 import Rating from "react-rating";
 import { FaQuoteLeft, FaQuoteRight, FaRegStar, FaStar } from "react-icons/fa";
 import moment from "moment-timezone";
+import { useEffect } from "react";
 
 const MyReviews = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    document.title = "DashEstate | Dashboard | My_Reviews";
+  }, []);
 
   const {
     data: reviews = [],
