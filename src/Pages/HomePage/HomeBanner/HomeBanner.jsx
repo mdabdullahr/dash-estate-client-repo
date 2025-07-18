@@ -12,7 +12,7 @@ const [showCurtain, setShowCurtain] = useState(true);
   }, []);
 
   return (
-    <div className="relative w-full h-[100vh] overflow-hidden">
+    <div className="relative w-full overflow-hidden">
       {showCurtain && (
         <div className="absolute inset-0 z-50 flex">
           <div className="w-1/2 h-full bg-white animate-slide-left origin-left"></div>
@@ -23,7 +23,7 @@ const [showCurtain, setShowCurtain] = useState(true);
       <div className="w-full relative bg-[#14203e]">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen relative z-10">
         {/* Left Section */}
-        <div className="relative text-white flex items-center justify-center px-10 pt-20">
+        <div className="relative text-white flex items-center justify-center px-4 md:px-10 pt-10 md:pt-20">
           {/* Background diagonal shape */}
           <div className="absolute inset-0 clip-left-25 bg-[#14203e] z-0"></div>
 
@@ -164,7 +164,7 @@ const [showCurtain, setShowCurtain] = useState(true);
           <img
             src="https://i.ibb.co/sdkyg0YC/banner3.jpg"
             alt="Real Estate"
-            className="w-full h-full object-cover"
+            className="w-full h-[50vh] md:h-full object-cover"
           />
         </div>
       </div>

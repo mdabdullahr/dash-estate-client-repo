@@ -80,7 +80,7 @@ const Navbar = () => {
       data-aos-duration="1500"
       className="fixed top-0 left-0 w-full z-50 bg-[#14203e] border-b border-gray-500"
     >
-      <div className="navbar max-w-[1620px] mx-auto px-10 py-4 items-center">
+      <div className="navbar max-w-[1620px] mx-auto px-4 md:px-10 py-4 items-center">
         <div className="navbar-start">
           <div className="dropdown">
             <div

@@ -10,7 +10,7 @@ const AboutUs = () => {
     <div className="mb-20 lg:mb-30">
       <div className="">
         {/* Image */}
-        <div className="w-full h-[100vh] relative overflow-hidden mt-20">
+        <div className="w-full relative overflow-hidden mt-20">
           {/* ✅ Fullscreen Background Image */}
           <img
             src="https://i.ibb.co/DgvhSvvS/loux1.jpg"
@@ -24,7 +24,7 @@ const AboutUs = () => {
           {/* ✅ Main Content Section */}
           <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 h-full">
             {/* Left Side Text */}
-            <div className="flex items-center justify-center px-10 mt-24 lg:mt-0 text-white">
+            <div className="flex items-center justify-center px-4 md:px-10 py-10 md:py-20 lg:mt-0 text-white">
               <div className="text-left max-w-3xl">
                 <h4
                   data-aos="fade-up"
@@ -59,7 +59,7 @@ const AboutUs = () => {
                   data-aos="fade-up"
                   data-aos-duration="1500"
                   data-aos-delay="200"
-                  className="text-lg mb-6 text-gray-300"
+                  className="text-sm md:text-lg mb-6 text-gray-300"
                 >
                   For users, we offer a clean interface to explore high-quality,
                   verified properties, save them to personalized wishlists, make
@@ -71,7 +71,7 @@ const AboutUs = () => {
                   data-aos="fade-up"
                   data-aos-duration="1500"
                   data-aos-delay="200"
-                  className="text-lg mb-6 text-gray-300"
+                  className="text-sm md:text-lg mb-6 text-gray-300"
                 >
                   For agents, the platform acts as a robust workspace. Agents
                   can add, update, and manage property listings, view buyer
@@ -83,7 +83,7 @@ const AboutUs = () => {
                   data-aos="fade-up"
                   data-aos-duration="1500"
                   data-aos-delay="200"
-                  className="text-lg mb-6 text-gray-300"
+                  className="text-sm md:text-lg mb-6 text-gray-300"
                 >
                   Admins enjoy full control over user roles, property
                   verifications, review monitoring, and fraud detection. Whether
@@ -95,19 +95,7 @@ const AboutUs = () => {
                   data-aos="fade-up"
                   data-aos-duration="1500"
                   data-aos-delay="200"
-                  className="text-lg mb-6 text-gray-300"
-                >
-                  Built with modern web technologies and backed by Firebase
-                  Authentication, JWT security, MongoDB, and ReactJS, our
-                  application is fast, secure, and scalable. We’ve combined
-                  beauty with performance, ensuring mobile responsiveness,
-                  accessibility, and SEO-optimized design.
-                </p>
-                <p
-                  data-aos="fade-up"
-                  data-aos-duration="1500"
-                  data-aos-delay="200"
-                  className="text-lg mb-6 text-gray-300"
+                  className="text-sm md:text-lg mb-6 text-gray-300"
                 >
                   Join thousands of users who trust our platform every day.
                   Whether you’re looking to buy, sell, manage, or just explore
@@ -137,7 +125,7 @@ const AboutUs = () => {
               <img
                 src="https://i.ibb.co/0jmZzCn0/luxarious-home.jpg"
                 alt="Luxury Home"
-                className="w-full h-full object-cover"
+                className="w-full h-[60vh] md:h-full object-cover"
               />
             </div>
           </div>

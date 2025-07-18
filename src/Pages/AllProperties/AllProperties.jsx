@@ -31,7 +31,7 @@ const AllProperties = () => {
 
   return (
     <div className="bg-orange-50/80 min-h-screen">
-      <div className="p-6 min-h-screen pt-36 pb-12 max-w-[1620px] mx-auto">
+      <div className="px-4 md:px-10 min-h-screen pt-30 md:pt-36 pb-12 max-w-[1620px] mx-auto">
         {/* 🔍 Search & 🔃 Sort Controls */}
         <div
           data-aos="fade-up"

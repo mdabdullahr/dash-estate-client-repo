@@ -171,7 +171,6 @@ const MyAddedProperties = () => {
         imageUrl,
       });
     } catch (err) {
-      console.log(err);
       setImageUploading(false);
       toast.error("Image upload failed");
     }

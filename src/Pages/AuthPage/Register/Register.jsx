@@ -91,7 +91,6 @@ const Register = () => {
               });
           })
           .catch((error) => {
-            console.log(error);
             setUser(user);
           });
       })

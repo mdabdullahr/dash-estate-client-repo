@@ -6,7 +6,7 @@ import { Link } from "react-router";
 const WhoWeAre = () => {
   return (
     <div className="bg-orange-50/80">
-      <div className="max-w-[1320px] mx-auto py-20 lg:py-30 flex flex-col lg:flex-row items-center  px-10 gap-10 lg:gap-0">
+      <div className="max-w-[1320px] mx-auto py-20 lg:py-30 flex flex-col lg:flex-row items-center  px-4 md:px-10 gap-10 lg:gap-0">
         <div
           data-aos="fade-up"
           data-aos-duration="1500"
@@ -26,7 +26,7 @@ const WhoWeAre = () => {
             <img
               src="https://i.ibb.co/mCxQ1XKb/vila.jpg"
               alt="img"
-              className="w-full lg:w-[90%] md:h-[600px] lg:h-[500px] 2xl:h-[600px] object-cover rounded-2xl"
+              className="w-full lg:w-[90%] h-[40vh] md:h-[600px] lg:h-[500px] 2xl:h-[600px] object-cover rounded-2xl"
             />
             <div className="w-[90%] h-26 bg-orange-600 absolute bottom-20 -left-34 opacity-50 hidden 2xl:flex"></div>
           </div>

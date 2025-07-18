@@ -4,7 +4,7 @@ import { FaHome, FaDollarSign } from "react-icons/fa";
 
 const YourLouxery = () => {
   return (
-    <div className="w-full h-[60vh] relative overflow-hidden">
+    <div className="w-full h-full md:h-[80vh] relative overflow-hidden">
       {/* ✅ Fullscreen Background Image */}
       <img
         src="https://i.ibb.co/DgvhSvvS/loux1.jpg"
@@ -18,7 +18,7 @@ const YourLouxery = () => {
       {/* ✅ Main Content Section */}
       <div className="relative z-20 grid grid-cols-1 lg:grid-cols-2 h-full">
         {/* Left Side Text */}
-        <div className="flex items-center justify-center px-10 mt-24 lg:mt-0 text-white">
+        <div className="flex items-center justify-center px-4 md:px-10 mt-24 lg:mt-0 text-white">
           <div className="text-left max-w-2xl">
             <h4
               data-aos="fade-up"
@@ -69,11 +69,10 @@ const YourLouxery = () => {
       </div>
 
       {/* 🏠 Mini House Cards + Price */}
-      <div className="absolute z-30 bottom-0 md:bottom-10 left-1/2 transform -translate-x-1/2 flex gap-6">
+      <div className="absolute z-30 bottom-0 md:bottom-10 left-1/2 transform -translate-x-1/2 flex gap-2 md:gap-6">
         {/* Card 1 */}
         <div data-aos="fade-right"
               data-aos-duration="1500"
-              data-aos-delay="100"
               className="bg-white shadow-lg rounded-md overflow-hidden w-32 sm:w-40 h-20 md:h-full">
           <img
             src="https://i.ibb.co/qYm2qPjc/loux.jpg"
@@ -87,7 +86,7 @@ const YourLouxery = () => {
         {/* Card 2 */}
         <div data-aos="fade-down"
               data-aos-duration="1500"
-              data-aos-delay="100" className="bg-white shadow-lg rounded-md overflow-hidden w-32 sm:w-40 h-20 md:h-full">
+              className="bg-white shadow-lg rounded-md overflow-hidden w-32 sm:w-40 h-20 md:h-full">
           <img
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
             alt="House 2"
@@ -100,7 +99,7 @@ const YourLouxery = () => {
         {/* Price Tag */}
         <div data-aos="fade-left"
               data-aos-duration="1500"
-              data-aos-delay="100" className="bg-orange-500/70 text-white shadow-lg rounded-md px-1 md:px-4 py-1 md:py-3 flex items-center gap-2 text-lg md:text-2xl xl:text-3xl font-medium md:font-semibold text-center border-2 md:border-4 border-white h-20 md:h-32">
+               className="bg-orange-500/70 text-white shadow-lg rounded-md px-1 md:px-4 py-1 md:py-3 flex items-center gap-2 text-lg md:text-2xl xl:text-3xl font-medium md:font-semibold text-center border-2 md:border-4 border-white h-20 md:h-32">
           1,750 <br /> Square Areas
         </div>
       </div>

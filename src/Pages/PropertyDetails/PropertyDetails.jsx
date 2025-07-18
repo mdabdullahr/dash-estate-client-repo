@@ -139,7 +139,7 @@ const PropertyDetails = () => {
 
   return (
     <div>
-      <div className="w-full h-[60vh] relative overflow-hidden mt-20">
+      <div className="w-full h-full md:h-[80vh] relative overflow-hidden mt-20">
         {/* ✅ Fullscreen Background Image */}
         <img
           src="https://i.ibb.co/DgvhSvvS/loux1.jpg"
@@ -208,7 +208,7 @@ const PropertyDetails = () => {
       </div>
 
       <div className="bg-orange-50/50">
-        <div className="max-w-[1620px] mx-auto px-10 min-h-screen pt-36">
+        <div className="max-w-[1620px] mx-auto px-4 md:px-10 min-h-screen pt-30 md:pt-36">
           {isLoading ? (
             <Loading></Loading>
           ) : (

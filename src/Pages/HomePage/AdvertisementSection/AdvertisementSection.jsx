@@ -22,7 +22,7 @@ const AdvertisementSection = () => {
 
   return (
     <div className="bg-orange-50/80">
-      <div className="pt-20 lg:pt-30 pb-12 px-10 max-w-[1620px] mx-auto">
+      <div className="pt-20 lg:pt-30 pb-12 px-4 md:px-10 max-w-[1620px] mx-auto">
         <h4
           data-aos="fade-up"
           data-aos-duration="1500"

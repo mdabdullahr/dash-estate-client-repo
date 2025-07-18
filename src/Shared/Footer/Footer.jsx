@@ -16,7 +16,7 @@ const Footer = () => {
       {/* 🎨 Background Image (bottom-left corner) */}
 
       {/* 📦 Main Content */}
-      <div className="max-w-[1620px] mx-auto px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative z-10">
+      <div className="max-w-[1620px] mx-auto px-4 md:px-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative z-10">
         {/* 🔰 Logo & About */}
         <div data-aos="fade-up" data-aos-duration="1500">
           <img src={logo} alt="Logo" className="w-56 mb-4" />

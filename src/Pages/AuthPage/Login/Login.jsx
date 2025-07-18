@@ -26,8 +26,6 @@ const LoginPage = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("Form submitted:", data);
-    // 🔐 Implement login logic here (Firebase/Auth)
     loginUser(data.email, data.password)
       .then((result) => {
         Swal.fire({
@@ -43,8 +41,6 @@ const LoginPage = () => {
   };
 
   const handleGoogleLogin = () => {
-    console.log("Google login clicked");
-    // 🔐 Handle Google login here
     googleLogin()
       .then((res) => {
         const user = res.user;

@@ -40,7 +40,6 @@ const MakeOffer = () => {
 
     fetchBoughtStatuses();
   }, [wishlist, axiosSecure]);
-  console.log(wishlist.propertyId);
 
   const {
     register,

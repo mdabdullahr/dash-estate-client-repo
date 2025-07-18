@@ -24,7 +24,6 @@ const Payment = () => {
   useEffect(() => {
     axiosSecure.get(`/offers/${offerId}`).then((res) => {
       setOffer(res.data);
-      console.log(typeof res.data.offerAmount);
 
       axiosSecure
         .post("/create-payment-intent", { amount: res.data.offerAmount })

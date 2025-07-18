@@ -61,7 +61,6 @@ const AddProperty = () => {
       if (!imgData.success) throw new Error("Image upload failed");
 
       const imageUrl = imgData.data.url;
-      console.log(imageUrl);
       setImageUploaded(true);
       setImageUploading(false);
 
