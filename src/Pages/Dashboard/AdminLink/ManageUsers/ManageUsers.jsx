@@ -83,8 +83,14 @@ const ManageUsers = () => {
   };
 
   return (
-    <div className="p-4 2xl:p-8 bg-orange-50/80 mt-18 lg:mt-22 2xl:mt-26 rounded-2xl">
-      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">All Users</div>
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      className="p-4 2xl:p-8 bg-orange-50/80 mt-18 lg:mt-22 2xl:mt-26 rounded-2xl"
+    >
+      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">
+        All Users
+      </div>
       {isLoading ? (
         <Loading></Loading>
       ) : (
@@ -106,16 +112,30 @@ const ManageUsers = () => {
                 const isFraud = user.status === "fraud";
 
                 return (
-                  <tr key={user._id} 
-                  className={`${
-                    idx % 2 === 0 ? "bg-orange-50/80" : "bg-white"
-                  }`}>
-                    <td className="text-sm xl:text-lg font-semibold">{idx + 1}</td>
-                    <td><img src={user.image} className="w-10 2xl:w-14 h-10 2xl:h-14 rounded-xl object-cover" alt="user-Image" /></td>
-                    <td className="text-sm xl:text-lg font-semibold">{user.name}</td>
+                  <tr
+                    key={user._id}
+                    className={`${
+                      idx % 2 === 0 ? "bg-orange-50/80" : "bg-white"
+                    }`}
+                  >
+                    <td className="text-sm xl:text-lg font-semibold">
+                      {idx + 1}
+                    </td>
+                    <td>
+                      <img
+                        src={user.image}
+                        className="w-10 2xl:w-14 h-10 2xl:h-14 rounded-xl object-cover"
+                        alt="user-Image"
+                      />
+                    </td>
+                    <td className="text-sm xl:text-lg font-semibold">
+                      {user.name}
+                    </td>
                     <td className="text-sm xl:text-lg">{user.address}</td>
                     <td className="text-sm xl:text-lg">{user.email}</td>
-                    <td className="capitalize text-sm xl:text-lg font-semibold">{user.role}</td>
+                    <td className="capitalize text-sm xl:text-lg font-semibold">
+                      {user.role}
+                    </td>
                     <td className="space-x-2 xl:space-x-5 flex mt-2">
                       {!isFraud ? (
                         <>
@@ -157,7 +177,7 @@ const ManageUsers = () => {
                         onClick={() => handleDeleteUser(user._id)}
                         className="bg-red-500 text-white px-4 py-2 rounded text-sm font-medium cursor-pointer"
                       >
-                        <FaTrash className="inline mr-1"/>
+                        <FaTrash className="inline mr-1" />
                         Delete
                       </button>
                     </td>

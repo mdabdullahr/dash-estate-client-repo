@@ -37,7 +37,11 @@ const Advertise = () => {
   }
 
   return (
-    <div className="p-4 2xl:p-8 bg-orange-50/80 mt-18 lg:mt-22 2xl:mt-26 rounded-2xl">
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      className="p-4 2xl:p-8 bg-orange-50/80 mt-18 lg:mt-22 2xl:mt-26 rounded-2xl"
+    >
       <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">
         All Verified properties
       </div>
@@ -61,7 +65,9 @@ const Advertise = () => {
                 return (
                   <tr
                     key={property._id}
-                    className={`${idx % 2 === 0 ? "bg-orange-50/80" : "bg-white"}`}
+                    className={`${
+                      idx % 2 === 0 ? "bg-orange-50/80" : "bg-white"
+                    }`}
                   >
                     <td className="text-sm xl:text-lg font-semibold">
                       {idx + 1}
@@ -76,17 +82,19 @@ const Advertise = () => {
                     <td className="text-sm xl:text-lg font-semibold">
                       {property.title}
                     </td>
-                    <td className="text-sm xl:text-lg">${property.minPrice} - ${property.maxPrice}</td>
+                    <td className="text-sm xl:text-lg">
+                      ${property.minPrice} - ${property.maxPrice}
+                    </td>
                     <td className="text-sm xl:text-lg">{property.agentName}</td>
                     <td className="text-sm xl:text-lg">
                       {property.advertised === true ? (
-                        <span className="text-blue-600 font-semibold">
+                        <span className="text-[#14203e94] font-semibold">
                           Advertised
                         </span>
                       ) : (
                         <button
                           onClick={() => advertiseMutation.mutate(property._id)}
-                          className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 cursor-pointer"
+                          className="bg-orange-500 text-white px-3 py-1 rounded hover:bg-[#14203e] cursor-pointer"
                         >
                           Advertise
                         </button>

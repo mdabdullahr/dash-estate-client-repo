@@ -32,6 +32,7 @@ import MakeOffer from "../Pages/Dashboard/UserLik/Wishlist/MakeOffer";
 // import Payment from "../Pages/Dashboard/UserLik/BoughtProperties/Payment";
 import PaymentPage from "../Pages/Dashboard/UserLik/BoughtProperties/PaymentPage";
 import AboutUs from "../components/AboutUs/AboutUs";
+import DashboardHome from "../Pages/Dashboard/DashboardHome/DashboardHome";
 // import UpdateProfile from "../Pages/Dashboard/UpdateProfile/updateProfile";
 
 export const router = createBrowserRouter([
@@ -82,6 +83,10 @@ export const router = createBrowserRouter([
     ),
     children: [
       // USER RELATED CHILDREN
+      {
+        index: true,
+        element: <PrivateRoute><DashboardHome></DashboardHome></PrivateRoute>
+      },
       {
         path: "profile",
         element: (

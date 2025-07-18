@@ -24,7 +24,7 @@ const Payment = () => {
   useEffect(() => {
     axiosSecure.get(`/offers/${offerId}`).then((res) => {
       setOffer(res.data);
-      console.log(typeof(res.data.offerAmount));
+      console.log(typeof res.data.offerAmount);
 
       axiosSecure
         .post("/create-payment-intent", { amount: res.data.offerAmount })
@@ -78,13 +78,17 @@ const Payment = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto pt-32 px-4">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1500"
+      className="max-w-2xl mx-auto pt-32 px-4"
+    >
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-200"
       >
         {/* Top bar */}
-        <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-4">
+        <div className="bg-gradient-to-r from-orange-500 to-[#14203e] text-white px-6 py-4">
           <h2 className="text-lg font-semibold flex items-center gap-2">
             <FiCreditCard /> Complete Your Payment
           </h2>
@@ -100,13 +104,13 @@ const Payment = () => {
         <div className="p-6 space-y-5">
           <label className="block font-medium text-gray-700">
             Card Details
-            <CardElement className="mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 transition" />
+            <CardElement className="mt-2 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 transition" />
           </label>
 
           <button
             type="submit"
             disabled={!stripe || !clientSecret || loader}
-            className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-3 rounded-md transition disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+            className="w-full bg-orange-500 hover:bg-[#14203e] text-white font-medium py-3 rounded-md transition disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
           >
             {loader ? "Processing..." : "Pay Now"}
           </button>

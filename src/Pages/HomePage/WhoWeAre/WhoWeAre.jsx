@@ -1,6 +1,7 @@
 import React from "react";
 import { FaHome } from "react-icons/fa";
 import { BsTelephoneXFill } from "react-icons/bs";
+import { Link } from "react-router";
 
 const WhoWeAre = () => {
   return (
@@ -87,9 +88,11 @@ const WhoWeAre = () => {
           <div data-aos="fade-up"
               data-aos-duration="1500"
               data-aos-delay="100" className="mt-10 xl:mt-14 flex flex-col md:flex-row items-center gap-10">
-            <button className="text-lg md:text-xl px-8 py-5 rounded-full bg-[#14203e] hover:bg-orange-500 transition duration-500 text-white flex items-center gap-4">
+            <Link to="/aboutUs">
+            <button className="text-lg md:text-xl px-8 py-5 rounded-full bg-[#14203e] hover:bg-orange-500 transition duration-500 text-white flex items-center gap-4 cursor-pointer">
               ABOUT US MORE <FaHome></FaHome>
             </button>
+            </Link>
 
             <div className="flex items-center gap-4">
               <p className="bg-[#14203e]/30 px-6 py-6 rounded-full">

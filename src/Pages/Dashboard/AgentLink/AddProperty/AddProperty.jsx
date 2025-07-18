@@ -127,12 +127,15 @@ const AddProperty = () => {
   };
 
   return (
-    <div className="flex justify-center items-center mt-18 lg:mt-22 2xl:mt-26">
-      
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      className="flex justify-center items-center mt-18 lg:mt-22 2xl:mt-26"
+    >
       <div className="w-full max-w-3xl bg-orange-50/40 p-8 rounded-xl shadow-md">
         <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">
-        Add Property
-      </div>
+          Add Property
+        </div>
         <p className="text-center text-gray-500 mb-8">
           Enter your details for Add Property
         </p>
@@ -260,16 +263,18 @@ const AddProperty = () => {
               Property Details
             </label>
             <textarea
-              {...register("propertyDetails", { required: "Property Details is required" })}
+              {...register("propertyDetails", {
+                required: "Property Details is required",
+              })}
               rows="4"
               placeholder="Write your thoughts..."
               className="w-full border border-gray-300 rounded px-4 py-2 outline-0 focus:border-orange-500"
             ></textarea>
             {errors.propertyDetails && (
-                <p className="text-sm text-red-500 mt-1">
-                  {errors.propertyDetails.message}
-                </p>
-              )}
+              <p className="text-sm text-red-500 mt-1">
+                {errors.propertyDetails.message}
+              </p>
+            )}
           </div>
 
           {/* Image Upload Section */}

@@ -5,7 +5,11 @@ const AgentProfile = () => {
   const { user } = useAuth();
 
   return (
-    <div className="w-full relative overflow-hidden rounded-2xl mt-18 lg:mt-22 2xl:mt-26">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1500"
+      className="w-full relative overflow-hidden rounded-2xl mt-18 lg:mt-22 2xl:mt-26"
+    >
       {/* 🔵 Background Cover Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
@@ -29,7 +33,9 @@ const AgentProfile = () => {
           />
 
           {/* Name + Info */}
-          <h2 className="mt-4 text-3xl font-bold">{user?.displayName || "Agent Name"}</h2>
+          <h2 className="mt-4 text-3xl font-bold">
+            {user?.displayName || "Agent Name"}
+          </h2>
           <p className="text-sm sm:text-base text-gray-200">{user?.email}</p>
 
           <span className="inline-block mt-3 bg-green-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md">
@@ -38,7 +44,8 @@ const AgentProfile = () => {
 
           {/* Optional Agent Note or Description */}
           <p className="mt-6 text-gray-100 text-sm sm:text-base leading-relaxed">
-            Welcome to your Agent Dashboard. Here you can manage your properties, respond to offers, and track your performance.
+            Welcome to your Agent Dashboard. Here you can manage your
+            properties, respond to offers, and track your performance.
           </p>
         </div>
       </div>

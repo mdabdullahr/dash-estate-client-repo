@@ -2,9 +2,13 @@ import React from "react";
 import useAuth from "../../../../Hooks/useAuth";
 
 const UserProfile = () => {
-    const {user} = useAuth();
+  const { user } = useAuth();
   return (
-    <div className="mt-18 lg:mt-22 2xl:mt-26 w-full relative overflow-hidden rounded-2xl">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1500"
+      className="mt-18 lg:mt-22 2xl:mt-26 w-full relative overflow-hidden rounded-2xl"
+    >
       {/* 🔵 Background Cover Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0"

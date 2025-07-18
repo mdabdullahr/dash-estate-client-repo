@@ -31,7 +31,11 @@ const MySold = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="p-4 md:p-8 mt-18 lg:mt-22 2xl:mt-26 bg-orange-50/80 rounded-2xl">
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      className="p-4 md:p-8 mt-18 lg:mt-22 2xl:mt-26 bg-orange-50/80 rounded-2xl"
+    >
       <div className="bg-orange-50 border border-orange-200 rounded-lg p-5 mb-6 shadow-sm flex items-center justify-between">
         <div>
           <h2 className="text-lg sm:text-xl font-semibold text-orange-700 mb-1">
@@ -65,7 +69,9 @@ const MySold = () => {
             {soldProperties.map((item, index) => (
               <tr
                 key={item._id}
-                className={`${index % 2 === 0 ? "bg-orange-50/80" : "bg-white"}`}
+                className={`${
+                  index % 2 === 0 ? "bg-orange-50/80" : "bg-white"
+                }`}
               >
                 <td className="text-sm xl:text-lg font-semibold">
                   {index + 1}

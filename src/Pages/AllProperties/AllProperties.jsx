@@ -66,16 +66,19 @@ const AllProperties = () => {
             />
           </div>
         </div>
-        <div data-aos="fade-up"
-              data-aos-duration="1500"
-              data-aos-delay="100" className="divider before:bg-[#1b2a4f] after:bg-[#1b2a4f] text-[#1b2a4f] text-2xl md:text-3xl xl:text-4xl font-bold my-10">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-delay="100"
+          className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-2xl md:text-3xl xl:text-4xl font-bold my-10"
+        >
           All Properties
         </div>
         {/* 🏡 Properties Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6">
           {properties.map((property, index) => (
             <div
-            data-aos="fade-up"
+              data-aos="fade-up"
               data-aos-duration="1500"
               data-aos-delay={index * 200}
               key={property._id}

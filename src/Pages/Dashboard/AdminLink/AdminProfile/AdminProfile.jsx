@@ -2,9 +2,13 @@ import React from "react";
 import useAuth from "../../../../Hooks/useAuth";
 
 const AdminProfile = () => {
-    const {user} = useAuth();
+  const { user } = useAuth();
   return (
-    <div className="w-full relative overflow-hidden rounded-2xl mt-18 lg:mt-22 2xl:mt-26">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1500"
+      className="w-full relative overflow-hidden rounded-2xl mt-18 lg:mt-22 2xl:mt-26"
+    >
       {/* 🔵 Background Cover Image with Overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center z-0"

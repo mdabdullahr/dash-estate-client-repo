@@ -52,16 +52,28 @@ const ManageReviews = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="p-4 2xl:p-8 bg-orange-50/50 mt-18 lg:mt-22 2xl:mt-26 rounded-2xl">
-      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      className="p-4 2xl:p-8 bg-orange-50/50 mt-18 lg:mt-22 2xl:mt-26 rounded-2xl"
+    >
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1500"
+        data-aos-delay="100"
+        className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8"
+      >
         All User Reviews
       </div>
       {reviews.length === 0 ? (
         <p className="text-center text-2xl">No reviews found.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5">
-          {reviews.map((review) => (
+          {reviews.map((review, index) => (
             <div
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              data-aos-delay={index * 100}
               key={review._id}
               className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group flex flex-col justify-between p-6"
             >
@@ -73,7 +85,7 @@ const ManageReviews = () => {
                     alt="Reviewer"
                     className="w-10 xl:w-14 h-10 xl:h-14 rounded-full border-3 border-gray-300"
                   />
-                  
+
                   <div>
                     <p className="font-medium text-[15px] xl:text-lg">
                       {review.userName}

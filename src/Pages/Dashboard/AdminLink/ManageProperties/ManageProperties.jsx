@@ -44,7 +44,11 @@ const ManageProperties = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="p-4 2xl:p-8 bg-orange-50/80 rounded-2xl mt-18 lg:mt-22 2xl:mt-26">
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      className="p-4 2xl:p-8 bg-orange-50/80 rounded-2xl mt-18 lg:mt-22 2xl:mt-26"
+    >
       <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">
         Manage All Properties
       </div>
@@ -68,9 +72,13 @@ const ManageProperties = () => {
               {properties.map((property, index) => (
                 <tr
                   key={property._id}
-                  className={`${index % 2 === 0 ? "bg-orange-50/80" : "bg-white"}`}
+                  className={`${
+                    index % 2 === 0 ? "bg-orange-50/80" : "bg-white"
+                  }`}
                 >
-                  <td className="text-sm xl:text-lg font-semibold">{index+1}</td>
+                  <td className="text-sm xl:text-lg font-semibold">
+                    {index + 1}
+                  </td>
                   <td>
                     <div className="avatar">
                       <div className="w-10 md:w-14 h-10 md:h-14 rounded overflow-hidden">
@@ -82,7 +90,9 @@ const ManageProperties = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="text-sm xl:text-lg font-semibold">{property.title}</td>
+                  <td className="text-sm xl:text-lg font-semibold">
+                    {property.title}
+                  </td>
                   <td className="text-sm xl:text-lg">{property.location}</td>
                   <td className="text-sm xl:text-lg">{property.agentName}</td>
                   <td className="text-sm xl:text-lg">{property.agentEmail}</td>

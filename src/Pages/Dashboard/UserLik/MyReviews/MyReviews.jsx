@@ -53,24 +53,39 @@ const MyReviews = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="p-4 md:p-8 bg-orange-50/80 rounded-2xl mt-18 lg:mt-22 2xl:mt-26">
-      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">My Reviews</div>
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      className="p-4 md:p-8 bg-orange-50/80 rounded-2xl mt-18 lg:mt-22 2xl:mt-26"
+    >
+      <div className="divider before:bg-[#14203e] after:bg-[#14203e] text-[#14203e] text-xl md:text-2xl font-bold mb-8">
+        My Reviews
+      </div>
       {reviews.length === 0 ? (
-        <div className="text-center text-xl font-medium text-gray-600 border border-dashed border-orange-500 py-10 rounded-lg shadow-inner bg-orange-50">
-            🚫 You haven't any added reviews yit.
-          </div>
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-delay="100"
+          className="text-center text-xl font-medium text-gray-600 border border-dashed border-orange-500 py-10 rounded-lg shadow-inner bg-orange-50"
+        >
+          🚫 You haven't any added reviews yit.
+        </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
-          {reviews.map((review) => (
-            <div className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300  hover:border border-green-200 p-5 xl:p-8 w-full relative group">
+          {reviews.map((review, index) => (
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              data-aos-delay={index * 200}
+              className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300   p-5 xl:p-8 w-full relative group"
+            >
               {/* Background Quote Text */}
               <div className="absolute top-2 left-3 text-gray-100 text-6xl font-bold opacity-10 select-none pointer-events-none">
                 FEEDBACK
               </div>
 
               {/* User Image */}
-              <div className="flex justify-center">
-              </div>
+              <div className="flex justify-center"></div>
 
               {/* Review Box */}
               <div className="bg-gray-200 mt-3 rounded-lg p-6 text-center relative">
@@ -102,14 +117,14 @@ const MyReviews = () => {
               </div>
               <div className="flex items-center justify-between">
                 <p className="text-lg text-gray-700 font-medium">
-                {new Date(review.postedAt).toLocaleString()}
-              </p>
-              <button
-                onClick={() => handleDelete(review._id)}
-                className="mt-4 px-4 py-1 cursor-pointer bg-red-500 text-white text-sm md:text-lg rounded hover:bg-red-600"
-              >
-                Delete
-              </button>
+                  {new Date(review.postedAt).toLocaleString()}
+                </p>
+                <button
+                  onClick={() => handleDelete(review._id)}
+                  className="mt-4 px-4 py-1 cursor-pointer bg-red-500 text-white text-sm md:text-lg rounded hover:bg-red-600"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           ))}
