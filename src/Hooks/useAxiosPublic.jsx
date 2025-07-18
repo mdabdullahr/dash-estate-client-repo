@@ -1,12 +1,11 @@
-import axios from 'axios';
-import React from 'react';
+import axios from "axios";
 
 const axiosPublicInstance = axios.create({
-    baseURL: "http://localhost:5000"
+  baseURL: "https://real-estate-server-eosin.vercel.app",
 });
 
 const useAxiosPublic = () => {
-    return axiosPublicInstance;
+  return axiosPublicInstance;
 };
 
 export default useAxiosPublic;
