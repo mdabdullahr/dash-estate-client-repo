@@ -37,14 +37,13 @@ const UserProfile = () => {
           </h2>
           <p className="text-sm sm:text-base text-gray-200">{user?.email}</p>
 
-          <span className="inline-block mt-3 bg-green-600 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md">
+          <span className="inline-block mt-3 bg-orange-500 text-white text-sm font-semibold px-4 py-1 rounded-full shadow-md">
             Role: User
           </span>
 
           {/* Optional Agent Note or Description */}
           <p className="mt-6 text-gray-100 text-sm sm:text-base leading-relaxed">
-            Welcome to your Agent Dashboard. Here you can manage your
-            properties, respond to offers, and track your performance.
+            Welcome to your User Dashboard. Here you can explore properties, manage your wishlist and reviews, and stay updated on your purchases.
           </p>
         </div>
       </div>

@@ -6,9 +6,11 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { FaBackspace } from "react-icons/fa";
 import useAuth from "../../../Hooks/useAuth";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const LoginPage = () => {
-  const {loginUser, googleLogin} = useAuth();
+  const { loginUser, googleLogin } = useAuth();
+  const axiosPublic = useAxiosPublic();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,12 +43,32 @@ const LoginPage = () => {
     // 🔐 Handle Google login here
     googleLogin()
       .then((res) => {
-        Swal.fire({
-          title: "Google Login Successfully...!",
-          icon: "success",
-          draggable: true,
-        });
-        navigate(`${location.state ? location.state : "/"}`);
+        const user = res.user;
+        const userInfo = {
+          name: user?.displayName,
+          email: user?.email,
+          image: user?.photoURL,
+          address: "Google Account",
+          role: "user",
+          status: "active",
+          createdAt: new Date(),
+          firebaseUid: user?.uid,
+        };
+
+        axiosPublic
+          .post("/users", userInfo)
+          .then(() => {
+            Swal.fire({
+              title: "Google Login Successfully...!",
+              icon: "success",
+              draggable: true,
+            });
+            navigate(`${location.state ? location.state : "/"}`);
+          })
+          .catch((err) => {
+            console.error("Google user save error:", err);
+            toast.error("Google user save failed.");
+          });
       })
       .catch((err) => {
         toast.error("Google Login fail " + err.message);
@@ -56,9 +78,11 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen bg-orange-50/80 flex items-center justify-center px-4">
       <div className="bg-orange-50 shadow-xl rounded-2xl p-8 w-full max-w-md">
-        <Link to="/"><FaBackspace className="text-orange-500 text-3xl cursor-pointer"></FaBackspace></Link>
+        <Link to="/">
+          <FaBackspace className="text-orange-500 text-3xl cursor-pointer"></FaBackspace>
+        </Link>
         <h2 className="text-2xl font-bold mb-6 text-center text-[#1b2a4f]">
-         Login to Your Account
+          Login to Your Account
         </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">

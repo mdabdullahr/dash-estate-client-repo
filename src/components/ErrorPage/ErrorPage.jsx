@@ -1,9 +1,11 @@
 import React from 'react';
+import Navbar from '../../Shared/Navbar/Navbar';
 
 const ErrorPage = () => {
     return (
-        <div className='bg-gray-100 min-h-screen flex justify-center items-center'>
-            <h1 className="text-5xl text-black">This is Error Page</h1>
+        <div>
+            <Navbar></Navbar>
+           <img src="https://i.ibb.co/TBGqmCvV/err4.jpg" className="h-[100vh] w-[100vw] object-center" alt="Error Image" />
         </div>
     );
 };

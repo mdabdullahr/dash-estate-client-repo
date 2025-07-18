@@ -7,14 +7,14 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
-
-
-
 const Register = () => {
   const { createUser, updateUser, setUser, googleLogin } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
+  const [imagePreview, setImagePreview] = useState(null);
   const navigate = useNavigate();
-  const axiosUser = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
+
+  const imgbbKey = import.meta.env.VITE_IMGBB_KEY;
 
   const {
     register,
@@ -24,24 +24,48 @@ const Register = () => {
   } = useForm();
 
   // ✅ Handle email/password registration
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    const imageFile = data.image[0];
+
+    // Step 1: Upload image to imgbb
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    const imgbbRes = await fetch(
+      `https://api.imgbb.com/1/upload?key=${imgbbKey}`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const imgbbData = await imgbbRes.json();
+    if (!imgbbData.success) {
+      toast.error("Image upload failed");
+      return;
+    }
+
+    const imageUrl = imgbbData.data.display_url;
+
+    // Step 2: Create user in Firebase
     createUser(data?.email, data?.password)
       .then((result) => {
         const user = result.user;
 
-        updateUser({ displayName: data?.name, photoURL: data?.photoURL })
+        updateUser({ displayName: data?.name, photoURL: imageUrl })
           .then(() => {
             const userInfo = {
               name: data?.name,
               email: data?.email,
-              image: data?.photoURL,
+              image: imageUrl,
               address: data?.address,
+              firebaseUid: user?.uid,
               role: "user",
               status: "active",
-              createdAt: new Date()
+              createdAt: new Date(),
             };
 
-            axiosUser
+            axiosPublic
               .post("/users", userInfo)
               .then((res) => {
                 if (res.data.insertedId || res.data.acknowledged) {
@@ -52,7 +76,7 @@ const Register = () => {
                   setUser({
                     ...user,
                     displayName: data.name,
-                    photoURL: data.photoURL,
+                    photoURL: imageUrl,
                   });
                   navigate("/");
                 }
@@ -73,14 +97,14 @@ const Register = () => {
       });
 
     reset();
+    setImagePreview(null);
   };
 
-  // ✅ Handle Google login + DB save
+  // ✅ Google Signup
   const handleGoogleSignup = () => {
     googleLogin()
       .then((res) => {
         const user = res.user;
-        console.log(user);
         const userInfo = {
           name: user?.displayName,
           email: user?.email,
@@ -88,10 +112,11 @@ const Register = () => {
           address: "Google Account",
           role: "user",
           status: "active",
-          createdAt: new Date()
+          createdAt: new Date(),
+          firebaseUid: user?.uid,
         };
 
-        axiosUser
+        axiosPublic
           .post("/users", userInfo)
           .then(() => {
             Swal.fire({
@@ -113,7 +138,9 @@ const Register = () => {
   return (
     <div className="min-h-screen bg-orange-50/80 flex items-center justify-center px-4 py-8">
       <div className="bg-orange-50 shadow-xl rounded-2xl p-6 sm:p-8 w-full max-w-md">
-        <Link to="/"><FaBackspace className="text-orange-500 text-3xl cursor-pointer text-right"></FaBackspace></Link>
+        <Link to="/">
+          <FaBackspace className="text-orange-500 text-3xl cursor-pointer text-right" />
+        </Link>
         <h2 className="text-2xl font-bold mb-6 text-center text-[#1b2a4f]">
           Create a New Account
         </h2>
@@ -153,22 +180,40 @@ const Register = () => {
             )}
           </div>
 
-          {/* Picture URL */}
+          {/* Profile Image Upload */}
           <div>
             <label className="block mb-1 text-sm font-medium text-gray-700">
-              Profile Picture URL
+              Profile Picture
             </label>
-            <input
-              type="text"
-              {...register("photoURL", {
-                required: "Profile picture URL is required",
-              })}
-              placeholder="Enter image URL"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-700 outline-0 focus:border-orange-500"
-            />
-            {errors.photoURL && (
+            <div className="flex items-center gap-2">
+              <input
+                type="file"
+                accept="image/*"
+                {...register("image", {
+                  required: "Profile image is required",
+                })}
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    setImagePreview(URL.createObjectURL(file));
+                  }
+                }}
+                className="w-full file:px-4 file:py-2 file:bg-orange-100 file:border file:border-orange-300 file:rounded-lg text-gray-700 outline-0 file:cursor-pointer"
+              />
+
+              {imagePreview && (
+                <div className="w-14 h-12 object-cover border border-orange-500 rounded-full overflow-hidden">
+                  <img
+                    src={imagePreview}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+            </div>
+            {errors.image && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.photoURL.message}
+                {errors.image.message}
               </p>
             )}
           </div>

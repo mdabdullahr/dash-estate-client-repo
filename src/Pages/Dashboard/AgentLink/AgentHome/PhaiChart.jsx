@@ -26,7 +26,7 @@ const TriangleBar = ({ fill, x, y, width, height }) => {
 };
 
 // Bar Colors
-const COLORS = ["#3B82F6", "#F97316", "#F59E0B"]; // Blue, Green, Amber
+const COLORS = ["#3B82F6", "#F97316", "#14203e"]; // Blue, Green, Amber
 
 // Main Chart Component
 const PhaiChart = ({ pieChartData }) => {

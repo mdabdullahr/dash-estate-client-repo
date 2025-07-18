@@ -49,6 +49,16 @@ const Advertise = () => {
         <Loading></Loading>
       ) : (
         <div className="overflow-x-auto rounded-t-sm">
+          {
+            properties.length === 0 ? <div
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-delay="100"
+          className="text-center text-xl font-medium text-gray-600 border border-dashed border-orange-500 py-10 rounded-lg shadow-inner bg-orange-50"
+        >
+          🚫 No Properties Yet for Advertise.
+        </div> :
+
           <table className="table w-full">
             <thead className="text-white text-lg  bg-[#14203e]/70">
               <tr>
@@ -105,6 +115,7 @@ const Advertise = () => {
               })}
             </tbody>
           </table>
+          }
         </div>
       )}
     </div>

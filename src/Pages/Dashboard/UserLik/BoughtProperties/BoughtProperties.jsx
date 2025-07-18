@@ -29,7 +29,7 @@ const BoughtProperties = () => {
         data-aos="fade-up"
         data-aos-duration="1500"
         data-aos-delay="100"
-        className="text-center text-xl font-medium text-gray-600 border border-dashed border-orange-500 py-10 rounded-lg shadow-inner bg-orange-50"
+        className="text-center mt-18 lg:mt-22 2xl:mt-26 text-xl font-medium text-gray-600 border border-dashed border-orange-500 py-10 rounded-lg shadow-inner bg-orange-50"
       >
         🚫 You haven't made any offers yet.
       </div>

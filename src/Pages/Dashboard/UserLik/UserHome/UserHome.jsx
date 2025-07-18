@@ -27,27 +27,34 @@ const UserHome = ({
 
       <section className="mt-10">
         <h3 className="text-xl font-semibold mb-4">Recently Wishlisted</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {recentWishlist.map((item) => (
-            <div
-              key={item._id}
-              className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden p-4"
-            >
-              <img
-                src={item.propertyImage}
-                alt=""
-                className="w-full h-32 object-cover rounded"
-              />
-              <h4 className="mt-2 font-semibold">{item.propertyTitle}</h4>
-              <p className="text-sm text-gray-500">{item.propertyLocation}</p>
-            </div>
-          ))}
-        </div>
+        {recentWishlist.length === 0 ? (
+          <p className="text-orange-500 text-center mt-6">
+            No available wishlists recently
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {recentWishlist.map((item) => (
+              <div
+                key={item._id}
+                className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden p-4"
+              >
+                <img
+                  src={item.propertyImage}
+                  alt=""
+                  className="w-full h-32 object-cover rounded"
+                />
+                <h4 className="mt-2 font-semibold">{item.propertyTitle}</h4>
+                <p className="text-sm text-gray-500">{item.propertyLocation}</p>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="mt-10">
         <h3 className="text-xl font-semibold mb-4">Recent Reviews</h3>
-        <div className="space-y-6">
+        {
+          recentReviews.length === 0 ? <p className="text-orange-500 text-center mt-6">No available recent reviews</p> : <div className="space-y-6">
           {recentReviews.map((review) => (
             <div
               key={review._id}
@@ -63,6 +70,7 @@ const UserHome = ({
             </div>
           ))}
         </div>
+        }
       </section>
 
       <section className="mt-10">

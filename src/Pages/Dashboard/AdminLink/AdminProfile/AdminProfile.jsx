@@ -43,8 +43,8 @@ const AdminProfile = () => {
 
           {/* Optional Agent Note or Description */}
           <p className="mt-6 text-gray-100 text-sm sm:text-base leading-relaxed">
-            Welcome to your Agent Dashboard. Here you can manage your
-            properties, respond to offers, and track your performance.
+            Welcome to your Admin Dashboard. Here you can manage users,
+            properties, and reviews to ensure a secure and efficient platform.
           </p>
         </div>
       </div>

@@ -75,6 +75,16 @@ const AllProperties = () => {
           All Properties
         </div>
         {/* 🏡 Properties Grid */}
+        {
+          properties.length === 0 ? <div
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-delay="100"
+          className="text-center text-xl font-medium text-gray-600 border border-dashed border-orange-500 py-10 rounded-lg shadow-inner bg-orange-50"
+        >
+          🚫 No Properties Yet.
+        </div> :
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-6">
           {properties.map((property, index) => (
             <div
@@ -153,6 +163,7 @@ const AllProperties = () => {
             </div>
           ))}
         </div>
+        }
       </div>
     </div>
   );
