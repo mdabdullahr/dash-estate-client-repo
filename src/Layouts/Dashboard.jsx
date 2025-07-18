@@ -7,6 +7,7 @@ import {
   FaComments,
   FaEnvelopeOpenText,
   FaHeart,
+  FaHome,
   FaPlusCircle,
   FaShoppingBag,
   FaStar,
@@ -21,7 +22,7 @@ import { Link, NavLink, Outlet } from "react-router";
 import Loading from "../Shared/Loading/Loading";
 import useUserRole from "../Hooks/useUserRole";
 import DashboardNav from "../Pages/Dashboard/DashboardNav/DashboardNav.jsx";
-import logo from "../assets/navlogo (2).png"
+import logo from "../assets/navlogo (2).png";
 
 const Dashboard = () => {
   const { role, roleLoader } = useUserRole();
@@ -106,14 +107,28 @@ const Dashboard = () => {
                 <div className="space-y-6 pt-0 lg:pt-20">
                   {/* Nav Links */}
                   <Link className="flex lg:hidden" to="/">
-                  <div className="flex items-center px-6 border-b-2 border-gray-300 pb-2">
-                    <img className="w-32" src={logo} alt="Logo" />
-                  </div>
-                </Link>
+                    <div className="flex items-center px-6 border-b-2 border-gray-300 pb-2">
+                      <img className="w-32" src={logo} alt="Logo" />
+                    </div>
+                  </Link>
+
                   {/* User Related Route */}
                   {!roleLoader && role === "user" && (
                     <div className="p-4 space-y-6 text-gray-200 text-lg font-semibold">
                       {/* Profile */}
+                      <NavLink
+                        to="/dashboard"
+                        end
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f] p-6"
+                          }`
+                        }
+                      >
+                        <FaHome></FaHome>Home
+                      </NavLink>
                       <NavLink
                         to="/dashboard/profile"
                         className={({ isActive }) =>
@@ -178,6 +193,19 @@ const Dashboard = () => {
                   {/* Agent Related Route */}
                   {!roleLoader && role === "agent" && (
                     <div className="p-4 space-y-6 text-gray-200 text-lg font-semibold">
+                      <NavLink
+                        to="/dashboard"
+                        end
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f] p-6"
+                          }`
+                        }
+                      >
+                        <FaHome></FaHome>Home
+                      </NavLink>
                       {/* Profile */}
                       <NavLink
                         to="/dashboard/agentProfile"
@@ -258,6 +286,19 @@ const Dashboard = () => {
                   {/* Admin Related Route */}
                   {!roleLoader && role === "admin" && (
                     <div className="p-4 space-y-6 text-gray-200 text-lg font-semibold">
+                      <NavLink
+                        to="/dashboard"
+                        end
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition ${
+                            isActive
+                              ? "bg-[#1b2a4f] text-orange-500 border-l-4 border-orange-500"
+                              : "hover:bg-[#1b2a4f] p-6"
+                          }`
+                        }
+                      >
+                        <FaHome></FaHome>Home
+                      </NavLink>
                       {/* Admin Profile */}
                       <NavLink
                         to="/dashboard/adminProfile"

@@ -2,6 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Loading from "../../../Shared/Loading/Loading";
+import UserHome from "../UserLik/UserHome/UserHome";
+import AgentHome from "../AgentLink/AgentHome/AgentHome";
+import AdminHome from "../AdminLink/AdminHome/AdminHome";
 
 const DashboardHome = () => {
   const { user } = useAuth();
@@ -20,7 +23,7 @@ const DashboardHome = () => {
   });
 
   if (isLoading) {
-    return <Loading></Loading>
+    return <Loading />;
   }
 
   if (isError || !data) {
@@ -36,55 +39,71 @@ const DashboardHome = () => {
     wishlistCount,
     boughtCount,
     reviewCount,
+    recentWishlist,
+    recentReviews,
+    chartData,
     addedProperties,
     requestedCount,
     soldCount,
     soldAmount,
+    recentProperties,
+    recentOffers,
+    pieChartData,
     totalUsers,
     totalProperties,
     totalReviews,
+    recentUsers,
+    propertyStatusChart,
   } = data;
 
   return (
-    <div className="p-5 mt-18 lg:mt-22 2xl:mt-26">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1500"
+      className="p-4 2xl:p-8 rounded-2xl bg-orange-50/80 mt-18 lg:mt-22 2xl:mt-24"
+    >
       <h2 className="text-2xl font-bold mb-4">
         Welcome{" "}
-        <span className="text-blue-600">{user?.displayName || "User"}</span> 🎉
+        <span className="text-orange-600">{user?.displayName || "User"}</span>{" "}
+        🎉
       </h2>
 
       {role === "user" && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <StatCard title="My Wishlist" value={wishlistCount} />
-          <StatCard title="Properties Bought" value={boughtCount} />
-          <StatCard title="My Reviews" value={reviewCount} />
-        </div>
+        <UserHome
+          wishlistCount={wishlistCount}
+          boughtCount={boughtCount}
+          reviewCount={reviewCount}
+          recentWishlist={recentWishlist}
+          recentReviews={recentReviews}
+          chartData={chartData}
+        />
       )}
 
       {role === "agent" && (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-          <StatCard title="Added Properties" value={addedProperties} />
-          <StatCard title="Requested Properties" value={requestedCount} />
-          <StatCard title="Sold Properties" value={soldCount} />
-          <StatCard title="Total Sold Amount" value={`৳ ${soldAmount || 0}`} />
-        </div>
+        <AgentHome
+          addedProperties={addedProperties}
+          requestedCount={requestedCount}
+          soldCount={soldCount}
+          soldAmount={soldAmount}
+          recentProperties={recentProperties}
+          recentOffers={recentOffers}
+          pieChartData={pieChartData}
+        />
       )}
 
       {role === "admin" && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <StatCard title="Total Users" value={totalUsers} />
-          <StatCard title="Total Properties" value={totalProperties} />
-          <StatCard title="Total Reviews" value={totalReviews} />
-        </div>
+        <AdminHome
+          totalUsers={totalUsers}
+          totalProperties={totalProperties}
+          totalReviews={totalReviews}
+          recentUsers={recentUsers}
+          recentProperties={recentProperties}
+          recentReviews={recentReviews}
+          propertyStatusChart={propertyStatusChart}
+        />
       )}
     </div>
   );
 };
-
-const StatCard = ({ title, value }) => (
-  <div className="bg-white shadow-md rounded-xl p-6 border hover:shadow-xl transition">
-    <h3 className="text-md font-medium text-gray-600">{title}</h3>
-    <p className="text-3xl font-bold text-blue-600 mt-2">{value}</p>
-  </div>
-);
 
 export default DashboardHome;

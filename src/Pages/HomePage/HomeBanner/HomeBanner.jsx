@@ -170,7 +170,7 @@ const [showCurtain, setShowCurtain] = useState(true);
       </div>
 
       {/* Custom clip-path styles */}
-      <style jsx>{`
+      <style>{`
         .clip-left-25 {
           clip-path: polygon(0% 0, 100% 0%, 90% 100%, 0% 100%);
         }
