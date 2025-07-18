@@ -25,8 +25,8 @@ const AllProperties = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="bg-orange-50/80">
-      <div className="p-6 min-h-screen pt-36 max-w-[1620px] mx-auto">
+    <div className="bg-orange-50/80 min-h-screen">
+      <div className="p-6 min-h-screen pt-36 pb-12 max-w-[1620px] mx-auto">
         {/* 🔍 Search & 🔃 Sort Controls */}
         <div
           data-aos="fade-up"

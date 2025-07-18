@@ -105,7 +105,6 @@ const YourLouxery = () => {
         </div>
       </div>
 
-      {/* ✂️ Clip Path Styling */}
       <style>{`
         .clip-right-25 {
           clip-path: polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%);

@@ -23,13 +23,29 @@ import Loading from "../Shared/Loading/Loading";
 import useUserRole from "../Hooks/useUserRole";
 import DashboardNav from "../Pages/Dashboard/DashboardNav/DashboardNav.jsx";
 import logo from "../assets/navlogo (2).png";
+import useAuth from "../Hooks/useAuth.jsx";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const { role, roleLoader } = useUserRole();
-  console.log(role);
+  const {logoutUser} = useAuth();
 
   if (roleLoader) return <Loading></Loading>;
 
+  const handleLogOut = () => {
+      logoutUser()
+        .then(() => {
+          Swal.fire({
+            title: "Successfully Logged Out...!",
+            icon: "success",
+            draggable: true,
+          });
+        })
+        .catch((error) => {
+          toast.error("Logout failed...!", error.message);
+        });
+    };
   return (
     <div className="min-h-screen bg-white text-black">
       <div className="bg-white">
@@ -378,17 +394,8 @@ const Dashboard = () => {
                 </div>
 
                 {/* Bottom: Logout */}
-                <div className="mt-6 p-4 border-t-2 border-gray-300">
-                  <li>
-                    <NavLink
-                      to="/dashboard/updateProfile"
-                      className="border hover:border-0 border-white text-white px-8 py-4 text-lg xl:text-xl font-medium rounded-full hover:bg-orange-500 transition duration-500 cursor-pointer flex items-center mb-4"
-                    >
-                      <MdMovieEdit size={20} className="mr-2" />
-                      Update Profile
-                    </NavLink>
-                  </li>
-                  <button className="border hover:border-0 border-white text-white px-8 py-4 text-lg xl:text-xl font-medium rounded-full hover:bg-orange-500 transition duration-500 cursor-pointer flex items-center gap-2 w-full">
+                <div className="p-4 border-t-2 border-gray-300 pt-8">
+                  <button onClick={handleLogOut} className="border hover:border-0 border-white text-white px-8 py-4 text-lg xl:text-xl font-medium rounded-full hover:bg-orange-500 transition duration-500 cursor-pointer flex items-center gap-2 w-full">
                     <FiLogOut /> Logout
                   </button>
                 </div>
