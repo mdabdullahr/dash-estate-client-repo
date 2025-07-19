@@ -18,19 +18,22 @@ const AdvertisementSection = () => {
     },
   });
 
-  if (isLoading) return <Loading></Loading>;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="bg-orange-50/80">
       <div className="pt-20 lg:pt-30 pb-12 px-4 md:px-10 max-w-[1620px] mx-auto">
+        {/* Section Heading */}
         <h4
           data-aos="fade-up"
           data-aos-duration="1500"
-          className="font-medium text-xl lg:text-2xl text-orange-500 flex  justify-center items-center mb-2 md:mb-2 lg:mb-6"
+          className="font-medium text-xl lg:text-2xl text-orange-500 flex justify-center items-center mb-2"
         >
-          <IoMdHome className="mr-4"></IoMdHome>PROPERTIES HIGHLIGHTS{" "}
-          <IoMdHome className="ml-4 "></IoMdHome>
+          <IoMdHome className="mr-4" />
+          PROPERTIES HIGHLIGHTS
+          <IoMdHome className="ml-4" />
         </h4>
+
         <div
           data-aos="fade-up"
           data-aos-duration="1500"
@@ -40,6 +43,7 @@ const AdvertisementSection = () => {
           Advertised Properties
         </div>
 
+        {/* If no properties */}
         {advertisedProperties.length === 0 ? (
           <div
             data-aos="fade-up"
@@ -59,40 +63,36 @@ const AdvertisementSection = () => {
                 key={property._id}
                 className="relative bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden group"
               >
+                {/* Property Image */}
                 <img
                   src={property.image}
                   alt={property.title}
                   className="w-full h-48 object-cover"
                 />
 
-                {/* Overlay with slide from top-left */}
-                <div className="absolute inset-0 bg-[#1b2a4f]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-600 pointer-events-none"></div>
-
-                {/* Sliding text/content */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 translate-x-[-100%] translate-y-[-100%] group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500 ease-in-out z-10">
-                    <Link to={`/propertyDetails/${property._id}`}>
-                      <button className="bg-orange-500 hover:bg-[#1b2a4f] cursor-pointer text-white font-semibold py-2 px-5 rounded-full">
-                        View Details →
-                      </button>
-                    </Link>
-                  </div>
+                {/* Hover Overlay + Centered Button (only lg+) */}
+                <div className="absolute inset-0 hidden lg:flex items-center justify-center group-hover:bg-[#1b2a4f]/50 group-hover:opacity-100 opacity-0 transition-opacity duration-500 z-20">
+                  <Link to={`/propertyDetails/${property._id}`}>
+                    <button className="bg-orange-500 hover:bg-[#1b2a4f] text-white font-semibold py-2 px-5 rounded-full cursor-pointer">
+                      View Details →
+                    </button>
+                  </Link>
                 </div>
 
-                {/* Static Text (stays below the overlay) */}
-                <div className="p-4 space-y-2 relative z-0">
+                {/* Property Content */}
+                <div className="p-4 space-y-2 relative z-10 bg-white">
                   <h3 className="text-lg font-semibold text-gray-800">
                     {property.title}
                   </h3>
                   <p className="text-sm text-gray-700 font-medium flex items-center">
-                    <FaLocationDot className="mr-2 text-orange-500"></FaLocationDot>{" "}
+                    <FaLocationDot className="mr-2 text-orange-500" />
                     {property.location}
                   </p>
                   <p className="text-sm text-gray-700 font-medium flex items-center">
                     <LiaHandHoldingUsdSolid
                       className="mr-2 text-orange-500"
                       size={20}
-                    ></LiaHandHoldingUsdSolid>{" "}
+                    />
                     ${property.minPrice} - ${property.maxPrice}
                   </p>
                   <p className="text-sm font-medium text-gray-700">
@@ -107,6 +107,15 @@ const AdvertisementSection = () => {
                       {property.verificationStatus}
                     </span>
                   </p>
+                </div>
+
+                {/* Static Button on Small Devices */}
+                <div className="lg:hidden px-4 pb-4">
+                  <Link to={`/propertyDetails/${property._id}`}>
+                    <button className="w-full bg-orange-500 hover:bg-[#1b2a4f] text-white font-semibold py-2 px-5 rounded-full mt-2">
+                      View Details →
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))}

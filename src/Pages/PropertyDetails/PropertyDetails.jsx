@@ -103,6 +103,10 @@ const PropertyDetails = () => {
 
   const reviewMutation = useMutation({
     mutationFn: async (data) => {
+      if (!rating || rating < 1) {
+        toast.error("Please give a rating before submitting.");
+        return;
+      }
       const reviewData = {
         ...data,
         rating,
@@ -136,9 +140,8 @@ const PropertyDetails = () => {
     document.title = "DashEstate | Property_Details";
   }, []);
 
-
   return (
-    <div>
+    <div className="overflow-hidden">
       <div className="w-full h-full md:h-[80vh] relative overflow-hidden mt-20">
         {/* ✅ Fullscreen Background Image */}
         <img
@@ -315,7 +318,7 @@ const PropertyDetails = () => {
                   <div
                     data-aos="fade-up"
                     data-aos-duration="1500"
-                    data-aos-delay={index *200}
+                    data-aos-delay={index * 200}
                     key={review._id}
                     className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden p-4 md:p-6 xl:p-8"
                   >
