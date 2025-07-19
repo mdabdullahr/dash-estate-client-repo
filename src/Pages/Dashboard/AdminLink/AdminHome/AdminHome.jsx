@@ -22,7 +22,10 @@ const AdminHome = ({
         <h3 className="text-xl font-bold mb-4">🧑‍💻 Recently Registered Users</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {recentUsers?.map((user) => (
-            <div key={user._id} className="bg-white rounded-xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden p-4">
+            <div
+              key={user._id}
+              className="bg-white rounded-xl shadow-sm hover:shadow-xl transition duration-300 overflow-hidden p-4"
+            >
               <img
                 src={user.image}
                 className="w-12 h-12 rounded-full mx-auto"
@@ -41,27 +44,33 @@ const AdminHome = ({
         <h3 className="text-xl font-bold mb-4">
           🏡 Recent Property Submissions
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {recentProperties?.map((property) => (
-            <div
-              key={property._id}
-              className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden p-4"
-            >
-              <img
-                src={property.image}
-                className="h-32 w-full object-cover rounded"
-              />
-              <h4 className="mt-2 font-semibold">{property.title}</h4>
-              <p className="text-sm text-gray-500">{property.location}</p>
-              <p className="text-xs text-gray-400">
-                Status:{" "}
-                <span className="capitalize">
-                  {property.verificationStatus}
-                </span>
-              </p>
-            </div>
-          ))}
-        </div>
+        {recentProperties.length === 0 ? (
+          <p className="text-lg text-gray-700">
+            No Recent Property Available now.
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {recentProperties?.map((property) => (
+              <div
+                key={property._id}
+                className="bg-white rounded-lg shadow-sm hover:shadow-xl transition duration-300 overflow-hidden p-4"
+              >
+                <img
+                  src={property.image}
+                  className="h-32 w-full object-cover rounded"
+                />
+                <h4 className="mt-2 font-semibold">{property.title}</h4>
+                <p className="text-sm text-gray-500">{property.location}</p>
+                <p className="text-xs text-gray-400">
+                  Status:{" "}
+                  <span className="capitalize">
+                    {property.verificationStatus}
+                  </span>
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="mt-10">

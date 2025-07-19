@@ -26,6 +26,7 @@ import logo from "../assets/navlogo (2).png";
 import useAuth from "../Hooks/useAuth.jsx";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop.jsx";
 
 const Dashboard = () => {
   const { role, roleLoader } = useUserRole();
@@ -64,7 +65,7 @@ const Dashboard = () => {
               <div
                 data-aos="fade-down"
                 data-aos-duration="1500"
-                className="navbar bg-[#14203e] px-6 py-5 w-full lg:hidden fixed"
+                className="navbar bg-[#14203e] px-6 py-5 w-full lg:hidden fixed top-0 left-0 z-50"
               >
                 <div className="flex-none">
                   <label
@@ -104,6 +105,7 @@ const Dashboard = () => {
               </div>
               {/* Main Content */}
               <div className="hidden lg:flex">
+                <ScrollToTop></ScrollToTop>
                 <DashboardNav></DashboardNav>
               </div>
               <div className="px-5 2xl:px-10 my-10 overflow-auto">
@@ -125,7 +127,7 @@ const Dashboard = () => {
                 className="bg-[#14203e] text-[#14203e] min-h-full w-[70vw] sm:w-72 md:w-80 xl:w-96 p-6 flex flex-col justify-between"
               >
                 {/* Top: Logo + Links */}
-                <div className="space-y-6 pt-0 lg:pt-20">
+                <div className="space-y-4 md:space-y-6 pt-20">
                   {/* Nav Links */}
                   <Link className="flex lg:hidden" to="/">
                     <div className="flex items-center px-6 border-b-2 border-gray-300 pb-2">
@@ -135,7 +137,7 @@ const Dashboard = () => {
 
                   {/* User Related Route */}
                   {!roleLoader && role === "user" && (
-                    <div className="p-4 space-y-6 text-gray-200 text-lg font-semibold">
+                    <div className="p-4 space-y-4 md:space-y-6 text-gray-200 text-lg font-semibold">
                       {/* Profile */}
                       <NavLink
                         to="/dashboard"
@@ -213,7 +215,7 @@ const Dashboard = () => {
 
                   {/* Agent Related Route */}
                   {!roleLoader && role === "agent" && (
-                    <div className="p-4 space-y-6 text-gray-200 text-lg font-semibold">
+                    <div className="p-4 space-y-4 md:space-y-6 text-gray-200 text-lg font-semibold">
                       <NavLink
                         to="/dashboard"
                         end
@@ -306,7 +308,7 @@ const Dashboard = () => {
 
                   {/* Admin Related Route */}
                   {!roleLoader && role === "admin" && (
-                    <div className="p-4 space-y-6 text-gray-200 text-lg font-semibold">
+                    <div className="p-4 space-y-4 md:space-y-6 text-gray-200 text-lg font-semibold">
                       <NavLink
                         to="/dashboard"
                         end
