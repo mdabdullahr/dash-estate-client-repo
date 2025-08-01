@@ -11,11 +11,14 @@ import { FaLocationDot } from "react-icons/fa6";
 import { LiaHandHoldingUsdSolid } from "react-icons/lia";
 import Rating from "react-rating";
 import { FaStar, FaRegStar, FaHome } from "react-icons/fa";
+import useUserRole from "../../Hooks/useUserRole";
 
 const PropertyDetails = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const { role } = useUserRole();
+  console.log(role);
   const queryClient = useQueryClient();
   const [reviewModal, setReviewModal] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
@@ -285,17 +288,19 @@ const PropertyDetails = () => {
                   </span>
                 </p>
 
-                <button
-                  onClick={handleAddToWishlist}
-                  disabled={isWishlisted}
-                  className={`mt-6 px-6 py-3 rounded-full shadow text-white text-lg font-medium transition ${
-                    isWishlisted
-                      ? "bg-orange-300 cursor-not-allowed"
-                      : "bg-orange-500 hover:bg-[#14203e] cursor-pointer"
-                  }`}
-                >
-                  {isWishlisted ? "Wishlisted" : "Add to Wishlist"}
-                </button>
+                {role === "user" && (
+                  <button
+                    onClick={handleAddToWishlist}
+                    disabled={isWishlisted}
+                    className={`mt-6 px-6 py-3 rounded-full shadow text-white text-lg font-medium transition ${
+                      isWishlisted
+                        ? "bg-orange-300 cursor-not-allowed"
+                        : "bg-orange-500 hover:bg-[#14203e] cursor-pointer"
+                    }`}
+                  >
+                    {isWishlisted ? "Wishlisted" : "Add to Wishlist"}
+                  </button>
+                )}
               </div>
             </div>
           )}
@@ -357,14 +362,16 @@ const PropertyDetails = () => {
               </div>
             )}
 
-            <button
-              data-aos="fade-up"
-              data-aos-duration="1500"
-              onClick={() => setReviewModal(true)}
-              className="mt-6 cursor-pointer bg-orange-500 hover:bg-[#14203e] text-white px-6 py-3 text-lg font-medium rounded-full shadow"
-            >
-              Add a Review
-            </button>
+            {role === "user" && (
+              <button
+                data-aos="fade-up"
+                data-aos-duration="1500"
+                onClick={() => setReviewModal(true)}
+                className="mt-6 cursor-pointer bg-orange-500 hover:bg-[#14203e] text-white px-6 py-3 text-lg font-medium rounded-full shadow"
+              >
+                Add a Review
+              </button>
+            )}
           </div>
 
           {/* Add Review Modal */}

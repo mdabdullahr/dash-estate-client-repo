@@ -1,6 +1,6 @@
 # 🏠 DashState - Real Estate Management Platform
 
-**Live Site:** [https://real-estate-platform-de074.web.app/]
+**Live Site:** [https://real-estate-server-eosin.vercel.app/]
 
 **Admin Credentials:**
 - **Email:** mdabdullah162005@gmail.com
