@@ -18,7 +18,6 @@ DashState is a full-featured real estate web application where users can discove
 
 ## 🚀 Key Features
 
-- ✅ **User Authentication** with Firebase (Email/Password + Google Login)
 - 👤 **Three User Roles**: User, Agent, and Admin with separate dashboards
 - 🏡 **Verified Property Listings** only visible to users
 - ❤️ **Wishlist System**: Users can save their favorite properties
