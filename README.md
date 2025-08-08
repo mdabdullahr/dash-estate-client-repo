@@ -12,6 +12,8 @@
 
 DashState is a full-featured real estate web application where users can discover verified properties, agents can manage listings, and admins can control the platform with ease. It supports role-based dashboards, real-time reviews, property advertisements, and secure authentication.
 
+<img src="https://i.ibb.co.com/xS7b3H9f/real.png"/>
+
 ---
 
 ## 🚀 Key Features
