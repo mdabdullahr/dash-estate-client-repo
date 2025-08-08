@@ -34,29 +34,41 @@ DashState is a full-featured real estate web application where users can discove
 
 ### ✅ Dependencies
 
-- `@tailwindcss/vite`: ^4.1.5  
-- `aos`: ^2.3.4  
-- `firebase`: ^11.6.1  
-- `react`: ^19.0.0  
-- `react-dom`: ^19.0.0  
-- `react-icons`: ^5.5.0  
-- `react-router`: ^7.5.3  
-- `react-toastify`: ^11.0.5  
-- `swiper`: ^11.2.6  
-- `tailwindcss`: ^4.1.5
+- `@stripe/react-stripe-js`: ^3.7.0
+- `@stripe/stripe-js`: ^7.4.0
+- `@tailwindcss/vite`: ^4.1.11
+- `@tanstack/react-query`: ^5.82.0
+- `aos`: ^2.3.4
+- `axios`: ^1.10.0
+- `date-fns` ^4.1.0
+- `firebase`: ^11.10.0
+- `framer-motion`: ^12.23.6
+- `moment`: ^2.30.1
+- `moment-timezone`: ^0.6.0
+- `react`: ^19.1.0  
+- `react-dom`: ^19.1.0
+- `react-hook-form`: ^7.60.0
+- `react-icons`: ^5.5.0
+- `react-lottie`: ^1.2.10
+- `react-rating`: ^2.0.5
+- `react-router`: ^7.6.3  
+- `react-toastify`: ^11.0.5
+- `recharts`: ^3.1.0
+- `sweetalert2`: ^11.22.2
+- `tailwindcss`: ^4.1.11
 
 ### 🛠️ DevDependencies
 
-- `@eslint/js`: ^9.22.0  
-- `@types/react`: ^19.0.10  
-- `@types/react-dom`: ^19.0.4  
-- `@vitejs/plugin-react`: ^4.3.4  
-- `daisyui`: ^5.0.35  
-- `eslint`: ^9.22.0  
+- `@eslint/js`: ^9.39.1  
+- `@types/react`: ^19.1.8  
+- `@types/react-dom`: ^19.1.6  
+- `@vitejs/plugin-react`: ^4.6.0  
+- `daisyui`: ^5.0.46  
+- `eslint`: ^9.30.1  
 - `eslint-plugin-react-hooks`: ^5.2.0  
-- `eslint-plugin-react-refresh`: ^0.4.19  
-- `globals`: ^16.0.0  
-- `vite`: ^6.3.1
+- `eslint-plugin-react-refresh`: ^0.4.20 
+- `globals`: ^16.3.0  
+- `vite`: ^7.0.3
 
 ---
 
@@ -64,11 +76,11 @@ DashState is a full-featured real estate web application where users can discove
 
 #### 1. Clone the repository:
 bash <br/>
-git clone https://github.com/mdabdullahr/marathon-management-client-repo.git
+git clone https://github.com/mdabdullahr/dash-estate-client-repo.git
 
 2. Navigate to the project directory:
 bash <br/>
-cd marathon-management-client-repo
+cd dash-estate-client
 
 3. Install dependencies:
 bash <br/>
@@ -79,10 +91,12 @@ env <br/>
 
 VITE_API_KEY=your_api_key <br/>
 VITE_AUTH_DOMAIN=your_auth_domain <br/>
-VITE_PROJECT_ID=your_project_id <br/>
+VITE_PROJECT_ID=your_projects_id <br/>
 VITE_STORAGE_BUCKET=your_storage_bucket <br/>
-VITE_MESSAGING_SENDER_ID=your_sender_id <br/>
-VITE_APP_ID=your_app_id 
+VITE_MESSAGING_SENDER_ID=your_messaging_sender_id <br/>
+VITE_APP_ID=your_app_id <br/>
+VITE_IMGBB_KEY=your_image_key <br/>
+VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
 
 5. Run the development server:
 bash <br/>
@@ -98,9 +112,3 @@ Email: mdabdullah162005@gmail.com
 
 📜 License
 This project is licensed under the MIT License.
-
-- **Frontend:** React.js, TailwindCSS, DaisyUI, React Router DOM, React Query
-- **Backend:** Express.js, MongoDB, Firebase Admin SDK
-- **Authentication:** Firebase Auth (with JWT), Role-based access
-- **UI Libraries:** React Icons, SweetAlert2, React Type Animation, Framer Motion
-- **Hosting:** Firebase(Frontend), Vercel (Backend)
