@@ -35,4 +35,4 @@ DashState is a full-featured real estate web application where users can discove
 - **Backend:** Express.js, MongoDB, Firebase Admin SDK
 - **Authentication:** Firebase Auth (with JWT), Role-based access
 - **UI Libraries:** React Icons, SweetAlert2, React Type Animation, Framer Motion
-- **Hosting:**Firebase(Frontend), Vercel (Backend)
+- **Hosting:** Firebase(Frontend), Vercel (Backend)
